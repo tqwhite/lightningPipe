@@ -1,4 +1,4 @@
-lightningPipe
-=============
+lighteningPipe
+==============
 
-The Sizzle of Data Through the Web
+Data exchange among modules
