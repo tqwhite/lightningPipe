@@ -33,7 +33,7 @@ router.post('/', function(req, res) {
 	res.json({status:'hello', body:req.body, query:req.query});
 });
 
-app.use('/api', router);
+app.use('/test', router);
 
 app.listen(config.port);
 qtools.message('Magic happens on port ' + config.port);
