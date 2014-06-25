@@ -1,0 +1,91 @@
+
+node ../ebControl.js --term --skipFirstLine --forReal dataFiles/uff/schoolSetup/term.uff
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --gradeLevel --skipFirstLine --forReal dataFiles/uff/schoolSetup/gradeLevel.uff
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+
+
+node ../ebControl.js --school --skipFirstLine --forReal dataFiles/uff/schoolSetup/school.uff
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --schoolSetCurrentTerm --forReal -- dataFiles/uff/schoolSetup/schoolSetCurrentTerm.uff
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+
+
+
+node ../ebControl.js --student --skipFirstLine --forReal dataFiles/uff/peopleSetup/student.uff
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --teacher --skipFirstLine --forReal -- dataFiles/uff/peopleSetup/teacher.uff
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+
+
+node ../ebControl.js --objective --forReal dataFiles/uff/objectiveSetup/objectives.eb
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --assignGradeLevel --forReal dataFiles/uff/objectiveSetup/gradeLevelAssignments.eb
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --assignTerm --forReal dataFiles/uff/objectiveSetup/termAssignments.eb
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --assignSpecialty --forReal dataFiles/uff/objectiveSetup/specialtyAssignments.eb
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+
+
+
+node ../ebControl.js --homeroom --skipFirstLine --forReal -- dataFiles/uff/peopleSetup/homeroom.uff
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --assignStudent --skipFirstLine --forReal dataFiles/uff/peopleSetup/assignStudent.uff
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --assignTeacher --skipFirstLine --forReal dataFiles/uff/peopleSetup/assignTeacher.uff
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+
+echo "UFF upload completed successfully"

@@ -23,17 +23,18 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 var router = express.Router();
+
 router.get('/', function(req, res) {
 
-	var list=[];
-	for (var i in req){
-		var element=req[i];
-		console.log(i);
-	}
-	res.json({body:req.body, query:req.query});
+	res.json({status:'hello', body:req.body, query:req.query});
 });
+
+router.post('/', function(req, res) {
+	res.json({status:'hello', body:req.body, query:req.query});
+});
+
 app.use('/api', router);
 
 app.listen(config.port);
-console.log('Magic happens on port ' + config.port);
+qtools.message('Magic happens on port ' + config.port);
 
