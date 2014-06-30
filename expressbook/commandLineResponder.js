@@ -6,7 +6,7 @@ var qtools = require('qtools'),
 
 //START OF moduleFunction() ============================================================
 
-var moduleFunction = function(dataSource, controlObj, program, config, fileName) {
+var moduleFunction = function(sourceData, targetServerAccess, controlObj, commandFlags, config) {
 	events.EventEmitter.call(this);
 	var self = this;
 
@@ -21,12 +21,12 @@ var moduleFunction = function(dataSource, controlObj, program, config, fileName)
 
 		if (typeof (finishedOutputObject) == 'undefined') {
 			finishedOutputObject = {};
-			finishedOutputObject[controlObj.endPointWrapperName] = sourceData.finishedObject; //very often, I find it useful to generate an object literal above for testing and don't want to have it overwritten here
+			finishedOutputObject[controlObj.outboundFinalObjectName] = sourceData.finishedObject; //very often, I find it useful to generate an object literal above for testing and don't want to have it overwritten here
 		}
 
 		var wrapupCallback = 'no final output wanted';
 
-		if (program.verbose) {
+		if (commandFlags.verbose) {
 			qtools.dump({
 				sourceObjectList: sourceData.sourceObjectList
 			});
@@ -35,12 +35,12 @@ var moduleFunction = function(dataSource, controlObj, program, config, fileName)
 			});
 
 			console.log('\n\nstarting api write');
-			wrapupCallback = dataSource.targetServerAccess.writeResultMessages;
+			wrapupCallback = targetServerAccess.writeResultMessages;
 		}
-		if (program.dumpJson) {
+		if (commandFlags.dumpJson) {
 			console.log('\n\n' + JSON.stringify(finishedOutputObject) + '\n\n');
 		}
-		dataSource.targetServerAccess[controlObj.accessModelMethodName](finishedOutputObject, controlObj.apiEndpoint, wrapupCallback);
+		targetServerAccess.saveCompletedObject(finishedOutputObject, controlObj.apiEndpoint, wrapupCallback);
 
 	}
 
@@ -59,10 +59,10 @@ var moduleFunction = function(dataSource, controlObj, program, config, fileName)
 
 	var doSomeWork = function() {
 
-		if (program.pingOnly) {
-			dataSource.targetServerAccess.pingApiEndpoint(controlObj);
+		if (commandFlags.pingOnly) {
+			targetServerAccess.pingApiEndpoint(controlObj);
 		} else {
-			if (program.verbose) {
+			if (commandFlags.verbose) {
 				console.log('\n\nstarting conversion\n\n');
 			}
 
@@ -75,18 +75,16 @@ var moduleFunction = function(dataSource, controlObj, program, config, fileName)
 
 	var finishedOutputObject;
 
-	var converter = dataSource.textToJson,
-		sourceData = new converter(fileName, dataSource.dictionary.get(controlObj.definitionName)),
-		communicationObject = qtools.extend(
+	var communicationObject = qtools.extend(
 			config.loginInfo(),
 			{
 				loginCallback: loginFoundCallback,
-				dryRun: ( !program.forReal && !program.pingOnly),
-				dumpJson: program.dumpJson
+				dryRun: ( !commandFlags.forReal && !commandFlags.pingOnly),
+				dumpJson: commandFlags.dumpJson
 			}
 		);
 
-	dataSource.targetServerAccess.start(communicationObject);
+	targetServerAccess.start(communicationObject);
 
 
 	return this;

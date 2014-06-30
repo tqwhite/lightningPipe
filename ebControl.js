@@ -10,64 +10,64 @@ displayConfig.password = '****';
 
 /*
 
-node ebControl.js --markScale --verbose dataSource/dataFiles/eb/objectiveSetup/markScales.eb
-node ebControl.js --markScale --verbose --forReal dataSource/dataFiles/eb/objectiveSetup/markScales.eb
+node ebControl.js --markScale --verbose dataFiles/eb/objectiveSetup/markScales.eb
+node ebControl.js --markScale --verbose --forReal dataFiles/eb/objectiveSetup/markScales.eb
 
-node ebControl.js --specialty --verbose dataSource/dataFiles/eb/attributeSetup/specialties.eb
-node ebControl.js --specialty --verbose --forReal dataSource/dataFiles/eb/attributeSetup/specialties.eb
+node ebControl.js --specialty --verbose dataFiles/eb/attributeSetup/specialties.eb
+node ebControl.js --specialty --verbose --forReal dataFiles/eb/attributeSetup/specialties.eb
 
-node ebControl.js --objective --verbose --forReal dataSource/dataFiles/uff/objectiveSetup/objectives.eb
-node ebControl.js --assignGradeLevel --verbose --forReal dataSource/dataFiles/uff/objectiveSetup/gradeLevelAssignments.eb
-node ebControl.js --assignTerm --verbose --forReal dataSource/dataFiles/uff/objectiveSetup/termAssignments.eb
-node ebControl.js --assignSpecialty --verbose --forReal dataSource/dataFiles/uff/objectiveSetup/specialtyAssignments.eb
+node ebControl.js --objective --verbose --forReal dataFiles/uff/objectiveSetup/objectives.eb
+node ebControl.js --assignGradeLevel --verbose --forReal dataFiles/uff/objectiveSetup/gradeLevelAssignments.eb
+node ebControl.js --assignTerm --verbose --forReal dataFiles/uff/objectiveSetup/termAssignments.eb
+node ebControl.js --assignSpecialty --verbose --forReal dataFiles/uff/objectiveSetup/specialtyAssignments.eb
 
 
 EB SEQUENCE
-node ebControl.js --assignTeacher --verbose dataSource/dataFiles/eb/peopleSetup/assignTeacher.eb
+node ebControl.js --assignTeacher --verbose dataFiles/eb/peopleSetup/assignTeacher.eb
 
-node ebControl.js --school --forReal  --verbose dataSource/dataFiles/eb/schoolSetup/school.eb
-node ebControl.js --gradeLevel --forReal  --verbose dataSource/dataFiles/eb/schoolSetup/gradeLevel.eb
-node ebControl.js --gradeLevelSchool --forReal  --verbose dataSource/dataFiles/eb/schoolSetup/gradeLevelSchool.eb
-node ebControl.js --term --forReal  --verbose -- dataSource/dataFiles/eb/schoolSetup/term.eb
-node ebControl.js --termSchool --forReal  --verbose -- dataSource/dataFiles/eb/schoolSetup/termSchool.eb
-node ebControl.js --schoolSetCurrentTerm --forReal  --verbose -- dataSource/dataFiles/eb/schoolSetup/school.eb
+node ebControl.js --school --forReal  --verbose dataFiles/eb/schoolSetup/school.eb
+node ebControl.js --gradeLevel --forReal  --verbose dataFiles/eb/schoolSetup/gradeLevel.eb
+node ebControl.js --gradeLevelSchool --forReal  --verbose dataFiles/eb/schoolSetup/gradeLevelSchool.eb
+node ebControl.js --term --forReal  --verbose -- dataFiles/eb/schoolSetup/term.eb
+node ebControl.js --termSchool --forReal  --verbose -- dataFiles/eb/schoolSetup/termSchool.eb
+node ebControl.js --schoolSetCurrentTerm --forReal  --verbose -- dataFiles/eb/schoolSetup/school.eb
 
-node ebControl.js --student --forReal  --verbose -- dataSource/dataFiles/eb/peopleSetup/student.eb
-node ebControl.js --teacher --forReal  --verbose -- dataSource/dataFiles/eb/peopleSetup/teacher.eb
+node ebControl.js --student --forReal  --verbose -- dataFiles/eb/peopleSetup/student.eb
+node ebControl.js --teacher --forReal  --verbose -- dataFiles/eb/peopleSetup/teacher.eb
 
 
-node ebControl.js --homeroom --skipFirstLine --forReal  --verbose -- dataSource/dataFiles/eb/peopleSetup/homeroom.eb
-node ebControl.js --assignStudent --forReal  --verbose dataSource/dataFiles/eb/peopleSetup/assignStudent.eb
+node ebControl.js --homeroom --skipFirstLine --forReal  --verbose -- dataFiles/eb/peopleSetup/homeroom.eb
+node ebControl.js --assignStudent --forReal  --verbose dataFiles/eb/peopleSetup/assignStudent.eb
  
  
-node ebControl.js --objective --verbose --forReal dataSource/dataFiles/eb/objectiveSetup/objectives.eb
-node ebControl.js --assignGradeLevel --verbose --forReal dataSource/dataFiles/eb/objectiveSetup/gradeLevelAssignments.eb
-node ebControl.js --assignTerm --verbose --forReal dataSource/dataFiles/eb/objectiveSetup/termAssignments.eb
-node ebControl.js --assignSpecialty --verbose --forReal dataSource/dataFiles/eb/objectiveSetup/specialtyAssignments.eb
+node ebControl.js --objective --verbose --forReal dataFiles/eb/objectiveSetup/objectives.eb
+node ebControl.js --assignGradeLevel --verbose --forReal dataFiles/eb/objectiveSetup/gradeLevelAssignments.eb
+node ebControl.js --assignTerm --verbose --forReal dataFiles/eb/objectiveSetup/termAssignments.eb
+node ebControl.js --assignSpecialty --verbose --forReal dataFiles/eb/objectiveSetup/specialtyAssignments.eb
 
-node ebControl.js --assignTeacher --forReal  --verbose dataSource/dataFiles/eb/peopleSetup/assignTeacher.eb
+node ebControl.js --assignTeacher --forReal  --verbose dataFiles/eb/peopleSetup/assignTeacher.eb
 
 
 UFF SEQUENCE
-node ebControl.js --school --skipFirstLine --forReal  --verbose dataSource/dataFiles/uff/schoolSetup/school.uff
-node ebControl.js --term --skipFirstLine --forReal  --verbose dataSource/dataFiles/uff/schoolSetup/term.uff
-node ebControl.js --schoolSetCurrentTerm --forReal  --verbose -- dataSource/dataFiles/uff/schoolSetup/schoolSetCurrentTerm.uff
-node ebControl.js --gradeLevel --skipFirstLine --forReal  --verbose dataSource/dataFiles/uff/schoolSetup/gradeLevel.uff
+node ebControl.js --school --skipFirstLine --forReal  --verbose dataFiles/uff/schoolSetup/school.uff
+node ebControl.js --term --skipFirstLine --forReal  --verbose dataFiles/uff/schoolSetup/term.uff
+node ebControl.js --schoolSetCurrentTerm --forReal  --verbose -- dataFiles/uff/schoolSetup/schoolSetCurrentTerm.uff
+node ebControl.js --gradeLevel --skipFirstLine --forReal  --verbose dataFiles/uff/schoolSetup/gradeLevel.uff
 
-node ebControl.js --student --skipFirstLine --forReal  --verbose dataSource/dataFiles/uff/peopleSetup/student.uff
-node ebControl.js --teacher --skipFirstLine --forReal  --verbose -- dataSource/dataFiles/uff/peopleSetup/teacher.uff
+node ebControl.js --student --skipFirstLine --forReal  --verbose dataFiles/uff/peopleSetup/student.uff
+node ebControl.js --teacher --skipFirstLine --forReal  --verbose -- dataFiles/uff/peopleSetup/teacher.uff
 
 
-node ebControl.js --homeroom --skipFirstLine --forReal  --verbose -- dataSource/dataFiles/uff/peopleSetup/homeroom.uff
-node ebControl.js --assignStudent --skipFirstLine --forReal  --verbose dataSource/dataFiles/uff/assignStudent.uff
+node ebControl.js --homeroom --skipFirstLine --forReal  --verbose -- dataFiles/uff/peopleSetup/homeroom.uff
+node ebControl.js --assignStudent --skipFirstLine --forReal  --verbose dataFiles/uff/assignStudent.uff
 
-node ebControl.js --assignTeacher --skipFirstLine --forReal  --verbose dataSource/dataFiles/uff/assignTeacher.uff
+node ebControl.js --assignTeacher --skipFirstLine --forReal  --verbose dataFiles/uff/assignTeacher.uff
 
 
 */
 
-var program = require('commander');
-program.version('tqTest')
+var commandFlags = require('commander');
+commandFlags.version('tqTest')
 	.option('-y, --markScale', 'upload markScale')
 	.option('-y, --specialty', 'upload specialties')
 	.option('-y, --objective', 'upload objectives')
@@ -98,14 +98,13 @@ program.version('tqTest')
 	.option('-q, --quiet', 'Quiet, no messages')
 	.parse(process.argv);
 
-var dataSource = require('./dataSource/dataSource.js');
 
-var targetServerAccess = dataSource.targetServerAccess;
-dataSource.targetServerAccess = new targetServerAccess();qtools.message('fix this (targetServerAccess)');
+var targetServerAccess = require('./expressbook/targetServer.js'),
+	targetServerAccess = new targetServerAccess.targetServerAccess();
+
 
 var fileName = process.argv[process.argv.length - 1], //"coreOrig.txt"
 	fileType = fileName.match(/\.(\w*)$/)[1],
-	finishedOutputObject,
 	sourceData;
 
 switch (fileType) {
@@ -117,184 +116,154 @@ switch (fileType) {
 		break;
 }
 
+
+var dataSource = {
+	textToJson: require('textToJson'), //this doesn't get used until passed to the commandLIneResponder
+	dictionary: require('dictionary')
+};
+
 dataSource.dictionary = new dataSource.dictionary({
-	dataDefinition: require("./dataSource/dataDefinitions/" + dictionaryName + ".js"),
+	dataDefinition: require("./dataDefinitions/" + dictionaryName + ".js"),
 	target: 'expressbook',
-	skipFirstLine: program.skipFirstLine
+	skipFirstLine: commandFlags.skipFirstLine
 });
 
-if (program.school) {
+if (commandFlags.school) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/School',
-		endPointWrapperName: 'SchoolInfo',
-		definitionName: 'school',
-		fileName: fileName
+		outboundFinalObjectName: 'SchoolInfo',
+		definitionName: 'school'
 	};
-} else if (program.gradeLevel) {
+} else if (commandFlags.gradeLevel) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/School/Grade',
-		endPointWrapperName: 'Grades',
-		definitionName: 'gradeLevel',
-		fileName: fileName
+		outboundFinalObjectName: 'Grades',
+		definitionName: 'gradeLevel'
 	};
-} else if (program.gradeLevelSchool) {
+} else if (commandFlags.gradeLevelSchool) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/School/Grade',
-		endPointWrapperName: 'Grades',
-		definitionName: 'gradeLevelSchool',
-		fileName: fileName
+		outboundFinalObjectName: 'Grades',
+		definitionName: 'gradeLevelSchool'
 	};
-} else if (program.term) {
+} else if (commandFlags.term) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/School/Termm',
-		endPointWrapperName: 'Terms',
-		definitionName: 'term',
-		fileName: fileName
+		outboundFinalObjectName: 'Terms',
+		definitionName: 'term'
 	};
-} else if (program.termSchool) {
+} else if (commandFlags.termSchool) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/School/Termm',
-		endPointWrapperName: 'Terms',
-		definitionName: 'termSchool',
-		fileName: fileName
+		outboundFinalObjectName: 'Terms',
+		definitionName: 'termSchool'
 	};
-} else if (program.schoolSetCurrentTerm) {
+} else if (commandFlags.schoolSetCurrentTerm) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/School',
-		endPointWrapperName: 'SchoolInfo',
-		definitionName: 'schoolSetCurrentTerm',
-		fileName: fileName
+		outboundFinalObjectName: 'SchoolInfo',
+		definitionName: 'schoolSetCurrentTerm'
 	};
-} else if (program.teacher) {
+} else if (commandFlags.teacher) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Teacher',
-		endPointWrapperName: 'UserInfo',
-		definitionName: 'teacher',
-		fileName: fileName
+		outboundFinalObjectName: 'UserInfo',
+		definitionName: 'teacher'
 	};
 
-} else if (program.student) {
+} else if (commandFlags.student) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Student',
-		endPointWrapperName: 'StudentPersonal',
-		definitionName: 'student',
-		fileName: fileName
+		outboundFinalObjectName: 'StudentPersonal',
+		definitionName: 'student'
 	};
-} else if (program.homeroom) {
+} else if (commandFlags.homeroom) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Gradebook/Homeroom',
-		endPointWrapperName: 'Homerooms',
-		definitionName: 'homeroom',
-		fileName: fileName
+		outboundFinalObjectName: 'Homerooms',
+		definitionName: 'homeroom'
 	};
-} else if (program.assignTeacher) {
+} else if (commandFlags.assignTeacher) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Teacher/AssignTeachers',
-		endPointWrapperName: 'assignmentPairs',
-		definitionName: 'assignTeacher',
-		fileName: fileName
+		outboundFinalObjectName: 'assignmentPairs',
+		definitionName: 'assignTeacher'
 	};
 
 
-} else if (program.assignStudent) {
+} else if (commandFlags.assignStudent) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Student/AssignStudents',
-		endPointWrapperName: 'assignmentPairs',
-		definitionName: 'assignStudent',
-		fileName: fileName
+		outboundFinalObjectName: 'assignmentPairs',
+		definitionName: 'assignStudent'
 	};
-} else if (program.studentAssignment_Nested_ROSMATVERSIONWORKS) {
+} else if (commandFlags.studentAssignment_Nested_ROSMATVERSIONWORKS) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/Rosmat/attachStudents1',
-		endPointWrapperName: 'assignmentPairs',
-		definitionName: 'DSDFDSFSDFSDFDF',
-		fileName: fileName
+		outboundFinalObjectName: 'assignmentPairs',
+		definitionName: 'DSDFDSFSDFSDFDF'
 	};
 
-} else if (program.objective) {
+} else if (commandFlags.objective) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Objective',
-		endPointWrapperName: 'Objectives',
-		definitionName: 'objective',
-		fileName: fileName
+		outboundFinalObjectName: 'Objectives',
+		definitionName: 'objective'
 	};
-} else if (program.assignGradeLevel) {
+} else if (commandFlags.assignGradeLevel) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Objective/AssignGradeLevel',
-		endPointWrapperName: 'GradeLevelAssignments',
-		definitionName: 'assignGradeLevel',
-		fileName: fileName
+		outboundFinalObjectName: 'GradeLevelAssignments',
+		definitionName: 'assignGradeLevel'
 	};
-} else if (program.assignTerm) {
+} else if (commandFlags.assignTerm) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Objective/AssignTerm',
-		endPointWrapperName: 'TermAssignments',
-		definitionName: 'assignTerm',
-		fileName: fileName
+		outboundFinalObjectName: 'TermAssignments',
+		definitionName: 'assignTerm'
 	};
-} else if (program.assignSpecialty) {
+} else if (commandFlags.assignSpecialty) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Objective/AssignSpecialty',
-		endPointWrapperName: 'SpecialtyAssignments',
-		definitionName: 'assignSpecialty',
-		fileName: fileName
+		outboundFinalObjectName: 'SpecialtyAssignments',
+		definitionName: 'assignSpecialty'
 	};
-} else if (program.specialty) {
+} else if (commandFlags.specialty) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Attribute/Specialtyy',
-		endPointWrapperName: 'Specialties',
-		definitionName: 'specialty',
-		fileName: fileName
+		outboundFinalObjectName: 'Specialties',
+		definitionName: 'specialty'
 	};
-} else if (program.markScale) {
+} else if (commandFlags.markScale) {
 	var controlObj = {
-		accessModelMethodName: 'saveCompletedObject',
 		apiEndpoint: '/data/API/1/Objective/MarkScale',
-		endPointWrapperName: 'MarkScales',
-		definitionName: 'markScale',
-		fileName: fileName
+		outboundFinalObjectName: 'MarkScales',
+		definitionName: 'markScale'
 	};
 } else {
 	console.log('\n\n=== you need to choose something to upload ===');
-	program.outputHelp();
+	commandFlags.outputHelp();
 	process.exit(1);
 }
 
-if (!program.quiet) {
+if (!commandFlags.quiet) {
 	console.log("executing " + controlObj.definitionName);
 }
-if (program.verbose) {
+if (commandFlags.verbose) {
 
 	controlObj.config = displayConfig;
-
+	console.log('fileName='+fileName+'\n');
 	qtools.dump({
 		'\n\n===== controlObj =====\n': controlObj
 	});
 	console.log('\n\attempting login');
 }
 
+var sourceData = new dataSource.textToJson(fileName, dataSource.dictionary.get(controlObj.definitionName)),
+	responder = require("./expressbook/commandLineResponder.js");
 
+responder = new responder(sourceData, targetServerAccess, controlObj, commandFlags, config)
 
-var responder=require("./dataSource/commandLineResponder.js");
-
-responder=new responder(dataSource, controlObj, program, config, fileName)
 
 
 
