@@ -83,7 +83,7 @@ router2.get('/', function(req, res) {
 		skipFirstLine: true
 	});
 
-	var fileName = '/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/dataFiles/uff/peopleSetup/student.uff';
+	var fileName = __dirname+'/../dataFiles/uff/peopleSetup/student.uff';
 
 	var controlObj = {
 		apiEndpoint: '/data/API/1/Student',
