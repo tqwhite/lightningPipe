@@ -90,42 +90,50 @@ router.post('/ping', function(req, res, next) {
 
 
 
-	
+
 
 //START ROUTE GROUP (StudentPersonal) =======================================================
 
-var generator=function(tableName, res, req){
-	return function(finishedObject) {
+var tableList = ['StudentPersonal', 'SchoolInfo'];
 
-		var result={};
-		result[tableName]=finishedObject;
+for (var i = 0, len = tableList.length; i < len; i++) {
+	var tableName = tableList[i];
+
+	var generator = function(tableName, res, req) {
 	
-		transferPacket.reset()
-			.add('Meta', {
-				body: req.body,
-				query: req.query
-			})
-			.add('Data', result);
+		return function(finishedObject) {
+		
+			var result = {};
+			result[tableName] = finishedObject;
 
-		res.json(transferPacket.finishedObject());
-	}
-}
+			transferPacket.reset()
+				.add('Meta', {
+					body: req.body,
+					query: req.query
+				})
+				.add('Data', result);
 
-var tableList=['StudentPersonal', 'SchoolInfo'];
+			res.json(transferPacket.finishedObject());
+		}
+	};
 
-	for (var i=0, len=tableList.length; i<len; i++){
-		var tableName=tableList[i];
+	
+	var selector=new RegExp('/(' + tableName+')');
+	router.get(selector, function(req, res, next) {
+		
+		var tableName=req.params[0];
+	
+		var sender = generator(tableName, res, req);
 
-		router.get('/'+tableName, function(req, res, next) {
-			var dataSource=require('dataAccess');
-			dataSource=new dataSource({
-				callback:generator(tableName, res, req), 
-				clientProfile:client.profile(),
-				tableName:tableName
-			});
+		var dataSource = require('dataAccess');
+		dataSource = new dataSource({
+			callback: sender,
+			clientProfile: client.profile(),
+			tableName: tableName
 		});
+	});
 
-	}
+}
 
 
 
@@ -156,6 +164,8 @@ router.get(/StudentPersonal\/LocalId\/(.*)/, function(req, res, next) {
 
 app.listen(config.port);
 qtools.message('Magic happens on port ' + config.port);
+
+
 
 
 
