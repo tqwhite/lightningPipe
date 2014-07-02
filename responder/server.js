@@ -96,13 +96,33 @@ router.post('/ping', function(req, res, next) {
 
 var tableList = ['StudentPersonal', 'SchoolInfo'];
 
-for (var i = 0, len = tableList.length; i < len; i++) {
-	var tableName = tableList[i];
+var urlMapping = {},
+	name;
 
-	var generator = function(tableName, res, req) {
-	
+name = 'StudentPersonal';
+urlMapping[name] = {
+	tableName: name,
+	schemaName: 'student',
+	outputObjName: name
+};
+name = 'SchoolInfo';
+urlMapping[name] = {
+	tableName: name,
+	schemaName: 'school',
+	outputObjName: name
+};
+
+global.urlMapping = urlMapping;
+
+for (var i in global.urlMapping) {
+	var tableName = i,
+		controlObj = urlMapping[i];
+
+	var generateSender = function(tableName, res, req) {
+
 		return function(finishedObject) {
-		
+			//closure: tableName
+
 			var result = {};
 			result[tableName] = finishedObject;
 
@@ -117,19 +137,21 @@ for (var i = 0, len = tableList.length; i < len; i++) {
 		}
 	};
 
-	
-	var selector=new RegExp('/(' + tableName+')');
-	router.get(selector, function(req, res, next) {
-		
-		var tableName=req.params[0];
-	
-		var sender = generator(tableName, res, req);
+
+	router.get(new RegExp('/(' + tableName + ')'), function(req, res, next) {
+		//closure: client
+
+		var tableName = req.params[0],
+			controlObj = global.urlMapping[tableName];
+
+		var sender = generateSender(tableName, res, req);
 
 		var dataSource = require('dataAccess');
 		dataSource = new dataSource({
 			callback: sender,
 			clientProfile: client.profile(),
-			tableName: tableName
+			tableName: controlObj.tableName,
+			schemaName:controlObj.schemaName
 		});
 	});
 
@@ -164,6 +186,7 @@ router.get(/StudentPersonal\/LocalId\/(.*)/, function(req, res, next) {
 
 app.listen(config.port);
 qtools.message('Magic happens on port ' + config.port);
+
 
 
 
