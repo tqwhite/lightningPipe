@@ -1,7 +1,7 @@
 'use strict';
 var qtools = require('qtools');
 
-var schoolFieldList = ["District", "District Type", "School Code", "School Name", "SchoolMinimumGrade", "SchoolMaximumGrade", "SchoolLevelName", " SchoolAreaName", "SuperintendentLastName", "SuperintendentFirstName", "SuperintendentMiddleName", "AreaSuperintendentLastName", "AreaSuperintendentFirstName", "AreaSuperintendentMiddleName", "PrincipalLastName", "PrincipalFirstName", "PrincipalMiddleName", "SchoolPrimaryPhone", "SchoolAlternatePhone", "SchoolFaxNumber", "AddressLine1", "AddressLine2", "AddressLine3", "City Name", "CountyName", "StateCode", "StateName", "ZipCode"]
+var schoolFieldList = ["District", "District Type", "School Code", "School Name", "SchoolMinimumGrade", "SchoolMaximumGrade", "SchoolLevelName", "SchoolAreaName", "SuperintendentLastName", "SuperintendentFirstName", "SuperintendentMiddleName", "AreaSuperintendentLastName", "AreaSuperintendentFirstName", "AreaSuperintendentMiddleName", "PrincipalLastName", "PrincipalFirstName", "PrincipalMiddleName", "SchoolPrimaryPhone", "SchoolAlternatePhone", "SchoolFaxNumber", "AddressLine1", "AddressLine2", "AddressLine3", "City Name", "CountyName", "StateCode", "StateName", "ZipCode"]
 var termFieldList = ["SchoolYear", "SchoolNumber", "Term Description", "StartDate", "EndDate", "TermType", "Term Number"];
 
 var synthSeq = 0;

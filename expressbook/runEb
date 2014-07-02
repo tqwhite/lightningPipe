@@ -87,7 +87,7 @@ node ../ebControl.js --assignSpecialty  --forReal dataFiles/eb/objectiveSetup/sp
 			exit 1;
 		fi
 
-node ../ebControl.js --homeroom --skipFirstLine --forReal -- dataFiles/eb/peopleSetup/homeroom.eb
+node ../ebControl.js --homeroom --forReal -- dataFiles/eb/peopleSetup/homeroom.eb
 		if [ $? -eq 1 ]
 		then
 			echo "found error";

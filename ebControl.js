@@ -36,7 +36,7 @@ node ebControl.js --student --forReal  --verbose -- dataFiles/eb/peopleSetup/stu
 node ebControl.js --teacher --forReal  --verbose -- dataFiles/eb/peopleSetup/teacher.eb
 
 
-node ebControl.js --homeroom --skipFirstLine --forReal  --verbose -- dataFiles/eb/peopleSetup/homeroom.eb
+node ebControl.js --homeroom --forReal  --verbose -- dataFiles/eb/peopleSetup/homeroom.eb
 node ebControl.js --assignStudent --forReal  --verbose dataFiles/eb/peopleSetup/assignStudent.eb
  
  
@@ -49,19 +49,19 @@ node ebControl.js --assignTeacher --forReal  --verbose dataFiles/eb/peopleSetup/
 
 
 UFF SEQUENCE
-node ebControl.js --school --skipFirstLine --forReal  --verbose dataFiles/uff/schoolSetup/school.uff
-node ebControl.js --term --skipFirstLine --forReal  --verbose dataFiles/uff/schoolSetup/term.uff
+node ebControl.js --school --forReal  --verbose dataFiles/uff/schoolSetup/school.uff
+node ebControl.js --term --forReal  --verbose dataFiles/uff/schoolSetup/term.uff
 node ebControl.js --schoolSetCurrentTerm --forReal  --verbose -- dataFiles/uff/schoolSetup/schoolSetCurrentTerm.uff
-node ebControl.js --gradeLevel --skipFirstLine --forReal  --verbose dataFiles/uff/schoolSetup/gradeLevel.uff
+node ebControl.js --gradeLevel --forReal  --verbose dataFiles/uff/schoolSetup/gradeLevel.uff
 
-node ebControl.js --student --skipFirstLine --forReal  --verbose dataFiles/uff/peopleSetup/student.uff
-node ebControl.js --teacher --skipFirstLine --forReal  --verbose -- dataFiles/uff/peopleSetup/teacher.uff
+node ebControl.js --student --forReal  --verbose dataFiles/uff/peopleSetup/student.uff
+node ebControl.js --teacher --forReal  --verbose -- dataFiles/uff/peopleSetup/teacher.uff
 
 
-node ebControl.js --homeroom --skipFirstLine --forReal  --verbose -- dataFiles/uff/peopleSetup/homeroom.uff
-node ebControl.js --assignStudent --skipFirstLine --forReal  --verbose dataFiles/uff/assignStudent.uff
+node ebControl.js --homeroom --forReal  --verbose -- dataFiles/uff/peopleSetup/homeroom.uff
+node ebControl.js --assignStudent --forReal  --verbose dataFiles/uff/assignStudent.uff
 
-node ebControl.js --assignTeacher --skipFirstLine --forReal  --verbose dataFiles/uff/assignTeacher.uff
+node ebControl.js --assignTeacher --forReal  --verbose dataFiles/uff/assignTeacher.uff
 
 
 */
@@ -90,7 +90,7 @@ commandFlags.version('tqTest')
 	.option('-y, --assignStudent', 'attach students to rosmats')
 	.option('-y, --assignTeacher', 'attach teachers to rosmats')
 
-	.option('-f, --skipFirstLine', 'Skip first line if header definitions are there for a schema that does not use it')
+//	.option('-f, --skipFirstLine', 'UNUSED, system now detects if first line matches dictionary schema')
 	.option('-R, --forReal', 'for [R]eal')
 	.option('-j, --dumpJson', 'dump json')
 	.option('-v, --verbose', 'Verbose')
@@ -124,8 +124,7 @@ var dataSource = {
 
 dataSource.dictionary = new dataSource.dictionary({
 	dataDefinition: require("./dataDefinitions/" + dictionaryName + ".js"),
-	target: 'expressbook',
-	skipFirstLine: commandFlags.skipFirstLine
+	target: 'expressbook'
 });
 
 if (commandFlags.school) {
