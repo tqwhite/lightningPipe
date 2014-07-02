@@ -33,7 +33,12 @@ var moduleFunction=function(args){
 		//METHODS ====================================
 		
 		self.add=function(name, value){
-			self.outObject[name]=value;
+			if (typeof(self.outObject[name])=='object'){
+				qtools.extend(self.outObject[name], value);
+			}
+			else{
+				self.outObject[name]=value;
+			}
 			return self;
 		}
 		

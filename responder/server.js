@@ -26,6 +26,9 @@ if (program.background) {
 
 //SET UP APPLICATION =======================================================
 
+var localEnvironment = require('../config/localEnvironment.js');
+global.localEnvironment = new localEnvironment();
+
 var config = require('../config/requestServer.js');
 config = new config();
 
@@ -101,13 +104,13 @@ var urlMapping = {},
 
 name = 'StudentPersonal';
 urlMapping[name] = {
-	tableName: name,
+	tableName: 'Student',
 	schemaName: 'student',
 	outputObjName: name
 };
 name = 'SchoolInfo';
 urlMapping[name] = {
-	tableName: name,
+	tableName: 'School',
 	schemaName: 'school',
 	outputObjName: name
 };
@@ -120,7 +123,7 @@ for (var i in global.urlMapping) {
 
 	var generateSender = function(tableName, res, req) {
 
-		return function(finishedObject) {
+		return function(finishedObject, metaData) {
 			//closure: tableName
 
 			var result = {};
@@ -132,6 +135,10 @@ for (var i in global.urlMapping) {
 					query: req.query
 				})
 				.add('Data', result);
+				
+			if (global.localEnvironment.get('sendMetaData')){
+				transferPacket.add('Meta', metaData);
+			}
 
 			res.json(transferPacket.finishedObject());
 		}
@@ -141,8 +148,8 @@ for (var i in global.urlMapping) {
 	router.get(new RegExp('/(' + tableName + ')'), function(req, res, next) {
 		//closure: client
 
-		var tableName = req.params[0],
-			controlObj = global.urlMapping[tableName];
+		var urlMappingKey = req.params[0],
+			controlObj = global.urlMapping[urlMappingKey];
 
 		var sender = generateSender(tableName, res, req);
 
