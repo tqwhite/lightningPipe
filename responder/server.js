@@ -121,7 +121,7 @@ for (var i in global.urlMapping) {
 	var generateSender = function(tableName, res, req) {
 
 		return function(err, finishedObject, metaData) {
-console.log('err='+err+'\n');
+
 			//closure: tableName
 			if (!err) {
 				var result = {};
