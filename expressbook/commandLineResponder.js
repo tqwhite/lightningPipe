@@ -67,7 +67,7 @@ var moduleFunction = function(sourceData, targetServerAccess, controlObj, comman
 			}
 
 			sourceData.execute();
-			sourceData.on('gotData', conversionFunction);
+			sourceData.on('textToJson.gotData', conversionFunction);
 		}
 	}
 

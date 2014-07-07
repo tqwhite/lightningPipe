@@ -97,20 +97,17 @@ router.post('/ping', function(req, res, next) {
 
 //START ROUTE GROUP (StudentPersonal) =======================================================
 
-var tableList = ['StudentPersonal', 'SchoolInfo'];
 
 var urlMapping = {},
 	name;
 
 name = 'StudentPersonal';
 urlMapping[name] = {
-	tableName: 'Student',
 	schemaName: 'student',
 	outputObjName: name
 };
 name = 'SchoolInfo';
 urlMapping[name] = {
-	tableName: 'School',
 	schemaName: 'school',
 	outputObjName: name
 };
@@ -123,24 +120,48 @@ for (var i in global.urlMapping) {
 
 	var generateSender = function(tableName, res, req) {
 
-		return function(finishedObject, metaData) {
+		return function(err, finishedObject, metaData) {
+console.log('err='+err+'\n');
 			//closure: tableName
+			if (!err) {
+				var result = {};
+				result[tableName] = finishedObject;
 
-			var result = {};
-			result[tableName] = finishedObject;
+				transferPacket.reset()
+					.add('Meta', {
+						body: req.body,
+						query: req.query
+					})
+					.add('Data', result);
 
-			transferPacket.reset()
-				.add('Meta', {
-					body: req.body,
-					query: req.query
-				})
-				.add('Data', result);
-				
-			if (global.localEnvironment.get('sendMetaData')){
-				transferPacket.add('Meta', metaData);
+				if (global.localEnvironment.get('sendMetaData')) {
+					transferPacket.add('Meta', metaData);
+				}
+
+				res.json(transferPacket.finishedObject());
+
 			}
+			else{
+				var result = {};
+				result[tableName] = finishedObject;
 
-			res.json(transferPacket.finishedObject());
+				transferPacket.reset()
+					.add('Meta', {
+						body: req.body,
+						query: req.query
+					})
+					.add('Data', err)
+					.add('Status', -1);
+
+				if (global.localEnvironment.get('sendMetaData')) {
+					transferPacket.add('Meta', metaData);
+				}
+
+				res.json(transferPacket.finishedObject());
+
+			
+			
+			}
 		}
 	};
 
@@ -158,7 +179,7 @@ for (var i in global.urlMapping) {
 			callback: sender,
 			clientProfile: client.profile(),
 			tableName: controlObj.tableName,
-			schemaName:controlObj.schemaName
+			schemaName: controlObj.schemaName
 		});
 	});
 
@@ -193,6 +214,7 @@ router.get(/StudentPersonal\/LocalId\/(.*)/, function(req, res, next) {
 
 app.listen(config.port);
 qtools.message('Magic happens on port ' + config.port);
+
 
 
 
