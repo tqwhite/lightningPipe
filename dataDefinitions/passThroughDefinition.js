@@ -51,11 +51,10 @@ var gradeLevelUffFieldList=["SchoolID",
 			"School Year End"];
 
 var passThroughDefinition=function(fieldList){
-	
 	var list=[],
 	outObj={};
-	for (var i=0, len=list.length; i<len; i++){
-		var element=list[i];
+	for (var i=0, len=fieldList.length; i<len; i++){
+		var element=fieldList[i].replace(' ', '');
 			outObj[element]=element;
 	}
 	return outObj;

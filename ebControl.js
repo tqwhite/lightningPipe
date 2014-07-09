@@ -118,8 +118,8 @@ switch (fileType) {
 
 
 var dataSource = {
-	textToJson: require('textToJson'), //this doesn't get used until passed to the commandLIneResponder
-	dictionary: require('dictionary')
+	textToJson: require('./node_modules/dataAccess/node_modules/textToJson/textToJson.js'), //this doesn't get used until passed to the commandLIneResponder
+	dictionary: require('./node_modules/dataAccess/node_modules/dictionary/dictionary.js')
 };
 
 dataSource.dictionary = new dataSource.dictionary({

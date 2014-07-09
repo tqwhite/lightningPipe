@@ -28,21 +28,7 @@ var editFinalObjectives = function(inObjList) {
 	return outList;
 }
 
-var objectiveAssembler = require('assemblers/nestedJson');
-objectiveAssembler = new objectiveAssembler({
-	"linkPropertyContainerName": "Parent",
-	"attachmentListPropertySpec": "$type",
-	"destPropertyObjectPropertyName": "",
-	"finalObjectCustomEditor": editFinalObjectives
-});
 
-var flattenedObjectAssembler = require('assemblers/flattenedJson');
-flattenedObjectAssembler = new flattenedObjectAssembler({
-	"linkPropertyContainerName": "Parent",
-	"attachmentListPropertySpec": "$type",
-	"destPropertyObjectPropertyName": "",
-	"finalObjectCustomEditor": ''
-});
 
 var inx = 1000; //provide external (closure) value to allow up-counting indexes (of course, not necessarily sequential)
 
@@ -58,35 +44,43 @@ module.exports = {
 	"markScale": //create UserInfo, standalone
 	{
 		"schemaName": "markScale",
-		"fileDataFormat": 'flattenedJson',
+		"fileDataFormat": 'flattenedJson', //note: this refers to an assembler in the dataAccess module package. Could refer to a fully qualified path to an assembler elsewhere.
 		"fieldList": [],
 		"maps": {
 			"expressbook": {}
 		},
 		"translation": {
 			"expressbook": {
-			"root":{
-				"Type":function(itemObj, sourceItem) {
-					if (!sourceItem.Type) {
-						return;
-					} else {
-						return +sourceItem.Type; //unary + type casts to number
-					}
+				"root": {
+					"Type": function(itemObj, sourceItem) {
+						if (!sourceItem.Type) {
+							return;
+						} else {
+							return +sourceItem.Type; //unary + type casts to number
+						}
+					},
 				},
-			},
-			"ScaleVals":{
-				"SequenceNum":function(itemObj, sourceItem) {
-					if (!sourceItem.SequenceNum) {
-						return;
-					} else {
-						return +sourceItem.SequenceNum; //unary + type casts to number
-					}
-				},
+				"ScaleVals": {
+					"SequenceNum": function(itemObj, sourceItem) {
+						if (!sourceItem.SequenceNum) {
+							return;
+						} else {
+							return +sourceItem.SequenceNum; //unary + type casts to number
+						}
+					},
+				}
 			}
-		}
 		},
 		"assembler": {
-			"expressbook": flattenedObjectAssembler
+			"expressbook": {
+				name: 'flattenedJson', //note: this refers to an assembler in the dataAccess module package. Could refer to a fully qualified path to an assembler elsewhere.
+				params: {
+					"linkPropertyContainerName": "Parent",
+					"attachmentListPropertySpec": "$type",
+					"destPropertyObjectPropertyName": "",
+					"finalObjectCustomEditor": ''
+				}
+			}
 		}
 	},
 
@@ -192,7 +186,15 @@ module.exports = {
 			}
 		},
 		"assembler": {
-			"expressbook": objectiveAssembler
+			"expressbook": {
+				name: 'nestedJson',
+				params: {
+					"linkPropertyContainerName": "Parent",
+					"attachmentListPropertySpec": "$type",
+					"destPropertyObjectPropertyName": "",
+					"finalObjectCustomEditor": editFinalObjectives
+				}
+			}
 		}
 	},
 
@@ -402,3 +404,4 @@ module.exports = {
 		}
 	}
 };
+

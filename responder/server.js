@@ -111,6 +111,11 @@ urlMapping[name] = {
 	schemaName: 'school',
 	outputObjName: name
 };
+name = 'AssignTeacher';
+urlMapping[name] = {
+	schemaName: 'assignTeacher',
+	outputObjName: name
+};
 
 global.urlMapping = urlMapping;
 
