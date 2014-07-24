@@ -13,6 +13,15 @@ curl http://localhost:8081/uff/1.0/districts/ | pbcopy
 curl http://localhost:8081/uff/1.0/districts/albany/schools
 curl http://localhost:8081/uff/1.0/districts/albany/schools/010
 curl http://localhost:8081/uff/1.0/districts/albany/schools/010/segments/StudentBaseTest2
+
+curl http://localhost:8081/uff/1.0/districts/albany/schools/099/segments
+curl http://localhost:8081/uff/1.0/districts/albany/schools/099/segmentss
+curl http://localhost:8081/uff/1.0/districts/albany/schools/099
+curl http://localhost:8081/uff/1.0/districts/albany/schools
+curl http://localhost:8081/uff/1.0/districts/albany
+curl http://localhost:8081/uff/1.0/districts/
+
+
 */
 
 
@@ -110,19 +119,16 @@ var apiVersion = uriParser.getVersion(),
 
 router.get(new RegExp('/' + apiName + '/' + apiVersion + '/(.*)'), function(req, res, next) {
 	//closure: client
-	var sender = new output();
-
-	req.params.queryInfo = uriParser.parse(req.params[0]);
-
-
-	var sender = sender.generateSender('tablename', res, req);
+	
+	var outputObj = new output();
+	var sender = outputObj.generateSender(res, req);
 
 	var sessionModel = new model({
-		queryInfo: req.params.queryInfo,
-		clientProfile: client.profile()
+		uriPath:req.params[0],
+		clientProfile: client.profile(),
+		uriParser:uriParser
 	});
 	
-	qtools.addMetaData('queryInfo', req.params.queryInfo);
 	
 	sessionModel.on('gotData', function(result) {
 		result.meta=qtools.mergeMetaData(result.meta);
@@ -131,7 +137,7 @@ router.get(new RegExp('/' + apiName + '/' + apiVersion + '/(.*)'), function(req,
 
 	sessionModel.on('badData', function(result) {
 		result.meta=qtools.mergeMetaData(result.meta);
-		sender(result);
+		sender(result, '');
 	});
 
 	sessionModel.getData();
