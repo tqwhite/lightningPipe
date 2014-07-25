@@ -14,6 +14,7 @@ curl http://localhost:8081/uff/1.0/districts/albany/schools
 curl http://localhost:8081/uff/1.0/districts/albany/schools/010
 curl http://localhost:8081/uff/1.0/districts/albany/schools/010/segments/StudentBaseTest2
 
+curl http://localhost:8081/uff/1.0/districts/albany/schools/010/segments/StudentBaseTest2
 curl http://localhost:8081/uff/1.0/districts/albany/schools/099/segments
 curl http://localhost:8081/uff/1.0/districts/albany/schools/099/segmentss
 curl http://localhost:8081/uff/1.0/districts/albany/schools/099
@@ -67,6 +68,8 @@ var router = express.Router();
 app.use('/', router);
 
 var client;
+	
+	
 
 //START AUTHENTICATION =======================================================
 
@@ -98,35 +101,35 @@ router.use(function(req, res, next) {
 
 
 
+var apiDefinition = require("apiDefinition");
+apiDefinition = new apiDefinition({
+	name: "uff",
+	version: '1.0'
+});
+
+var api=apiDefinition.getSpecs();
+	
+global.localEnvironment.updateBaseUri(api.name, api.version);
+
 var output = require("sender");
 
 var model = require('hybridModel');
 
 
-var uriParser = require("uriParser");
-uriParser = new uriParser({
-	apiName: "uff",
-	apiVersion: '1.0'
-});
-
-var apiVersion = uriParser.getVersion(),
-	apiName = uriParser.getName();
-	
-	global.localEnvironment.updateBaseUri(apiName, apiVersion);
-
-
 //START ROUTING FUNCTION =======================================================
 
-router.get(new RegExp('/' + apiName + '/' + apiVersion + '/(.*)'), function(req, res, next) {
+router.get(new RegExp('/' + api.name + '/' + api.version + '/(.*)'), function(req, res, next) {
 	//closure: client
 	
 	var outputObj = new output();
 	var sender = outputObj.generateSender(res, req);
+	
+	client.setApi(api);
 
 	var sessionModel = new model({
 		uriPath:req.params[0],
 		clientProfile: client.profile(),
-		uriParser:uriParser
+		apiDefinition:apiDefinition
 	});
 	
 	
