@@ -30,6 +30,6 @@ Icon?
 
 
 
-dataFiles
+dataFiles/*
 */*/uffSampleData
 lighteningPipe/config/targetServer.js
