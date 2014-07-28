@@ -34,13 +34,17 @@ var moduleFunction = function(args) {
 	
 	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/';
 	
-	this.baseUri="http://localhost:8081/";
+	
+	this.scheme='http';
+	this.domain='localhost';
 
 
-	this.updateBaseUri=function(apiName, apiVersion){
-	this.baseUri=this.baseUri+apiName+'/'+apiVersion+'/';
+	this.updateBaseUri=function(apiName, apiVersion, port){
+		if (port){port=':'+port;}
+	this.baseUri=this.scheme+'://'+this.domain+port+'/'+apiName+'/'+apiVersion+'/';
 	}
 	
+
 	
 	this.get=function(name){
 		return this[name];

@@ -109,7 +109,7 @@ apiDefinition = new apiDefinition({
 
 var api=apiDefinition.getSpecs();
 	
-global.localEnvironment.updateBaseUri(api.name, api.version);
+global.localEnvironment.updateBaseUri(api.name, api.version, config.port);
 
 var output = require("sender");
 
