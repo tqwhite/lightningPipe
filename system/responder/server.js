@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({
 
 var program = require('commander');
 program.version('tqTest')
-//	.option('-y, --background', 'spawn to background')
+	//	.option('-y, --background', 'spawn to background')
 	.option('-f, --forReal', 'access database, not test data')
 	.option('-f, --test', 'access test data, not database, default')
 	.parse(process.argv);
@@ -68,8 +68,8 @@ var router = express.Router();
 app.use('/', router);
 
 var client;
-	
-	
+
+
 
 //START AUTHENTICATION =======================================================
 
@@ -107,8 +107,8 @@ apiDefinition = new apiDefinition({
 	version: '1.0'
 });
 
-var api=apiDefinition.getSpecs();
-	
+var api = apiDefinition.getSpecs();
+
 global.localEnvironment.updateBaseUri(api.name, api.version, config.port);
 
 var output = require("sender");
@@ -120,26 +120,31 @@ var model = require('hybridModel');
 
 router.get(new RegExp('/' + api.name + '/' + api.version + '/(.*)'), function(req, res, next) {
 	//closure: client
+
+
+	if (global.localEnvironment.testServer) {
+		console.log('uriPath=' + req.params[0] + '\n');
+	}
 	
 	var outputObj = new output();
 	var sender = outputObj.generateSender(res, req);
-	
+
 	client.setApi(api);
 
 	var sessionModel = new model({
-		uriPath:req.params[0],
+		uriPath: req.params[0],
 		clientProfile: client.profile(),
-		apiDefinition:apiDefinition
+		apiDefinition: apiDefinition
 	});
-	
-	
+
+
 	sessionModel.on('gotData', function(result) {
-		result.meta=qtools.mergeMetaData(result.meta);
+		result.meta = qtools.mergeMetaData(result.meta);
 		sender('', result);
 	});
 
 	sessionModel.on('badData', function(result) {
-		result.meta=qtools.mergeMetaData(result.meta);
+		result.meta = qtools.mergeMetaData(result.meta);
 		sender(result, '');
 	});
 
@@ -175,6 +180,7 @@ router.post('/ping', function(req, res, next) {
 
 app.listen(config.port);
 qtools.message('Magic happens on port ' + config.port);
+
 
 
 
