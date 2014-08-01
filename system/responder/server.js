@@ -99,7 +99,12 @@ router.use(function(req, res, next) {
 
 //START ROUTE SETUP =======================================================
 
+var swapTestStatus=function(req){
 
+	if (typeof(req.query.test)!='undefined'){
+		global.localEnvironment.testServer=!global.localEnvironment.testServer;
+	}
+}
 
 var apiDefinition = require("apiDefinition");
 apiDefinition = new apiDefinition({
@@ -107,9 +112,9 @@ apiDefinition = new apiDefinition({
 	version: '1.0'
 });
 
-var api = apiDefinition.getSpecs();
+var apiDetails = apiDefinition.getSpecs();
 
-global.localEnvironment.updateBaseUri(api.name, api.version, config.port);
+global.localEnvironment.updateBaseUri(apiDetails.name, apiDetails.version, config.port);
 
 var output = require("sender");
 
@@ -118,18 +123,19 @@ var model = require('hybridModel');
 
 //START ROUTING FUNCTION =======================================================
 
-router.get(new RegExp('/' + api.name + '/' + api.version + '/(.*)'), function(req, res, next) {
+router.get(new RegExp('/' + apiDetails.name + '/' + apiDetails.version + '/(.*)'), function(req, res, next) {
 	//closure: client
 
+	swapTestStatus(req);
 
 	if (global.localEnvironment.testServer) {
-		console.log('uriPath=' + req.params[0] + '\n');
+		console.log('\n\nuriPath=' + req.params[0] + '\n');
 	}
 	
 	var outputObj = new output();
 	var sender = outputObj.generateSender(res, req);
 
-	client.setApi(api);
+	client.setApi(apiDefinition);
 
 	var sessionModel = new model({
 		uriPath: req.params[0],
@@ -141,11 +147,13 @@ router.get(new RegExp('/' + api.name + '/' + api.version + '/(.*)'), function(re
 	sessionModel.on('gotData', function(result) {
 		result.meta = qtools.mergeMetaData(result.meta);
 		sender('', result);
+	swapTestStatus(req);
 	});
 
 	sessionModel.on('badData', function(result) {
 		result.meta = qtools.mergeMetaData(result.meta);
 		sender(result, '');
+	swapTestStatus(req);
 	});
 
 	sessionModel.getData();
