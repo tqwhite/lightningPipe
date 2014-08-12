@@ -47,20 +47,21 @@ var moduleFunction = function(args) {
 
 
 
-	//GET STARTUP SWITCHES =======================================================
+	//get startup switches -------------------------------------------------------
 
 	var program = require('commander');
 	program.version('tqTest')
 		//	.option('-y, --background', 'spawn to background')
-		.option('-f, --forReal', 'access database, not test data')
-		.option('-f, --test', 'access test data, not database, default')
+		.option('-v, --verbose', '(lowercase) -v, show messages instead of putting into file')
+		.option('-q, --quiet', 'no messages')
+		.option('-f, --file', 'get specs from file')
 		.parse(process.argv);
 
 	if (program.background) {
 		qtools.die('background not yet implemented');
 	}
 
-	//SET UP APPLICATION =======================================================
+	//set up application -------------------------------------------------------
 
 	var localEnvironment = require(__dirname + '/../config/localEnvironment.js');
 	global.localEnvironment = new localEnvironment();
@@ -76,41 +77,112 @@ var moduleFunction = function(args) {
 
 	switch ('api') {
 		case 'api':
-			var input = require('apiAccessor');
-			input = new input({
-				url: 'http://localhost:8081/uff/1.0/districts/'
-			});
+			var inputGenerator = require('apiAccessor');
 			break;
 	}
 
 	switch ('file') {
 		case 'file':
-			var destination = require('fileWriter');
-			destination = new destination({
-				fileName:'zTest.txt',
-				fileWriteCallback: function(err) {
-					if(err){
-					qtools.dump({
-						'\n\n===== err =====\n': err
-					});
-					}
-					else{
-						qtools.message('file was written');
-						}
-				}
-			});
+			var destinationGenerator = require('fileWriter');
 			break;
 	}
 
 	switch ('tabDelimited') {
 		case 'tabDelimited':
-			var conversion = require('objectFlattener');
-			conversion = new conversion({
-				source: input,
-				destination:destination
-			});
+			var conversionGenerator = require('objectFlattener');
 			break;
 	}
+
+
+	//define functionality -------------------------------------------------------
+
+
+	var logOutput = function(status, sourceName, destName) {
+		var message = '';
+
+		if (status) {
+			message += '\nstatus: ' + (status ? 'failed' : 'success') + ' for dest: ' + destName + ', retrieved from ' + sourceName + '\n';
+
+			message += '\n\n' + qtools.dump(status, true);
+
+		} else {
+			message += '\nstatus: ' + (status ? 'failed' : 'success') + ' for dest: ' + destName + ', retrieved from ' + sourceName + '\n';
+		}
+
+		if (program.verbose) {
+			console.log(qtools.wrapMessage(message));
+		} else if (status) {
+			var errorFileName = 'error.txt';
+			if (!self.errorDest) {
+				self.errorDest = new destinationGenerator({
+					fileName: errorFileName,
+					appendable: true
+				});
+			}
+			self.errorDest.takeItAway(qtools.wrapMessage(message), function() {
+				return;
+			});
+			if (!program.quiet) {
+				qtools.die('Errors were found. More info in ' + errorFileName);
+			}
+		}
+	}
+
+	var executeAccess = function(sourceName, destName) {
+
+		var notificationCallback = function(err, result) {
+			logOutput(err, sourceName, destName);
+		}
+
+		var destination = new destinationGenerator({
+			fileName: destName,
+			fileWriteCallback: notificationCallback
+		});
+
+		var input = new inputGenerator({
+			url: sourceName
+		});
+
+
+		var conversion = new conversionGenerator({
+			source: input,
+			destination: destination,
+			callback: notificationCallback
+		});
+
+		conversion.doIt();
+
+	}
+
+	var getSpecsFromFile = function() {
+		var fs = require('fs'),
+			fileName = program.args[0],
+			specs = fs.readFileSync(fileName, 'utf8');
+		return JSON.parse(specs);
+	}
+
+	var getSpecsFromCommandLine = function() {
+		return [{
+				source: program.args[0],
+				destination: program.args[1]
+			}];
+	}
+
+	//do it -------------------------------------------------------
+
+	if (program.file) {
+		var specs = getSpecsFromFile();
+	} else {
+		var specs = getSpecsFromCommandLine();
+	}
+
+	for (var i = 0, len = specs.length; i < len; i++) {
+		var element = specs[i];
+
+		executeAccess(element.source, element.destination);
+	}
+
+
 
 	return this;
 };
@@ -121,6 +193,16 @@ util.inherits(moduleFunction, events.EventEmitter);
 module.exports = moduleFunction;
 
 new moduleFunction();
+
+
+
+
+
+
+
+
+
+
 
 
 
