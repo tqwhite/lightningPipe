@@ -52,6 +52,7 @@ var moduleFunction = function(args) {
 	var program = require('commander');
 	program.version('tqTest')
 		//	.option('-y, --background', 'spawn to background')
+		.option('-h, --header', 'add header row with field names')
 		.option('-v, --verbose', '(lowercase) -v, show messages instead of putting into file')
 		.option('-q, --quiet', 'no messages')
 		.option('-f, --file', 'get specs from file')
@@ -128,26 +129,29 @@ var moduleFunction = function(args) {
 		}
 	}
 
-	var executeAccess = function(sourceName, destName) {
+	var executeAccess = function(args) {
 
 		var notificationCallback = function(err, result) {
-			logOutput(err, sourceName, destName);
+			logOutput(err, args.source, args.destination);
 		}
 
 		var destination = new destinationGenerator({
-			fileName: destName,
+			fileName: args.destination,
 			fileWriteCallback: notificationCallback
 		});
 
 		var input = new inputGenerator({
-			url: sourceName
+			url: args.source
 		});
+
 
 
 		var conversion = new conversionGenerator({
 			source: input,
 			destination: destination,
-			callback: notificationCallback
+			path:args.path,
+			callback: notificationCallback,
+			switches:args.switches
 		});
 
 		conversion.doIt();
@@ -162,9 +166,14 @@ var moduleFunction = function(args) {
 	}
 
 	var getSpecsFromCommandLine = function() {
+		var tmp=program.args[0].split('?'),
+			source=tmp[0],
+			path=tmp[1];
 		return [{
-				source: program.args[0],
-				destination: program.args[1]
+				source: source,
+				path:path,
+				destination: program.args[1],
+				switches:{header:program.header}
 			}];
 	}
 
@@ -179,7 +188,7 @@ var moduleFunction = function(args) {
 	for (var i = 0, len = specs.length; i < len; i++) {
 		var element = specs[i];
 
-		executeAccess(element.source, element.destination);
+		executeAccess(element);
 	}
 
 
