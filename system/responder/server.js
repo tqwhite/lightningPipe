@@ -27,11 +27,11 @@ curl http://localhost:8081/uff/1.0/districts/
 
 
 
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-	extended: true
-}));
+// var bodyParser = require('body-parser');
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+// 	extended: true
+// }));
 
 //GET STARTUP SWITCHES =======================================================
 
@@ -99,10 +99,10 @@ router.use(function(req, res, next) {
 
 //START ROUTE SETUP =======================================================
 
-var swapTestStatus=function(req){
+var swapTestStatus = function(req) {
 
-	if (typeof(req.query.test)!='undefined'){
-		global.localEnvironment.testServer=!global.localEnvironment.testServer;
+	if (typeof (req.query.test) != 'undefined') {
+		global.localEnvironment.testServer = !global.localEnvironment.testServer;
 	}
 }
 
@@ -112,11 +112,19 @@ apiDefinition = new apiDefinition({
 	version: '1.0'
 });
 
+var pruneOutput = function(req, result) {
+	var outObj = result;
+	if (req.query.sendFlatSpecs != 'true') {
+		delete outObj.FlatSpecs;
+	}
+	return outObj;
+}
+
 var apiDetails = apiDefinition.getSpecs();
 
 global.localEnvironment.updateBaseUri(apiDetails.name, apiDetails.version, config.port);
 
-var output = require("sender");
+var outputGenerator = require("sender");
 
 var model = require('hybridModel');
 
@@ -129,10 +137,10 @@ router.get(new RegExp('/' + apiDetails.name + '/' + apiDetails.version + '/(.*)'
 	swapTestStatus(req);
 
 	if (global.localEnvironment.testServer) {
-		console.log('\n\nuriPath=' + req.params[0] + '\n');
+		console.log('\n\nuriPath=' + req.params[0] + '\n'); 
 	}
-	
-	var outputObj = new output();
+
+	var outputObj = new outputGenerator();
 	var sender = outputObj.generateSender(res, req);
 
 	client.setApi(apiDefinition);
@@ -140,25 +148,30 @@ router.get(new RegExp('/' + apiDetails.name + '/' + apiDetails.version + '/(.*)'
 	var sessionModel = new model({
 		uriPath: req.params[0],
 		clientProfile: client.profile(),
-		apiDefinition: apiDefinition
+		apiDefinition: apiDefinition,
+		parameters: req.query
 	});
+
 
 
 	sessionModel.on('gotData', function(result) {
 		result.meta = qtools.mergeMetaData(result.meta);
+
+		result.result = pruneOutput(req, result.result);
 		sender('', result);
-	swapTestStatus(req);
+
+		swapTestStatus(req);
 	});
 
 	sessionModel.on('badData', function(result) {
 		result.meta = qtools.mergeMetaData(result.meta);
 		sender(result, '');
-	swapTestStatus(req);
+		swapTestStatus(req);
 	});
 
 	sessionModel.getData();
 
-});
+}); //end of main GET process ---------------------------------------------------
 
 
 
@@ -188,6 +201,7 @@ router.post('/ping', function(req, res, next) {
 
 app.listen(config.port);
 qtools.message('Magic happens on port ' + config.port);
+
 
 
 

@@ -149,9 +149,9 @@ var moduleFunction = function(args) {
 		var conversion = new conversionGenerator({
 			source: input,
 			destination: destination,
-			path:args.path,
+			usablePayloadDottedPath: args.path,
 			callback: notificationCallback,
-			switches:args.switches
+			switches: args.switches
 		});
 
 		conversion.doIt();
@@ -166,14 +166,19 @@ var moduleFunction = function(args) {
 	}
 
 	var getSpecsFromCommandLine = function() {
-		var tmp=program.args[0].split('?'),
-			source=tmp[0],
-			path=tmp[1];
+
+		var tmp = program.args[0].split(/\?|#/g),
+			query = program.args[0].match(/\?(.*)/),
+			source = tmp[0] + (query[1] ? '?' + query[1] : ''),
+			path = tmp[1];
+
 		return [{
 				source: source,
-				path:path,
+				path: path,
 				destination: program.args[1],
-				switches:{header:program.header}
+				switches: {
+					header: program.header
+				}
 			}];
 	}
 
@@ -188,6 +193,9 @@ var moduleFunction = function(args) {
 	for (var i = 0, len = specs.length; i < len; i++) {
 		var element = specs[i];
 
+		qtools.dump({
+			'\n\n===== element =====\n': element
+		});
 		executeAccess(element);
 	}
 
@@ -202,6 +210,7 @@ util.inherits(moduleFunction, events.EventEmitter);
 module.exports = moduleFunction;
 
 new moduleFunction();
+
 
 
 
