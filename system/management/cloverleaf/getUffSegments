@@ -1,0 +1,32 @@
+#!/bin/sh
+
+cd ~/tmp
+
+rm -r 010; mkdir 010;
+rm -r 030; mkdir 030;
+rm -r 050; mkdir 050;
+rm -r 060; mkdir 060;
+rm -r 099; mkdir 099;
+
+
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/010/segments/Student_Enrolled#Data 010/Student_Enrolled.txt
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/010/segments/Schedule#Data 010/Schedule.txt
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/010/segments/Guardian#Data 010/Guardian.txt
+
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/030/segments/Student_Enrolled#Data 030/Student_Enrolled.txt
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/030/segments/Schedule#Data 030/Schedule.txt
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/030/segments/Guardian#Data 030/Guardian.txt
+
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/050/segments/Student_Enrolled#Data 050/Student_Enrolled.txt
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/050/segments/Schedule#Data 050/Schedule.txt
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/050/segments/Guardian#Data 050/Guardian.txt
+
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/060/segments/Student_Enrolled#Data 060/Student_Enrolled.txt
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/060/segments/Schedule#Data 060/Schedule.txt
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/060/segments/Guardian#Data 060/Guardian.txt
+
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/099/segments/Student_Enrolled#Data 099/Student_Enrolled.txt
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/099/segments/Schedule#Data 099/Schedule.txt
+node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/099/segments/Guardian#Data 099/Guardian.txt
+
+

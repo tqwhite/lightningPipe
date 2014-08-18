@@ -169,6 +169,7 @@ var moduleFunction = function(args) {
 
 		var tmp = program.args[0].split(/\?|#/g),
 			query = program.args[0].match(/\?(.*)/),
+			query=query?query:[],
 			source = tmp[0] + (query[1] ? '?' + query[1] : ''),
 			path = tmp[1];
 
@@ -192,11 +193,11 @@ var moduleFunction = function(args) {
 
 	for (var i = 0, len = specs.length; i < len; i++) {
 		var element = specs[i];
-
-		qtools.dump({
-			'\n\n===== element =====\n': element
-		});
 		executeAccess(element);
+		
+		if (!program.quiet){
+			qtools.message('finished file: '+element.destination+'\n');
+		}
 	}
 
 

@@ -1,9 +1,0 @@
-
-
-node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://localhost:8081/uff/1.0/districts/albany/schools/010/segments/Address_Contact Address_Contact.txt  --verbose
-
-node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js --file /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/test/cloverTest.js
-
-
-
-node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js http://store.goodearth.local/offering/list goodearth.txt  --verbose
