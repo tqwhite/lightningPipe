@@ -1,0 +1,34 @@
+!/bin/sh
+
+cd ~/tmp
+
+rm -r 1415hs; mkdir 1415hs;
+rm -r 1415elem; mkdir 1415elem;
+rm -r 6026_020; mkdir 6026_020;
+rm -r 6026_024; mkdir 6026_024;
+rm -r 6026_025; mkdir 6026_024;
+
+export cloverleaf="node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js"
+
+#$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415hs/segments/Student_Enrolled#Data?sendFlatSpecs=true 1415hs/Student_Enrolled.txt
+#$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415hs/segments/Schedule#Data?sendFlatSpecs=true 1415hs/Schedule.txt
+#$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415hs/segments/Guardian#Data?sendFlatSpecs=true 1415hs/Guardian.txt
+#
+#$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415elem/segments/Student_Enrolled#Data?sendFlatSpecs=true 1415elem/Student_Enrolled.txt
+#$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415elem/segments/Schedule#Data?sendFlatSpecs=true 1415elem/Schedule.txt
+#$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415elem/segments/Guardian#Data?sendFlatSpecs=true 1415elem/Guardian.txt
+#
+
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_020/segments/Student_Enrolled#Data?sendFlatSpecs=true 6026_020/Student_Enrolled.txt
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_020/segments/Schedule#Data?sendFlatSpecs=true 6026_020/Schedule.txt
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_020/segments/Guardian#Data?sendFlatSpecs=true 6026_020/Guardian.txt
+
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_024/segments/Student_Enrolled#Data?sendFlatSpecs=true 6026_024/Student_Enrolled.txt
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_024/segments/Schedule#Data?sendFlatSpecs=true 6026_024/Schedule.txt
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_024/segments/Guardian#Data?sendFlatSpecs=true 6026_024/Guardian.txt
+
+
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_025/segments/Student_Enrolled#Data?sendFlatSpecs=true 6026_025/Student_Enrolled.txt
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_025/segments/Schedule#Data?sendFlatSpecs=true 6026_025/Schedule.txt
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_025/segments/Guardian#Data?sendFlatSpecs=true 6026_025/Guardian.txt
+

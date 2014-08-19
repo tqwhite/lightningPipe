@@ -52,6 +52,7 @@ var moduleFunction = function(args) {
 	var program = require('commander');
 	program.version('tqTest')
 		//	.option('-y, --background', 'spawn to background')
+		.option('-a, --append', 'append data to file if file is present')
 		.option('-h, --header', 'add header row with field names')
 		.option('-v, --verbose', '(lowercase) -v, show messages instead of putting into file')
 		.option('-q, --quiet', 'no messages')
@@ -94,7 +95,6 @@ var moduleFunction = function(args) {
 			break;
 	}
 
-
 	//define functionality -------------------------------------------------------
 
 
@@ -113,16 +113,15 @@ var moduleFunction = function(args) {
 		if (program.verbose) {
 			console.log(qtools.wrapMessage(message));
 		} else if (status) {
+		
 			var errorFileName = 'error.txt';
 			if (!self.errorDest) {
 				self.errorDest = new destinationGenerator({
 					fileName: errorFileName,
-					appendable: true
+					append: true
 				});
 			}
-			self.errorDest.takeItAway(qtools.wrapMessage(message), function() {
-				return;
-			});
+			self.errorDest.takeItAway(qtools.wrapMessage(message)); //bug: does not work if a callback is supplied. main data file writing works fine. weird.
 			if (!program.quiet) {
 				qtools.die('Errors were found. More info in ' + errorFileName);
 			}
@@ -133,17 +132,19 @@ var moduleFunction = function(args) {
 
 		var notificationCallback = function(err, result) {
 			logOutput(err, args.source, args.destination);
+			if (!program.quiet) {
+				qtools.message('finished file: ' + args.destination);
+			}
 		}
 
 		var destination = new destinationGenerator({
 			fileName: args.destination,
-			fileWriteCallback: notificationCallback
+			append: args.switches.append
 		});
 
 		var input = new inputGenerator({
 			url: args.source
 		});
-
 
 
 		var conversion = new conversionGenerator({
@@ -162,6 +163,7 @@ var moduleFunction = function(args) {
 		var fs = require('fs'),
 			fileName = program.args[0],
 			specs = fs.readFileSync(fileName, 'utf8');
+
 		return JSON.parse(specs);
 	}
 
@@ -169,7 +171,7 @@ var moduleFunction = function(args) {
 
 		var tmp = program.args[0].split(/\?|#/g),
 			query = program.args[0].match(/\?(.*)/),
-			query=query?query:[],
+			query = query ? query : [],
 			source = tmp[0] + (query[1] ? '?' + query[1] : ''),
 			path = tmp[1];
 
@@ -178,7 +180,8 @@ var moduleFunction = function(args) {
 				path: path,
 				destination: program.args[1],
 				switches: {
-					header: program.header
+					header: program.header,
+					append: program.append
 				}
 			}];
 	}
@@ -192,12 +195,10 @@ var moduleFunction = function(args) {
 	}
 
 	for (var i = 0, len = specs.length; i < len; i++) {
-		var element = specs[i];
-		executeAccess(element);
-		
-		if (!program.quiet){
-			qtools.message('finished file: '+element.destination+'\n');
-		}
+
+		executeAccess(specs[i]);
+
+
 	}
 
 
@@ -211,6 +212,7 @@ util.inherits(moduleFunction, events.EventEmitter);
 module.exports = moduleFunction;
 
 new moduleFunction();
+
 
 
 
