@@ -1,0 +1,30 @@
+$cloverleaf 
+http://localhost:8081/uff/1.0/districts/0487/schools/0487_010/segments/Guardian#Data?sendFlatSpecs=true
+/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/tmp/0487/GuardianTest.txt 
+-h
+
+
+
+
+$cloverleaf 
+http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Schedule#Data?sendFlatSpecs=true
+/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/single/2769/ScheduleTest.txt 
+-h
+
+
+
+
+$cloverleaf 
+http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Student_Enrolled#Data?sendFlatSpecs=true
+/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/tmp/single/2769/Student_EnrolledTest.txt 
+-h
+
+
+
+
+
+
+mkdir /Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/tmp
+cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/tmp 
+$cloverleaf -f /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/cloverleaf/jmcRealGetAllSegments.js
+

@@ -175,6 +175,7 @@ var moduleFunction = function(args) {
 			source = tmp[0] + (query[1] ? '?' + query[1] : ''),
 			path = tmp[1];
 
+
 		return [{
 				source: source,
 				path: path,
