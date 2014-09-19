@@ -10,58 +10,58 @@ displayConfig.password = '****';
 
 /*
 
-node ebControl.js --markScale --verbose dataFiles/eb/objectiveSetup/markScales.eb
-node ebControl.js --markScale --verbose --forReal dataFiles/eb/objectiveSetup/markScales.eb
+node ebControl.js --markScale --verbose testDataFiles/eb/objectiveSetup/markScales.eb
+node ebControl.js --markScale --verbose --forReal testDataFiles/eb/objectiveSetup/markScales.eb
 
-node ebControl.js --specialty --verbose dataFiles/eb/attributeSetup/specialties.eb
-node ebControl.js --specialty --verbose --forReal dataFiles/eb/attributeSetup/specialties.eb
+node ebControl.js --specialty --verbose testDataFiles/eb/attributeSetup/specialties.eb
+node ebControl.js --specialty --verbose --forReal testDataFiles/eb/attributeSetup/specialties.eb
 
-node ebControl.js --objective --verbose --forReal dataFiles/uff/objectiveSetup/objectives.eb
-node ebControl.js --assignGradeLevel --verbose --forReal dataFiles/uff/objectiveSetup/gradeLevelAssignments.eb
-node ebControl.js --assignTerm --verbose --forReal dataFiles/uff/objectiveSetup/termAssignments.eb
-node ebControl.js --assignSpecialty --verbose --forReal dataFiles/uff/objectiveSetup/specialtyAssignments.eb
+node ebControl.js --objective --verbose --forReal testDataFiles/uff/objectiveSetup/objectives.eb
+node ebControl.js --assignGradeLevel --verbose --forReal testDataFiles/uff/objectiveSetup/gradeLevelAssignments.eb
+node ebControl.js --assignTerm --verbose --forReal testDataFiles/uff/objectiveSetup/termAssignments.eb
+node ebControl.js --assignSpecialty --verbose --forReal testDataFiles/uff/objectiveSetup/specialtyAssignments.eb
 
 
 EB SEQUENCE
-node ebControl.js --assignTeacher --verbose dataFiles/eb/peopleSetup/assignTeacher.eb
+node ebControl.js --assignTeacher --verbose testDataFiles/eb/peopleSetup/assignTeacher.eb
 
-node ebControl.js --school --forReal  --verbose dataFiles/eb/schoolSetup/school.eb
-node ebControl.js --gradeLevel --forReal  --verbose dataFiles/eb/schoolSetup/gradeLevel.eb
-node ebControl.js --gradeLevelSchool --forReal  --verbose dataFiles/eb/schoolSetup/gradeLevelSchool.eb
-node ebControl.js --term --forReal  --verbose -- dataFiles/eb/schoolSetup/term.eb
-node ebControl.js --termSchool --forReal  --verbose -- dataFiles/eb/schoolSetup/termSchool.eb
-node ebControl.js --schoolSetCurrentTerm --forReal  --verbose -- dataFiles/eb/schoolSetup/school.eb
+node ebControl.js --school --forReal  --verbose testDataFiles/eb/schoolSetup/school.eb
+node ebControl.js --gradeLevel --forReal  --verbose testDataFiles/eb/schoolSetup/gradeLevel.eb
+node ebControl.js --gradeLevelSchool --forReal  --verbose testDataFiles/eb/schoolSetup/gradeLevelSchool.eb
+node ebControl.js --term --forReal  --verbose -- testDataFiles/eb/schoolSetup/term.eb
+node ebControl.js --termSchool --forReal  --verbose -- testDataFiles/eb/schoolSetup/termSchool.eb
+node ebControl.js --schoolSetCurrentTerm --forReal  --verbose -- testDataFiles/eb/schoolSetup/school.eb
 
-node ebControl.js --student --forReal  --verbose -- dataFiles/eb/peopleSetup/student.eb
-node ebControl.js --teacher --forReal  --verbose -- dataFiles/eb/peopleSetup/teacher.eb
+node ebControl.js --student --forReal  --verbose -- testDataFiles/eb/peopleSetup/student.eb
+node ebControl.js --teacher --forReal  --verbose -- testDataFiles/eb/peopleSetup/teacher.eb
 
 
-node ebControl.js --homeroom --forReal  --verbose -- dataFiles/eb/peopleSetup/homeroom.eb
-node ebControl.js --assignStudent --forReal  --verbose dataFiles/eb/peopleSetup/assignStudent.eb
+node ebControl.js --homeroom --forReal  --verbose -- testDataFiles/eb/peopleSetup/homeroom.eb
+node ebControl.js --assignStudent --forReal  --verbose testDataFiles/eb/peopleSetup/assignStudent.eb
  
  
-node ebControl.js --objective --verbose --forReal dataFiles/eb/objectiveSetup/objectives.eb
-node ebControl.js --assignGradeLevel --verbose --forReal dataFiles/eb/objectiveSetup/gradeLevelAssignments.eb
-node ebControl.js --assignTerm --verbose --forReal dataFiles/eb/objectiveSetup/termAssignments.eb
-node ebControl.js --assignSpecialty --verbose --forReal dataFiles/eb/objectiveSetup/specialtyAssignments.eb
+node ebControl.js --objective --verbose --forReal testDataFiles/eb/objectiveSetup/objectives.eb
+node ebControl.js --assignGradeLevel --verbose --forReal testDataFiles/eb/objectiveSetup/gradeLevelAssignments.eb
+node ebControl.js --assignTerm --verbose --forReal testDataFiles/eb/objectiveSetup/termAssignments.eb
+node ebControl.js --assignSpecialty --verbose --forReal testDataFiles/eb/objectiveSetup/specialtyAssignments.eb
 
-node ebControl.js --assignTeacher --forReal  --verbose dataFiles/eb/peopleSetup/assignTeacher.eb
+node ebControl.js --assignTeacher --forReal  --verbose testDataFiles/eb/peopleSetup/assignTeacher.eb
 
 
 UFF SEQUENCE
-node ebControl.js --school --forReal  --verbose dataFiles/uff/schoolSetup/school.uff
-node ebControl.js --term --forReal  --verbose dataFiles/uff/schoolSetup/term.uff
-node ebControl.js --schoolSetCurrentTerm --forReal  --verbose -- dataFiles/uff/schoolSetup/schoolSetCurrentTerm.uff
-node ebControl.js --gradeLevel --forReal  --verbose dataFiles/uff/schoolSetup/gradeLevel.uff
+node ebControl.js --school --forReal  --verbose testDataFiles/uff/schoolSetup/school.uff
+node ebControl.js --term --forReal  --verbose testDataFiles/uff/schoolSetup/term.uff
+node ebControl.js --schoolSetCurrentTerm --forReal  --verbose -- testDataFiles/uff/schoolSetup/schoolSetCurrentTerm.uff
+node ebControl.js --gradeLevel --forReal  --verbose testDataFiles/uff/schoolSetup/gradeLevel.uff
 
-node ebControl.js --student --forReal  --verbose dataFiles/uff/peopleSetup/student.uff
-node ebControl.js --teacher --forReal  --verbose -- dataFiles/uff/peopleSetup/teacher.uff
+node ebControl.js --student --forReal  --verbose testDataFiles/uff/peopleSetup/student.uff
+node ebControl.js --teacher --forReal  --verbose -- testDataFiles/uff/peopleSetup/teacher.uff
 
 
-node ebControl.js --homeroom --forReal  --verbose -- dataFiles/uff/peopleSetup/homeroom.uff
-node ebControl.js --assignStudent --forReal  --verbose dataFiles/uff/assignStudent.uff
+node ebControl.js --homeroom --forReal  --verbose -- testDataFiles/uff/peopleSetup/homeroom.uff
+node ebControl.js --assignStudent --forReal  --verbose testDataFiles/uff/assignStudent.uff
 
-node ebControl.js --assignTeacher --forReal  --verbose dataFiles/uff/assignTeacher.uff
+node ebControl.js --assignTeacher --forReal  --verbose testDataFiles/uff/assignTeacher.uff
 
 
 */

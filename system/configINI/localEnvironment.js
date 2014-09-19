@@ -32,7 +32,7 @@ var moduleFunction = function(args) {
 
 
 	
-	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/';
+	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/';
 	
 	
 	this.scheme='http';

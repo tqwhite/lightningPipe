@@ -1,6 +1,6 @@
 $cloverleaf 
 http://localhost:8081/uff/1.0/districts/0487/schools/0487_010/segments/Guardian#Data?sendFlatSpecs=true
-/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/tmp/0487/GuardianTest.txt 
+/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/jmcRealData/tmp/0487/GuardianTest.txt 
 -h
 
 
@@ -8,7 +8,7 @@ http://localhost:8081/uff/1.0/districts/0487/schools/0487_010/segments/Guardian#
 
 $cloverleaf 
 http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Schedule#Data?sendFlatSpecs=true
-/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/single/2769/ScheduleTest.txt 
+/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/jmcRealData/single/2769/ScheduleTest.txt 
 -h
 
 
@@ -16,7 +16,7 @@ http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Schedule#
 
 $cloverleaf 
 http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Student_Enrolled#Data?sendFlatSpecs=true
-/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/tmp/single/2769/Student_EnrolledTest.txt 
+/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/jmcRealData/tmp/single/2769/Student_EnrolledTest.txt 
 -h
 
 
@@ -24,7 +24,7 @@ http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Student_E
 
 
 
-mkdir /Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/tmp
-cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/tmp 
+mkdir /Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/jmcRealData/tmp
+cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/jmcRealData/tmp 
 $cloverleaf -f /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/cloverleaf/jmcRealGetAllSegments.js
 

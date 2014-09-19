@@ -1,0 +1,40 @@
+#!/bin/sh
+
+echo "--school"; node ../ebControl.js --school --pingOnly testDataFiles/eb/schoolSetup/school.eb;
+
+echo "--gradeLevel"; node ../ebControl.js --gradeLevel --pingOnly testDataFiles/eb/schoolSetup/gradeLevel.eb;
+
+echo "--gradeLevelSchool"; node ../ebControl.js --gradeLevelSchool --pingOnly testDataFiles/eb/schoolSetup/gradeLevelSchool.eb;
+
+echo "--term"; node ../ebControl.js --term --pingOnly -- testDataFiles/eb/schoolSetup/term.eb;
+
+echo "--termSchool"; node ../ebControl.js --termSchool --pingOnly -- testDataFiles/eb/schoolSetup/termSchool.eb;
+
+echo "--schoolSetCurrentTerm"; node ../ebControl.js --schoolSetCurrentTerm --pingOnly -- testDataFiles/eb/schoolSetup/school.eb;
+
+echo "--student"; node ../ebControl.js --student --pingOnly -- testDataFiles/eb/peopleSetup/student.eb;
+
+echo "--teacher"; node ../ebControl.js --teacher --pingOnly -- testDataFiles/eb/peopleSetup/teacher.eb;
+
+echo "--homeroom"; node ../ebControl.js --homeroom --pingOnly -- testDataFiles/eb/peopleSetup/homeroom.eb;
+
+echo "--assignStudent"; node ../ebControl.js --assignStudent --pingOnly testDataFiles/eb/assignStudent.eb;
+
+echo "--assignTeacher"; node ../ebControl.js --assignTeacher --pingOnly testDataFiles/eb/assignTeacher.eb;
+
+echo "school"; node ../ebControl.js --school --pingOnly  testDataFiles/eb/schoolSetup/school.eb
+echo "gradeLevel"; node ../ebControl.js --gradeLevel --pingOnly  testDataFiles/eb/schoolSetup/gradeLevel.eb
+echo "gradeLevelSchool"; node ../ebControl.js --gradeLevelSchool --pingOnly  testDataFiles/eb/schoolSetup/gradeLevelSchool.eb
+echo "term"; node ../ebControl.js --term --pingOnly  -- testDataFiles/eb/schoolSetup/term.eb
+echo "termSchool"; node ../ebControl.js --termSchool --pingOnly  -- testDataFiles/eb/schoolSetup/termSchool.eb
+echo "schoolSetCurrentTerm"; node ../ebControl.js --schoolSetCurrentTerm --pingOnly  -- testDataFiles/eb/schoolSetup/school.eb
+
+
+echo "objective"; node ../ebControl.js --objective --pingOnly testDataFiles/uff/objectiveSetup/objectives.eb
+echo "assignGradeLevel"; node ../ebControl.js --assignGradeLevel --pingOnly testDataFiles/uff/objectiveSetup/gradeLevelAssignments.eb
+echo "assignTerm"; node ../ebControl.js --assignTerm --pingOnly testDataFiles/uff/objectiveSetup/termAssignments.eb
+echo "assignSpecialty"; node ../ebControl.js --assignSpecialty --pingOnly testDataFiles/uff/objectiveSetup/specialtyAssignments.eb
+
+
+echo "specialty"; node ../ebControl.js --specialty --pingOnly testDataFiles/eb/attributeSetup/specialties.eb
+echo "markScale"; node ../ebControl.js --markScale --pingOnly testDataFiles/eb/objectiveSetup/markScales.eb
