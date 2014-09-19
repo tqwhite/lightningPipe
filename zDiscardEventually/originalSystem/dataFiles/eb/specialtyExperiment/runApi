@@ -1,0 +1,41 @@
+
+node ../ebControl.js --specialty --forReal testDataFiles/eb/specialtyExperiment/specialties.eb
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+
+node ../ebControl.js --objective  --forReal testDataFiles/eb/specialtyExperiment/objectives.eb
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --assignSpecialty  --forReal testDataFiles/eb/specialtyExperiment/specialtyAssignments.eb
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+
+node ../ebControl.js --homeroom --forReal -- testDataFiles/eb/specialtyExperiment/homeroom.eb
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --assignStudent --forReal testDataFiles/eb/specialtyExperiment/assignStudent.eb
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+node ../ebControl.js --assignTeacher --forReal testDataFiles/eb/specialtyExperiment/assignTeacher.eb
+		if [ $? -eq 1 ]
+		then
+			echo "found error";
+			exit 1;
+		fi
+
+echo "Specialty Experiment upload completed successfully"

@@ -29,7 +29,7 @@ var moduleFunction = function(args) {
 	this.sendMetaData = true;
 	this.testServer = true;
 	
-	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/';
+	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/';
 
 
 	

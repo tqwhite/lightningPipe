@@ -1,4 +1,4 @@
-cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/jmcRealData/tmp;
+cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/jmcRealData/tmp;
 pwd;
 
 rm -r 0146;
