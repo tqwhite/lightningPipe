@@ -8,21 +8,21 @@ export cloverleaf="node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/c
 
 #$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415hs/segments/Student_Enrolled#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Students.txt -a
 #$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415hs/segments/Schedule#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Schedules.txt -a
-#$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415hs/segments/Guardian#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/ Guardians.txt -a
+#$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415hs/segments/Guardian#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Guardians.txt -a
 #
 #$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415elem/segments/Student_Enrolled#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Students.txt -a
 #$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415elem/segments/Schedule#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Schedules.txt -a
-#$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415elem/segments/Guardian#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/ Guardians.txt -a
+#$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/1415elem/segments/Guardian#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Guardians.txt -a
 #
 $cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_020/segments/Student_Enrolled#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Students.txt -a
 $cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_020/segments/Schedule#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Schedules.txt -a
-$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_020/segments/Guardian#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/ Guardians.txt -a
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_020/segments/Guardian#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Guardians.txt -a
 
 $cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_024/segments/Student_Enrolled#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Students.txt -a
 $cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_024/segments/Schedule#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Schedules.txt -a
-$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_024/segments/Guardian#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/ Guardians.txt -a
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_024/segments/Guardian#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Guardians.txt -a
 
 $cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_025/segments/Student_Enrolled#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Students.txt -a
 $cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_025/segments/Schedule#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Schedules.txt -a
-$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_025/segments/Guardian#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/ Guardians.txt -a
+$cloverleaf http://localhost:8081/uff/1.0/districts/bradTestDistrict/schools/6026_025/segments/Guardian#Data?sendFlatSpecs=true bradTestDistrictOutMergedShell/Guardians.txt -a
 
