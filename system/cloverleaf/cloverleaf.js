@@ -131,10 +131,33 @@ var moduleFunction = function(args) {
 	var executeAccess = function(args) {
 
 		var notificationCallback = function(err, result) {
+			
+			if (false && err){
+qtools.dump({'===== err =====':err});
+
+				args.retryCount=(typeof(args.retryCount)=='undefined')?3:args.retryCount;
+				if (args.retryCount){
+					self.requestQueue.push(args);
+				if (!program.quiet) {
+					qtools.message('requeuing for file: ' + args.destination);
+				}
+					self.emit('executeNext');
+				}
+				else{
+				logOutput(err, args.source, args.destination);
+				
+				}
+				
+			}
+			else{
 			logOutput(err, args.source, args.destination);
 			if (!program.quiet) {
 				qtools.message('finished file: ' + args.destination);
 			}
+			}
+		
+		
+			self.emit('executeNext');
 		}
 
 		var destination = new destinationGenerator({
@@ -152,7 +175,8 @@ var moduleFunction = function(args) {
 			destination: destination,
 			usablePayloadDottedPath: args.path,
 			callback: notificationCallback,
-			switches: args.switches
+			switches: args.switches,
+			config:{ lineEnding:config.lineEnding}
 		});
 
 		conversion.doIt();
@@ -190,17 +214,23 @@ var moduleFunction = function(args) {
 	//do it -------------------------------------------------------
 
 	if (program.file) {
-		var specs = getSpecsFromFile();
+		this.requestQueue = getSpecsFromFile();
 	} else {
-		var specs = getSpecsFromCommandLine();
+		this.requestQueue = getSpecsFromCommandLine();
 	}
 
-	for (var i = 0, len = specs.length; i < len; i++) {
+	
+	this.on('executeNext', function(){
+		var next=self.requestQueue.pop();
+		if (next){
+		executeAccess(next);
+		}
+	});
 
-		executeAccess(specs[i]);
-
-
+	for (var i=0, len=config.concurrentLightningPipeCalls; i<len; i++){
+		self.emit('executeNext');
 	}
+
 
 
 
