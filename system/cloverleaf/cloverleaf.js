@@ -132,8 +132,7 @@ var moduleFunction = function(args) {
 
 		var notificationCallback = function(err, result) {
 			
-			if (false && err){
-qtools.dump({'===== err =====':err});
+			if (err){
 
 				args.retryCount=(typeof(args.retryCount)=='undefined')?3:args.retryCount;
 				if (args.retryCount){
