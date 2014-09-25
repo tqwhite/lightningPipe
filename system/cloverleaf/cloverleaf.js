@@ -113,7 +113,7 @@ var moduleFunction = function(args) {
 		if (program.verbose) {
 			console.log(qtools.wrapMessage(message));
 		} else if (status) {
-		
+
 			var errorFileName = 'error.txt';
 			if (!self.errorDest) {
 				self.errorDest = new destinationGenerator({
@@ -123,39 +123,86 @@ var moduleFunction = function(args) {
 			}
 			self.errorDest.takeItAway(qtools.wrapMessage(message)); //bug: does not work if a callback is supplied. main data file writing works fine. weird.
 			if (!program.quiet) {
-				qtools.die('Errors were found. More info in ' + errorFileName);
+				qtools.message('Errors were found. More info in ' + errorFileName);
 			}
+		}
+	}
+
+	var documentFailure = function(item) {
+		if (!self.failureList) {
+			self.failureList = [];
+		}
+
+		self.failureList.push(item);
+	}
+
+	var getFailureInfo = function() {
+	
+	var outMessage='';
+
+		for (var i = 0, len = self.failureList.length; i < len; i++) {
+				var element=self.failureList[i];
+				outMessage+='FAILED for file: ' + element.destination + ' from (' + element.source + ')\n';
+
+		}
+		
+		return outMessage;
+	}
+	
+	var finishProcess=function(){
+		if (typeof(self.failureList)!='undefined'){
+			qtools.errorExit(getFailureInfo());
+		}
+		else{
+
+			if (!program.quiet) {
+				qtools.successExit('Process finished successfully');
+			}
+			else{
+				qtools.successExit();
+			}
+			
 		}
 	}
 
 	var executeAccess = function(args) {
 
 		var notificationCallback = function(err, result) {
-			
-			if (err){
 
-				args.retryCount=(typeof(args.retryCount)=='undefined')?3:args.retryCount;
-				if (args.retryCount){
+
+			delete self.outstandingList[args.key];
+			if (err) {
+
+				args.retryCount = (typeof (args.retryCount) == 'undefined') ? 3 : args.retryCount - 1;
+				if (args.retryCount > 0) {
 					self.requestQueue.push(args);
-				if (!program.quiet) {
-					qtools.message('requeuing for file: ' + args.destination);
-				}
 					self.emit('executeNext');
+
+					if (!program.quiet) {
+						qtools.message('REQUEUING for file: ' + args.destination + ' from (' + args.source + ')' + args.retryCount);
+					}
+				} else {
+					if (!program.quiet) {
+						qtools.message('FAILED for file: ' + args.destination + ' from (' + args.source + ')' + args.retryCount);
+
+						documentFailure(args);
+
+					}
+					logOutput(err, args.source, args.destination);
+
 				}
-				else{
+
+			} else {
 				logOutput(err, args.source, args.destination);
-				
+				if (!program.quiet) {
+					qtools.message('updated file: ' + args.destination + ' from (' + args.source + ')');
 				}
-				
 			}
-			else{
-			logOutput(err, args.source, args.destination);
-			if (!program.quiet) {
-				qtools.message('finished file: ' + args.destination);
+
+			if (qtools.count(self.outstandingList)===0){
+				finishProcess();
 			}
-			}
-		
-		
+
 			self.emit('executeNext');
 		}
 
@@ -175,7 +222,9 @@ var moduleFunction = function(args) {
 			usablePayloadDottedPath: args.path,
 			callback: notificationCallback,
 			switches: args.switches,
-			config:{ lineEnding:config.lineEnding}
+			config: {
+				lineEnding: config.lineEnding
+			}
 		});
 
 		conversion.doIt();
@@ -210,6 +259,32 @@ var moduleFunction = function(args) {
 			}];
 	}
 
+	var addToOutstandingList = function(item) {
+
+		if (typeof (self.outstandingList) == 'undefined') {
+			self.outstandingList = {};
+		}
+
+		if (typeof (item.key) == 'undefined') {
+			item.key = qtools.newGuid();
+		}
+
+		if (self.outstandingList[item.key]) {
+			qtools.die("outstandingList has same item twice", item);
+		}
+
+		self.outstandingList[item.key] = item;
+	}
+
+	var executionHandler = function() {
+		var next = self.requestQueue.pop();
+
+		if (next) {
+			addToOutstandingList(next);
+			executeAccess(next);
+		}
+	};
+
 	//do it -------------------------------------------------------
 
 	if (program.file) {
@@ -218,15 +293,12 @@ var moduleFunction = function(args) {
 		this.requestQueue = getSpecsFromCommandLine();
 	}
 
-	
-	this.on('executeNext', function(){
-		var next=self.requestQueue.pop();
-		if (next){
-		executeAccess(next);
-		}
-	});
 
-	for (var i=0, len=config.concurrentLightningPipeCalls; i<len; i++){
+
+
+	this.on('executeNext', executionHandler);
+
+	for (var i = 0, len = config.concurrentLightningPipeCalls; i < len; i++) {
 		self.emit('executeNext');
 	}
 
@@ -242,6 +314,9 @@ util.inherits(moduleFunction, events.EventEmitter);
 module.exports = moduleFunction;
 
 new moduleFunction();
+
+
+
 
 
 
