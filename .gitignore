@@ -31,5 +31,8 @@ Icon?
 
 
 dataFiles/*
+testDataFiles/*
+testResults/*
+
 */*/uffSampleData
 lighteningPipe/config/targetServer.js
