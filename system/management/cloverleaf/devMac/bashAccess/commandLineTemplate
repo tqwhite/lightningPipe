@@ -15,8 +15,8 @@ http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Schedule#
 
 
 $cloverleaf 
-http://localhost:8081/uff/1.0/districts/morris/schools/030/segments/Student_Enrolled#Data?sendFlatSpecs=true
-/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResultstmp/single/morris/Student_EnrolledTest.txt 
+http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Student_Enrolled#Data?sendFlatSpecs=true
+Student_EnrolledTest.txt 
 -h
 
 
