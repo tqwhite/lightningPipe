@@ -26,3 +26,5 @@ rm -r ~/mountPoint/SFTP/lightningpipeTest/$DISTRICTNAME/
 cp -r ~/mountPoint/SFTP/SFTP/$DISTRICTNAME ~/mountPoint/SFTP/lightningpipeTest/
 
 la ~/mountPoint/SFTP/lightningpipeTest/
+
+export DISTRICTNAME='none none'
