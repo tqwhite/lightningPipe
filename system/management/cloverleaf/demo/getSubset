@@ -1,0 +1,27 @@
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/Hancock/schools/020/segments/Guardian#Data?sendFlatSpecs=true $destDirTest/Hancock/Guardians.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/Hancock/schools/020/segments/Schedule#Data?sendFlatSpecs=true $destDirTest/Hancock/Schedules.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/Hancock/schools/020/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirTest/Hancock/Students.txt -a
+
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/020/segments/Guardian#Data?sendFlatSpecs=true $destDirTest/WCE/Guardians.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/020/segments/Schedule#Data?sendFlatSpecs=true $destDirTest/WCE/Schedules.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/020/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirTest/WCE/Students.txt -a
+
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/023/segments/Guardian#Data?sendFlatSpecs=true $destDirTest/WCE/Guardians.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/023/segments/Schedule#Data?sendFlatSpecs=true $destDirTest/WCE/Schedules.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/023/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirTest/WCE/Students.txt -a
+
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/024/segments/Guardian#Data?sendFlatSpecs=true $destDirTest/WCE/Guardians.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/024/segments/Schedule#Data?sendFlatSpecs=true $destDirTest/WCE/Schedules.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/024/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirTest/WCE/Students.txt -a
+
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/025/segments/Guardian#Data?sendFlatSpecs=true $destDirTest/WCE/Guardians.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/025/segments/Schedule#Data?sendFlatSpecs=true $destDirTest/WCE/Schedules.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/WCE/schools/025/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirTest/WCE/Students.txt -a
+
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/Wheaton/schools/001/segments/Guardian#Data?sendFlatSpecs=true $destDirTest/Wheaton/Guardians.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/Wheaton/schools/001/segments/Schedule#Data?sendFlatSpecs=true $destDirTest/Wheaton/Schedules.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/Wheaton/schools/001/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirTest/Wheaton/Students.txt -a
+
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/Wheaton/schools/002/segments/Guardian#Data?sendFlatSpecs=true $destDirTest/Wheaton/Guardians.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/Wheaton/schools/002/segments/Schedule#Data?sendFlatSpecs=true $destDirTest/Wheaton/Schedules.txt -a
+$cloverDemo http://lightningpipe.org:8000/uff/1.0/districts/Wheaton/schools/002/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirTest/Wheaton/Students.txt -a
