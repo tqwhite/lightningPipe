@@ -33,6 +33,7 @@ var moduleFunction = function(args) {
 
 	
 	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/';
+	this.temporaryClientDirectory='/jmcRealData/';
 	
 	
 	this.scheme='http';
