@@ -1,0 +1,12 @@
+[{"source":"http://demo.api.lightningpipe.org/uff/1.0/districts/Clinton-Graceville/schools/001/segments/Guardian","destination":"/home/lightningpipe/lpDemo/testResults/Clinton-Graceville/Guardians.txt", "path":"Data", "switches":{"header":false, "append":true}},
+{"source":"http://demo.api.lightningpipe.org/uff/1.0/districts/Clinton-Graceville/schools/001/segments/Schedule","destination":"/home/lightningpipe/lpDemo/testResults/Clinton-Graceville/Schedules.txt", "path":"Data", "switches":{"header":false, "append":true}},
+{"source":"http://demo.api.lightningpipe.org/uff/1.0/districts/Clinton-Graceville/schools/001/segments/Student_Enrolled","destination":"/home/lightningpipe/lpDemo/testResults/Clinton-Graceville/Students.txt", "path":"Data", "switches":{"header":false, "append":true}},
+
+{"source":"http://demo.api.lightningpipe.org/uff/1.0/districts/Clinton-Graceville/schools/003/segments/Guardian","destination":"/home/lightningpipe/lpDemo/testResults/Clinton-Graceville/Guardians.txt", "path":"Data", "switches":{"header":false, "append":true}},
+{"source":"http://demo.api.lightningpipe.org/uff/1.0/districts/Clinton-Graceville/schools/003/segments/Schedule","destination":"/home/lightningpipe/lpDemo/testResults/Clinton-Graceville/Schedules.txt", "path":"Data", "switches":{"header":false, "append":true}},
+{"source":"http://demo.api.lightningpipe.org/uff/1.0/districts/Clinton-Graceville/schools/003/segments/Student_Enrolled","destination":"/home/lightningpipe/lpDemo/testResults/Clinton-Graceville/Students.txt", "path":"Data", "switches":{"header":false, "append":true}},
+
+{"source":"http://demo.api.lightningpipe.org/uff/1.0/districts/Clinton-Graceville/schools/006/segments/Guardian","destination":"/home/lightningpipe/lpDemo/testResults/Clinton-Graceville/Guardians.txt", "path":"Data", "switches":{"header":false, "append":true}},
+{"source":"http://demo.api.lightningpipe.org/uff/1.0/districts/Clinton-Graceville/schools/006/segments/Schedule","destination":"/home/lightningpipe/lpDemo/testResults/Clinton-Graceville/Schedules.txt", "path":"Data", "switches":{"header":false, "append":true}},
+{"source":"http://demo.api.lightningpipe.org/uff/1.0/districts/Clinton-Graceville/schools/006/segments/Student_Enrolled","destination":"/home/lightningpipe/lpDemo/testResults/Clinton-Graceville/Students.txt", "path":"Data", "switches":{"header":false, "append":true}}
+]
