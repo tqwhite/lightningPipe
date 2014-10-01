@@ -33,14 +33,14 @@ var moduleFunction = function(args) {
 	
 	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/';
 	
-	this.logFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/';
-	
 	this.temporaryClientDirectory='/lightningpipeTest/';
 	
 
+	
+	this.logFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/';
 
 	var logger = require('bunyan');
-	this.log = new logger({name: 'cloverleaf' ,
+	this.log = new logger({name: 'development' ,
 	streams: [
 // 		{
 // 			stream: process.stdout,
