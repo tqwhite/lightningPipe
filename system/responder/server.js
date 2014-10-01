@@ -50,6 +50,7 @@ if (program.background) {
 
 var localEnvironment = require('../config/localEnvironment.js');
 global.localEnvironment = new localEnvironment();
+global.localEnvironment.log.info({startup:"STARTING LightningPipe===================="});
 
 var config = require('../config/requestServer.js');
 config = new config();
@@ -139,18 +140,24 @@ router.get(new RegExp('/' + apiDetails.name + '/' + apiDetails.version + '/(.*)'
 	if (global.localEnvironment.testServer) {
 		console.log('\n\nuriPath=' + req.params[0] + '\n'); 
 	}
+	
 
 	var outputObj = new outputGenerator();
 	var sender = outputObj.generateSender(res, req);
 
-	client.setApi(apiDefinition);
-
-	var sessionModel = new model({
+	var executionPackage={
 		uriPath: req.params[0],
 		clientProfile: client.profile(),
 		apiDefinition: apiDefinition,
 		parameters: req.query
-	});
+	};
+	
+	global.localEnvironment.log.info({executionPackage:executionPackage})
+
+
+	client.setApi(apiDefinition);
+
+	var sessionModel = new model(executionPackage);
 
 
 
