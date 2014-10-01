@@ -23,31 +23,48 @@ var moduleFunction = function(args) {
 
 
 
-// 	this.sendMetaData = true;
-// 	this.testServer = true;
-
-
 	this.sendMetaData = false;
 	this.testServer = false;
 
 
+	//global.localEnvironment.testServer
+
+
 	
 	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/';
-	this.temporaryClientDirectory='/jmcRealData/';
 	
+	this.logFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/';
 	
-	this.scheme='http';
-	this.domain='localhost';
+	this.temporaryClientDirectory='/lightningpipeTest/';
+	
 
 
-	this.updateBaseUri=function(apiName, apiVersion, port){
-		if (port){port=':'+port;}
-	this.baseUri=this.scheme+'://'+this.domain+port+'/'+apiName+'/'+apiVersion+'/';
+	var logger = require('bunyan');
+	this.log = new logger({name: 'cloverleaf' ,
+	streams: [
+// 		{
+// 			stream: process.stdout,
+// 			level: 'debug'
+// 		},
+		{
+			path: this.logFileDirectory + 'lightningClover.log',
+			level: 'trace'
+		}
+	], src:true});
+
+	this.scheme = 'http';
+	this.domain = 'localhost';
+
+
+	this.updateBaseUri = function(apiName, apiVersion, port) {
+		if (port) {
+			port = ':' + port;
+		}
+		this.baseUri = this.scheme + '://' + this.domain + port + '/' + apiName + '/' + apiVersion + '/';
 	}
-	
 
-	
-	this.get=function(name){
+
+	this.get = function(name) {
 		return this[name];
 	}
 
@@ -61,3 +78,4 @@ var moduleFunction = function(args) {
 
 util.inherits(moduleFunction, events.EventEmitter);
 module.exports = moduleFunction;
+
