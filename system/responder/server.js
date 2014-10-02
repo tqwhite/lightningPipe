@@ -49,7 +49,7 @@ if (program.background) {
 //SET UP APPLICATION =======================================================
 
 var localEnvironment = require('../config/localEnvironment.js');
-global.localEnvironment = new localEnvironment();
+global.localEnvironment = new localEnvironment({appName:'lightningpipe'});
 global.localEnvironment.log.info({startup:"STARTING LightningPipe===================="});
 
 var config = require('../config/requestServer.js');

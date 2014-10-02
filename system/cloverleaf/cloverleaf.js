@@ -66,8 +66,8 @@ var moduleFunction = function(args) {
 	//set up application -------------------------------------------------------
 
 	var localEnvironment = require(__dirname + '/../config/localEnvironment.js');
-	global.localEnvironment = new localEnvironment();
-	global.localEnvironment.log.info({startup:"STARTING CLOVERLEAF===================="});
+	global.localEnvironment = new localEnvironment({appName:'cloverleaf'});
+	global.localEnvironment.log.info({startup:"STARTING CLOVERLEAF==================="});
 
 	var config = require('../config/cloverleaf.js');
 	config = new config();
@@ -188,7 +188,9 @@ var moduleFunction = function(args) {
 						qtools.message('REQUEUING for file: ' + args.destination + ' from (' + args.source + ')' + args.retryCount);
 					}
 				} else {
-					global.localEnvironment.log.error({FAILED:args});
+				
+					global.localEnvironment.log.fatal({FATALY:args}, 'a request failed');
+			
 					if (!program.quiet) {
 						qtools.message('FAILED for file: ' + args.destination + ' from (' + args.source + ')' + args.retryCount);
 
