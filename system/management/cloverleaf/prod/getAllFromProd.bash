@@ -1,6 +1,6 @@
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Albany/schools/010/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Albany/Guardians.txt -a
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Albany/schools/010/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Albany/Schedules.txt -a
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Albany/schools/010/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Albany/Students.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Albany/schools/010/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Albany/Guardians.txt -ah
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Albany/schools/010/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Albany/Schedules.txt -ah
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Albany/schools/010/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Albany/Students.txt -ah
 
 $cloverProd http://api.lightningpipe.org/uff/1.0/districts/Albany/schools/030/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Albany/Guardians.txt -a
 $cloverProd http://api.lightningpipe.org/uff/1.0/districts/Albany/schools/030/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Albany/Schedules.txt -a

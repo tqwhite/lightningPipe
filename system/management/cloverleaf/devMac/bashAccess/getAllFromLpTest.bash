@@ -4,7 +4,7 @@
 cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResults
 
 rm -r 0146
-$cloverleaf  http://demo.api.lightningpipe.org/uff/1.0/districts/0146/schools/0146_010/segments/Guardian#Data?sendFlatSpecs=true 0146/Guardians.txt  -a
+$cloverleaf  http://dxxxemo.api.lightningpipe.org/uff/1.0/districts/0146/schools/0146_010/segments/Guardian#Data?sendFlatSpecs=true 0146/Guardians.txt  -a
 $cloverleaf  http://demo.api.lightningpipe.org/uff/1.0/districts/0146/schools/0146_010/segments/Schedule#Data?sendFlatSpecs=true 0146/Schedules.txt  -a
 $cloverleaf  http://demo.api.lightningpipe.org/uff/1.0/districts/0146/schools/0146_010/segments/Student_Enrolled#Data?sendFlatSpecs=true 0146/Students.txt  -a
 $cloverleaf  http://demo.api.lightningpipe.org/uff/1.0/districts/0146/schools/0146_040/segments/Guardian#Data?sendFlatSpecs=true 0146/Guardians.txt  -a
