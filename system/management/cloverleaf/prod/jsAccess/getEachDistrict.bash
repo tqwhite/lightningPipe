@@ -1,52 +1,66 @@
 #!/bin/bash
 
-export DISTRICTNAME='Albany';
+cloverProd="node /home/lightningpipe/lpProd/services/system/cloverleaf/cloverleaf.js"
+destDirProd="/home/lightningpipe/mountPoint/destDirProd"
 
-rm -r /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/*;
-echo -e "/nStarting $DISTRICTNAME";
+echo -e "\n\n"`date` " Starting Run ============================";
+
+DISTRICTNAME='Albany';
+
+targetPath="/home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME";
+[ -d $targetPath ] && rm -rf $targetPath/*;
+echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
 $cloverProd -fq ~/lpProd/services/system/management/cloverleaf/prod/jsAccess/districtAccessFiles/$DISTRICTNAME.js
-ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
+#ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
 
-export DISTRICTNAME='Clinton-Graceville';
+DISTRICTNAME='Clinton-Graceville';
 
-rm -r /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/*;
-echo -e "/nStarting $DISTRICTNAME";
+targetPath="/home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/";
+[ -d $targetPath ] && rm -rf $targetPath/*;
+echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
 $cloverProd -fq ~/lpProd/services/system/management/cloverleaf/prod/jsAccess/districtAccessFiles/$DISTRICTNAME.js
-ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
+#ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
 
-export DISTRICTNAME='Hancock';
+DISTRICTNAME='Hancock';
 
-rm -r /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/*;
-echo -e "/nStarting $DISTRICTNAME";
+targetPath="/home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/";
+[ -d $targetPath ] && rm -rf $targetPath/*;
+echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
 $cloverProd -fq ~/lpProd/services/system/management/cloverleaf/prod/jsAccess/districtAccessFiles/$DISTRICTNAME.js
-ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
+#ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
 
-export DISTRICTNAME='Morris';
+DISTRICTNAME='Morris';
 
-rm -r /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/*;
-echo -e "/nStarting $DISTRICTNAME";
+targetPath="/home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/";
+[ -d $targetPath ] && rm -rf $targetPath/*;
+echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
 $cloverProd -fq ~/lpProd/services/system/management/cloverleaf/prod/jsAccess/districtAccessFiles/$DISTRICTNAME.js
-ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
+#ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
 
-export DISTRICTNAME='Paynesville';
+DISTRICTNAME='Paynesville';
 
-rm -r /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/*;
-echo -e "/nStarting $DISTRICTNAME";
+targetPath="/home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/";
+[ -d $targetPath ] && rm -rf $targetPath/*;
+echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
 $cloverProd -fq ~/lpProd/services/system/management/cloverleaf/prod/jsAccess/districtAccessFiles/$DISTRICTNAME.js
-ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
+#ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
 
-export DISTRICTNAME='WCE';
+DISTRICTNAME='WCE';
 
-rm -r /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/*;
-echo -e "/nStarting $DISTRICTNAME";
+targetPath="/home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/";
+[ -d $targetPath ] && rm -rf $targetPath/*;
+echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
 $cloverProd -fq ~/lpProd/services/system/management/cloverleaf/prod/jsAccess/districtAccessFiles/$DISTRICTNAME.js
-ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
+#ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
 
-export DISTRICTNAME='Wheaton';
+DISTRICTNAME='Wheaton';
 
-rm -r /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/*;
-echo -e "/nStarting $DISTRICTNAME";
+targetPath="/home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/";
+[ -d $targetPath ] && rm -rf $targetPath/*;
+echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
 $cloverProd -fq ~/lpProd/services/system/management/cloverleaf/prod/jsAccess/districtAccessFiles/$DISTRICTNAME.js
-ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
+#ls -la /home/lightningpipe/mountPoint/destDirProd/$DISTRICTNAME/
 
+
+echo -e `date` " Ending Run ============================\n\n";
 
