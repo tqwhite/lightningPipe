@@ -1,23 +1,36 @@
-$cloverleaf 
-http://localhost:8081/uff/1.0/districts/0487/schools/0487_010/segments/Guardian#Data?sendFlatSpecs=true
-/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResultstmp/0487/GuardianTest.txt 
+cd $clTestDestDir;
+$cloverleaf \
+http://localhost:8081/uff/1.0/districts/0487/schools/0487_010/segments/Guardian#Data?sendFlatSpecs=true \
+/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResultstmp/0487/Guardians.txt \
 -h
 
 
 
-
-$cloverleaf 
-http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Schedule#Data?sendFlatSpecs=true
-/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResultssingle/2769/ScheduleTest.txt 
+cd $clTestDestDir;
+$cloverleaf \
+http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Schedule#Data?sendFlatSpecs=true \
+/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResultssingle/2769/Schedules.txt \
 -h
 
 
 
+cd $clTestDestDir;
+export studentTmp="Students.txt";
+rm $studentTmp;
+$cloverleaf \
+http://localhost:8081/uff/1.0/districts/Clinton-Graceville/schools/2888_001/segments/Student_Enrolled#Data?sendFlatSpecs=true \
+$studentTmp \
+-ha
 
-$cloverleaf 
-http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Student_Enrolled#Data?sendFlatSpecs=true
-Student_EnrolledTest.txt 
--h
+$cloverleaf \
+http://localhost:8081/uff/1.0/districts/Clinton-Graceville/schools/2888_003/segments/Student_Enrolled#Data?sendFlatSpecs=true \
+$studentTmp \
+-h -a
+
+$cloverleaf \
+http://localhost:8081/uff/1.0/districts/Clinton-Graceville/schools/2888_006/segments/Student_Enrolled#Data?sendFlatSpecs=true \
+$studentTmp \
+-h -a
 
 
 
