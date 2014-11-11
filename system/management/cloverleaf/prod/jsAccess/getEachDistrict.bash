@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 districtNames[0]='Albany';
@@ -10,6 +10,14 @@ districtNames[5]='WCE';
 districtNames[6]='Wheaton';
 
 
+districtNames[7]='Barnesville';
+districtNames[8]='Hawley';
+districtNames[9]='Upsala';
+districtNames[10]='Badger';
+districtNames[11]='Browns Valley';
+districtNames[12]='Ulen-Hitterdal';
+
+
 shopt -s extglob
 
 cloverProd="node /home/lightningpipe/lpProd/services/system/cloverleaf/cloverleaf.js"
@@ -18,12 +26,18 @@ TARGETDIR="/home/lightningpipe/mountPoint/destDirProd"
 echo -e "\n\n"`date` " Starting Run ============================";
 
 
+# for DISTRICTNAME in ${districtNames[*]}; do
+# 	targetPath="$TARGETDIR/$DISTRICTNAME/";
+# 	[ -d $targetPath ] && cd $targetPath && rm !(Staff.txt)
+# 	echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
+# 	$cloverProd -fq ~/lpProd/services/system/management/cloverleaf/prod/jsAccess/districtAccessFiles/$DISTRICTNAME.js
+# done
+
+
+
 for DISTRICTNAME in ${districtNames[*]}; do
 	targetPath="$TARGETDIR/$DISTRICTNAME/";
-	[ -d $targetPath ] && cd $targetPath && rm !(Staff.txt)
-	echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
-	$cloverProd -fq ~/lpProd/services/system/management/cloverleaf/prod/jsAccess/districtAccessFiles/$DISTRICTNAME.js
+	ls -la $targetPath
 done
-        
         
 echo -e `date` " Ending Run ============================\n\n";
