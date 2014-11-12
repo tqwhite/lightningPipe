@@ -1,13 +1,13 @@
 #!/bin/bash
 
 
-# districtNames[0]='Albany';
-# districtNames[1]='Clinton-Graceville';
-# districtNames[2]='Hancock';
-# districtNames[3]='Morris';
-# districtNames[4]='Paynesville';
-# districtNames[5]='WCE';
-# districtNames[6]='Wheaton';
+districtNames[0]='Albany';
+districtNames[1]='Clinton-Graceville';
+districtNames[2]='Hancock';
+districtNames[3]='Morris';
+districtNames[4]='Paynesville';
+districtNames[5]='WCE';
+districtNames[6]='Wheaton';
 
 
 districtNames[7]='Barnesville';
