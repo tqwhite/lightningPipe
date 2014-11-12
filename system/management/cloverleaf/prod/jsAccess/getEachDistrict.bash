@@ -15,7 +15,7 @@ districtNames[8]='Hawley';
 districtNames[9]='Upsala';
 districtNames[10]='Badger';
 districtNames[11]='Browns Valley';
-districtNames[12]='Ulen-Hitterdal';
+districtNames[12]='Ulen Hitterdal';
 
 
 shopt -s extglob
