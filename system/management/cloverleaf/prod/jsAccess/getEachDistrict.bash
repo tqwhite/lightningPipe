@@ -31,8 +31,9 @@ for DISTRICTNAME in ${districtNames[*]}; do
 
  	targetPath="$TARGETDIR/$DISTRICTNAME/";
 
-# echo -e "\n\nJSON FILE: $scriptDir/$DISTRICTNAME.js"; ls -la "$scriptDir/$DISTRICTNAME.js";
-# echo -e "\n\nDESTDIR: $targetPath"; ls -la $targetPath;
+# 	echo -e "\n\nJSON FILE: $scriptDir/$DISTRICTNAME.js"; ls -la "$scriptDir/$DISTRICTNAME.js";
+# 	echo -e "\n\nDESTDIR: $targetPath"; ls -la $targetPath;
+# 	echo -e "\n\$cloverProd -fq $scriptDir/$DISTRICTNAME.js -v";
 
 	[ -d $targetPath ] && cd $targetPath && rm !(Staff.txt)
 	echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
@@ -44,6 +45,7 @@ done
 
 for DISTRICTNAME in ${districtNames[*]}; do
 	targetPath="$TARGETDIR/$DISTRICTNAME/";
+	echo -e "\n\n$targetPath\n";
 	ls -la $targetPath
 done
         
