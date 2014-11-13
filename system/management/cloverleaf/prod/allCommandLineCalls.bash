@@ -84,9 +84,9 @@ $cloverProd http://api.lightningpipe.org/uff/1.0/districts/Wheaton/schools/002/s
 
 
 
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Ulen%20Hitterdahl/schools/002	/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Ulen%20Hitterdahl/Guardians.txt -a
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Ulen%20Hitterdahl/schools/002	/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Ulen%20Hitterdahl/Schedules.txt -a
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Ulen%20Hitterdahl/schools/002	/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Ulen%20Hitterdahl/Students.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Ulen%20Hitterdahl/schools/002	/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Ulen-Hitterdahl/Guardians.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Ulen%20Hitterdahl/schools/002	/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Ulen-Hitterdahl/Schedules.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Ulen%20Hitterdahl/schools/002	/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Ulen-Hitterdahl/Students.txt -a
 
 
 $cloverProd http://api.lightningpipe.org/uff/1.0/districts/Upsala/schools/010	/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Upsala/Guardians.txt -a
@@ -114,19 +114,19 @@ $cloverProd http://api.lightningpipe.org/uff/1.0/districts/Hawley/schools/099	/s
 $cloverProd http://api.lightningpipe.org/uff/1.0/districts/Hawley/schools/099	/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Hawley/Students.txt -a
 
 
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/010	/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Browns%20Valley/Guardians.txt -a
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/010	/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Browns%20Valley/Schedules.txt -a
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/010	/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Browns%20Valley/Students.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/010	/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Guardians.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/010	/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Schedules.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/010	/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Students.txt -a
 
 
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/020	/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Browns%20Valley/Guardians.txt -a
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/020	/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Browns%20Valley/Schedules.txt -a
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/020	/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Browns%20Valley/Students.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/020	/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Guardians.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/020	/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Schedules.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/020	/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Students.txt -a
 
 
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/999	/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Browns%20Valley/Guardians.txt -a
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/999	/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Browns%20Valley/Schedules.txt -a
-$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/999	/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Browns%20Valley/Students.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/999	/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Guardians.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/999	/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Schedules.txt -a
+$cloverProd http://api.lightningpipe.org/uff/1.0/districts/Browns%20Valley/schools/999	/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Students.txt -a
 
 
 $cloverProd http://api.lightningpipe.org/uff/1.0/districts/Barnesville/schools/010	/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Barnesville/Guardians.txt -a

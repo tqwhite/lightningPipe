@@ -120,7 +120,10 @@ $cloverleaf http://127.0.0.1:8081/uff/1.0/districts/Hawley/schools/099/segments/
 
 $cloverleaf http://127.0.0.1:8081/uff/1.0/districts/Browns-Valley/schools/010/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Guardians.txt -ah
 $cloverleaf http://127.0.0.1:8081/uff/1.0/districts/Browns-Valley/schools/010/segments/Schedule#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Schedules.txt -ah
+
 $cloverleaf http://127.0.0.1:8081/uff/1.0/districts/Browns-Valley/schools/0801_010/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Students.txt -ah
+$cloverleaf http://127.0.0.1:8081/uff/1.0/districts/Browns-Valley/schools/0801_020/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Students.txt -ah
+$cloverleaf http://127.0.0.1:8081/uff/1.0/districts/Browns-Valley/schools/0801_999/segments/Student_Enrolled#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Students.txt -ah
 
 
 $cloverleaf http://127.0.0.1:8081/uff/1.0/districts/Browns-Valley/schools/020/segments/Guardian#Data?sendFlatSpecs=true $destDirProd/Browns-Valley/Guardians.txt -ah
