@@ -76,7 +76,7 @@ var client;
 
 
 router.use(function(req, res, next) {
-
+console.log(req.headers);
 	client = require('client');
 	client = new client({
 		req: req

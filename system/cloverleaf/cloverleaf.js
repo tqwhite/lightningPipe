@@ -72,11 +72,7 @@ var moduleFunction = function(args) {
 	var config = require('../config/cloverleaf.js');
 	config = new config();
 
-	if (program.forReal) {
-		config = config.specs('forReal');
-	} else {
-		config = config.specs('test');
-	}
+	var runtimeParameters = config.runtimeParameters;
 
 	switch ('api') {
 		case 'api':
@@ -178,12 +174,15 @@ var moduleFunction = function(args) {
 			}
 
 			if (config.notifier){
-			config.notifier.transmit(function(err) {
+				config.notifier.transmit(function(notificationError) {
 			  if (!program.quiet) {
-				console.log(err);
+				console.log(notificationError);
 			  }
 			  finishProcess();
-			}, function() {
+			}, function(notificationInfo) {
+			  if (!program.quiet) {
+				console.log(notificationInfo.response);
+			  }
 			  finishProcess();
 			}
 			);
@@ -267,7 +266,7 @@ var moduleFunction = function(args) {
 			callback: notificationCallback,
 			switches: args.switches,
 			config: {
-				lineEnding: config.lineEnding
+				lineEnding: runtimeParameters.lineEnding
 			}
 		});
 
@@ -345,7 +344,7 @@ var moduleFunction = function(args) {
 
 	this.on('executeNext', executionHandler);
 
-	for (var i = 0, len = config.concurrentLightningPipeCalls; i < len; i++) {
+	for (var i = 0, len = runtimeParameters.concurrentLightningPipeCalls; i < len; i++) {
 		self.emit('executeNext');
 	}
 

@@ -12,7 +12,7 @@ alias lpdistrict="clear; echo -e 'curl http://localhost:8081/uff/1.0/districts\n
 
 alias lptest="\
 echo -e '\n\n\n\n=============================================================\n'; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/Hawley/schools/020/segments/Student_Enrolled\n'; curl http://localhost:8081/uff/1.0/districts/Hawley/schools/020/segments/Student_Enrolled; \
+echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base\n'; curl http://localhost:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base; \
 ";
 
 

@@ -1,5 +1,3 @@
 [
-{"source":"http://lightningpipe.org:8001/uff/1.0/districts/HawleyMinus/schools/010/segments/Guardian?sendFlatSpecs=true","destination":"/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResults/HawleyMinus/Guardians.txt", "path":"Data", "switches":{"header":false, "append":true}},
-{"source":"http://lightningpipe.org:8001/uff/1.0/districts/HawleyMinus/schools/010/segments/Schedule?sendFlatSpecs=true","destination":"/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResults/HawleyMinus/Schedules.txt", "path":"Data", "switches":{"header":false, "append":true}},
-{"source":"http://lightningpipe.org:8001/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Enrolled?sendFlatSpecs=true","destination":"/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResults/HawleyMinus/Students.txt", "path":"Data", "switches":{"header":false, "append":true}}
+{"source":"http://localhost:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base?sendFlatSpecs=true", "path":"Data.Student_Base", "destination":"/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResults/HawleyMinus/StudentBase.txt", "switches":{"header":false, "append":true}}
 ]
