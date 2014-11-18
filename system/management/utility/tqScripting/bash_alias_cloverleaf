@@ -1,4 +1,5 @@
-echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC"
+echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC (editlpscripts)"
+
 
 alias noodle="cd /Users/tqwhite/Documents/webdev/nodeProjects/node.local/noodleSpot; pwd;"
 alias lightning="cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe; pwd;"
@@ -7,32 +8,28 @@ alias lpping="clear; echo -e 'curl http://localhost:8081/ping\n';  curl http://l
 
 
 alias lpdistrict="clear; echo -e 'curl http://localhost:8081/uff/1.0/districts\n';  curl http://localhost:8081/uff/1.0/districts";
-alias lpschool="clear; echo -e 'curl http://localhost:8081/uff/1.0/districts/0150/schools\n';  curl http://localhost:8081/uff/1.0/districts/0150/schools";
-alias lpdata="clear; echo -e 'curl http://localhost:8081/uff/1.0/districts/0150/schools/20\n';  curl http://localhost:8081/uff/1.0/districts/0150/schools/030";
 
-alias lpdemo="clear; echo -e 'curl http://test.api.lightningpipe.org/uff/1.0/districts/\n';  curl http://test.api.lightningpipe.org/uff/1.0/districts/";
 
 alias lptest="\
 echo -e '\n\n\n\n=============================================================\n'; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/0150/schools/20/segments/StudentBaseTest2\n'; curl http://localhost:8081/uff/1.0/districts/0150/schools/20/segments/StudentBaseTest2; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/0150\n'; curl http://localhost:8081/uff/1.0/districts/0150; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/0150/schools/20/segments\n'; curl http://localhost:8081/uff/1.0/districts/0150/schools/20/segments; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/0150/schools/20/segmentss\n'; curl http://localhost:8081/uff/1.0/districts/0150/schools/20/segmentss; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/0150/schools/20\n'; curl http://localhost:8081/uff/1.0/districts/0150/schools/20; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/0150/schools\n'; curl http://localhost:8081/uff/1.0/districts/0150/schools; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/0150\n'; curl http://localhost:8081/uff/1.0/districts/0150; 
+echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/Hawley/schools/020/segments/Student_Enrolled\n'; curl http://localhost:8081/uff/1.0/districts/Hawley/schools/020/segments/Student_Enrolled; \
 ";
-alias lpsynthtest="\
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/0150/schools/20/segments/Guardian\n'; curl http://localhost:8081/uff/1.0/districts/0150/schools/20/segments/Guardian; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/0150/schools/20/segments/Schedule\n'; curl http://localhost:8081/uff/1.0/districts/0150/schools/20/segments/Schedule; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/0150/schools/20/segments/Student_Enrolled\n'; curl http://localhost:8081/uff/1.0/districts/0150/schools/20/segments/Student_Enrolled; \
-"
 
 
 export cloverleaf="node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js"
 export clTestDestDir="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResults"
+export clTestScriptsDir="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/cloverleaf/devMac/testScripts"
+
+alias cltest="\
+";
 
 alias clTestDestDir="cd $clTestDestDir"
+
+
+alias cltest="$clTestScriptsDir/clCommandLine.bash"
+alias cljsontest="$clTestScriptsDir/clExecJson.bash"
+
+
 
 alias tqUtility="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/utility/tqScripting/tqUtility"
 
@@ -40,7 +37,8 @@ alias tqUtility="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/manageme
 
 alias clear8081='lsof -i tcp:8081; echo -e "\n\nnow do: kill -9 PID;\n";'
 
-alias bunyanLog="cat /Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/lightningClover.log | bunyan"
+alias viewTestLog="tail /Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/lightningClover.log | bunyan"
+alias clearTestLog="rm /Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/lightningClover.log | bunyan"
 
 alias editlpscripts="edit /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/utility/tqScripting/bash_alias_cloverleaf"
 

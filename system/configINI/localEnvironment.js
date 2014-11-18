@@ -18,26 +18,20 @@ var moduleFunction = function(args) {
 
 		//INITIALIZE OBJECT ====================================
 
-	this.args = args;
 
-
-
+//server configuration ==============
 
 	this.sendMetaData = false;
 	this.testServer = false;
 
-
 	//global.localEnvironment.testServer
 
-
+//file system configuration ==============
 	
-	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/';
-	
-	this.temporaryClientDirectory='/lightningpipeTest/';
-	
-
-	
+	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/';
 	this.logFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/';
+
+//logging ==============
 
 	var logger = require('bunyan');
 	this.log = new logger({name: 'development' ,
@@ -52,9 +46,10 @@ var moduleFunction = function(args) {
 		}
 	], src:true});
 
+//uri Setup ==============
+
 	this.scheme = 'http';
 	this.domain = 'localhost';
-
 
 	this.updateBaseUri = function(apiName, apiVersion, port) {
 		if (port) {
@@ -64,11 +59,12 @@ var moduleFunction = function(args) {
 	}
 
 
+
+	//BUILD RETURN OBJECT ====================================
+
 	this.get = function(name) {
 		return this[name];
 	}
-
-	//BUILD RETURN OBJECT ====================================
 
 	this.forceEvent = forceEvent;
 	return this;

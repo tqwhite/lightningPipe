@@ -117,6 +117,7 @@ var moduleFunction = function(args) {
 		} else if (status) {
 
 			var errorFileName = global.localEnvironment.logFileDirectory+'error.txt';
+			
 			if (!self.errorDest) {
 				self.errorDest = new destinationGenerator({
 					fileName: errorFileName,
@@ -155,17 +156,43 @@ var moduleFunction = function(args) {
 		if (typeof(self.failureList)!='undefined'){
 		
 			global.localEnvironment.log.error({errorExit:getFailureInfo()});
+			
+			config.notifier && config.notifier.addInfo("Cloverleaf DID NOT FINISH SUCCESSFULLY. THERE WERE ERRORS.");
+			config.notifier && config.notifier.addInfo(getFailureInfo());
+			config.notifier && config.notifier.setErrorMode();
+			
 			qtools.errorExit(getFailureInfo());
 		}
 		else{
 
 			global.localEnvironment.log.info({successExit:'Cloverleaf finished successfully'});
-			if (!program.quiet) {
-				qtools.successExit('Process finished successfully');
+			config.notifier && config.notifier.addInfo("Cloverleaf finished successfully");
+
+
+			var finishProcess = function() {
+			  if (!program.quiet) {
+				qtools.successExit('Cloverleaf finished successfully');
+			  } else {
+				qtools.successExit();
+			  }
+			}
+
+			if (config.notifier){
+			config.notifier.transmit(function(err) {
+			  if (!program.quiet) {
+				console.log(err);
+			  }
+			  finishProcess();
+			}, function() {
+			  finishProcess();
+			}
+			);
 			}
 			else{
-				qtools.successExit();
+			  finishProcess();
 			}
+
+
 			
 		}
 	}
@@ -189,11 +216,13 @@ var moduleFunction = function(args) {
 					}
 				} else {
 				
-					global.localEnvironment.log.fatal({FATALY:args}, 'a request failed');
+					global.localEnvironment.log.fatal({FATAL:args}, 'a request failed');
 			
 					if (!program.quiet) {
 						qtools.message('FAILED for file: ' + args.destination + ' from (' + args.source + ')' + args.retryCount);
-
+						
+						config.notifier && config.notifier.addInfo("ERROR NOT UPDATED: "+args.destination);
+						
 						documentFailure(args);
 
 					}
@@ -204,7 +233,10 @@ var moduleFunction = function(args) {
 			} else {
 				logOutput(err, args.source, args.destination);
 				
-				global.localEnvironment.log.info({UPDATEDFILE:args});
+				global.localEnvironment.log.debug({UPDATEDFILE:args});
+				global.localEnvironment.log.info({UPDATEDFILE:{file:args.destination, url:args.source}});
+				config.notifier && config.notifier.addInfo("Updated: "+args.destination);
+
 					
 				if (!program.quiet) {
 					qtools.message('updated file: ' + args.destination + ' from (' + args.source + ')');
@@ -293,7 +325,7 @@ var moduleFunction = function(args) {
 
 		if (next) {
 			
-			global.localEnvironment.log.info({executionHandler:next})
+			global.localEnvironment.log.debug({executionHandler:next})
 	
 			addToOutstandingList(next);
 			executeAccess(next);

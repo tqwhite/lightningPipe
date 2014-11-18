@@ -44,9 +44,12 @@ var moduleFunction = function(args) {
 this.specs=function(){
 			return {
 			lineEnding: os.EOL //optional, default is linux
+			concurrentLightningPipeCalls: 3
 			};
 		
 		}
+
+
 
 	//INITIALIZATION ====================================
 

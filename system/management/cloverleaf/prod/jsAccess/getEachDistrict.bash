@@ -12,7 +12,7 @@ districtNames[6]='Wheaton';
 
 districtNames[7]='Barnesville';
 districtNames[8]='Hawley';
-districtNames[9]='Upsala';
+districtNames[9]='Upsala';git
 #districtNames[10]='Badger';
 districtNames[11]='Browns-Valley';
 districtNames[12]='Ulen-Hitterdahl';

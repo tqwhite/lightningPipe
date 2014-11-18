@@ -152,7 +152,7 @@ router.get(new RegExp('/' + apiDetails.name + '/' + apiDetails.version + '/(.*)'
 		parameters: req.query
 	};
 	
-	global.localEnvironment.log.info({executionPackage:executionPackage})
+	global.localEnvironment.log.debug({executionPackage:executionPackage})
 
 
 	client.setApi(apiDefinition);
