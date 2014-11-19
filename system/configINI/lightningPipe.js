@@ -20,15 +20,12 @@ var moduleFunction=function(args){
 
 		this.args=args;
 		
-		this.loginInfo=function(){
-			return{	
-				baseUrl: 'http://expressbook.local',
-				userId: 'coordinator',
-				password: 'test'
-			};
+
 		
-		}
-			
+		this.port='8081';
+		
+		this.clientProfileSource=global.localEnvironment.clientProfileSource;
+		
 		//BUILD RETURN OBJECT ====================================
 
 		this.forceEvent = forceEvent;

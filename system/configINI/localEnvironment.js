@@ -18,38 +18,39 @@ var moduleFunction = function(args) {
 
 		//INITIALIZE OBJECT ====================================
 
+	this.args = args;
 
-//server configuration ==============
+
+
 
 	this.sendMetaData = false;
 	this.testServer = false;
 
+
 	//global.localEnvironment.testServer
 
-//file system configuration ==============
+	this.authParms={
+		userName: 'SFTP',
+		password: 'hello'
+	}
+
 	
-	this.dataFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/dataFiles/';
-	this.logFileDirectory='/Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/';
+	this.dataFileDirectory = '/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/';
 
-//logging ==============
+	this.logFileDirectory = '/Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/';
 
-	var logger = require('bunyan');
-	this.log = new logger({name: 'development' ,
-	streams: [
-// 		{
-// 			stream: process.stdout,
-// 			level: 'debug'
-// 		},
-		{
-			path: this.logFileDirectory + 'lightningClover.log',
-			level: 'trace'
-		}
-	], src:true});
+	this.clientProfileSource = {
+		type:'file',
+		filePath:'/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/config/clientProfiles/'
+		};
 
-//uri Setup ==============
 
 	this.scheme = 'http';
 	this.domain = 'localhost';
+	
+	this.credentials={};
+	
+
 
 	this.updateBaseUri = function(apiName, apiVersion, port) {
 		if (port) {
@@ -60,11 +61,53 @@ var moduleFunction = function(args) {
 
 
 
-	//BUILD RETURN OBJECT ====================================
+
+//logging ==============
+
+
+
+	var mailOptions = {
+		from: 'TQ White II <tq@tqwhite.com>',
+		to: 'tq@justkidding.com',
+	}
+	
+	var EmailStream = require('bunyan-emailstream').EmailStream
+	var emailStream = new EmailStream(mailOptions, {});
+	
+	var logger = require('bunyan');
+	
+	this.log = new logger({
+		name: args.appName,
+		streams: [
+			// 		{
+			// 			stream: process.stdout,
+			// 			level: 'debug'
+			// 		},
+			{
+				path: this.logFileDirectory + 'lightningClover.log',
+				level: 'trace'
+			}
+// 			,
+// 			{
+// 				type: 'raw', // You should use EmailStream with 'raw' type!
+// 				stream: emailStream,
+// 				level: 'fatal',
+// 			}
+		],
+		src: false
+	});
+
+
+//this.log.fatal({FATALTEST:'goodbye'}, args.appName+' Test Email from Bunyan logging');
+
+	//==================================================	
+
 
 	this.get = function(name) {
 		return this[name];
 	}
+
+	//BUILD RETURN OBJECT ====================================
 
 	this.forceEvent = forceEvent;
 	return this;
@@ -74,4 +117,5 @@ var moduleFunction = function(args) {
 
 util.inherits(moduleFunction, events.EventEmitter);
 module.exports = moduleFunction;
+
 

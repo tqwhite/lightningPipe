@@ -38,7 +38,6 @@ curl http://localhost:8081/uff/1.0/districts/
 var program = require('commander');
 program.version('tqTest')
 	//	.option('-y, --background', 'spawn to background')
-	.option('-f, --forReal', 'access database, not test data')
 	.option('-f, --test', 'access test data, not database, default')
 	.parse(process.argv);
 
@@ -50,19 +49,14 @@ if (program.background) {
 
 var localEnvironment = require('../config/localEnvironment.js');
 global.localEnvironment = new localEnvironment({appName:'lightningpipe'});
+
 global.localEnvironment.log.info({startup:"STARTING LightningPipe===================="});
 
-var config = require('../config/requestServer.js');
+var config = require('../config/lightningPipe.js');
 config = new config();
 
 var dataSource, listenerPort;
-if (program.forReal) {
-	//dataSource = require(__dirname + '/specs/testData.js');
-	config = config.specs('forReal');
-} else {
-	//	dataSource = require(__dirname + '/specs/testData.js');
-	config = config.specs('test');
-}
+
 
 
 var router = express.Router();
@@ -76,23 +70,31 @@ var client;
 
 
 router.use(function(req, res, next) {
-console.log(req.headers);
+
 	client = require('client');
 	client = new client({
+		clientProfileSource:config.clientProfileSource,
 		req: req
 	});
 
 
 
 	client.on('validAuth', next);
-	client.on('badAuth', function() {
+	
+	client.on('badAuth', function(info) {
 		console.log('invalid client');
-		res.json(client.errorResult());
+		
+var outputGenerator = require("sender");
+	var outputObj = new outputGenerator();
+	var sender = outputObj.generateSender(res, req);
+		sender({result:'bad login parameters'});
+	
+//		res.json(client.errorResult());
 	});
 
 
 
-	client.auth(req);
+	client.auth(req.headers);
 
 });
 

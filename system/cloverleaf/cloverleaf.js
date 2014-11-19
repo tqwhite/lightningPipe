@@ -72,6 +72,7 @@ var moduleFunction = function(args) {
 	var config = require('../config/cloverleaf.js');
 	config = new config();
 
+
 	var runtimeParameters = config.runtimeParameters;
 
 	switch ('api') {
@@ -208,17 +209,16 @@ var moduleFunction = function(args) {
 				if (args.retryCount > 0) {
 					self.requestQueue.push(args);
 					self.emit('executeNext');
-					global.localEnvironment.log.warn({REQUEUING:args});
+					global.localEnvironment.log.warn({REQUEUING:{args:args, err:err}});
 					if (!program.quiet) {
-					
-						qtools.message('REQUEUING for file: ' + args.destination + ' from (' + args.source + ')' + args.retryCount);
+						qtools.message('REQUEUING for file: ' + args.destination + ' from (' + args.source + ') ' + args.retryCount + ' (reason : '+err.message+')');
 					}
 				} else {
 				
-					global.localEnvironment.log.fatal({FATAL:args}, 'a request failed');
+					global.localEnvironment.log.fatal({FATAL:{args:args, err:err}}, 'a request failed');
 			
 					if (!program.quiet) {
-						qtools.message('FAILED for file: ' + args.destination + ' from (' + args.source + ')' + args.retryCount);
+						qtools.message('FAILED for file: ' + args.destination + ' from (' + args.source + ') ' + args.retryCount + '(reason : '+err.message+')');
 						
 						config.notifier && config.notifier.addInfo("ERROR NOT UPDATED: "+args.destination);
 						
@@ -254,8 +254,10 @@ var moduleFunction = function(args) {
 			append: args.switches.append
 		});
 
+
 		var input = new inputGenerator({
-			url: args.source
+			url: args.source,
+			authParms:config.authParms
 		});
 
 

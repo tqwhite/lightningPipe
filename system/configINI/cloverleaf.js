@@ -41,14 +41,11 @@ var moduleFunction = function(args) {
 
   //METHODS AND PROPERTIES ====================================
 
-  this.specs = function() {
-    return {
-      lineEnding: '\r\n', //optional, default is linux
-      concurrentLightningPipeCalls: 3,
-      notifier: self.notifier //notifier is optional
-    };
 
-  }
+  this.runtimeParameters = {
+      lineEnding: '\r\n', //optional, default is linux
+      concurrentLightningPipeCalls: 3
+    };
 
 this.notifier=require('cloverleafNotifier');
 this.notifier=new this.notifier({
@@ -58,10 +55,11 @@ this.notifier=new this.notifier({
       port: '587',
       auth: {
         user: 'tq@justkidding.com',
-        pass: 'PASSWORDGOESHERE'
+        pass: 'PASSWORDGOESHERE
       }
     },
-    fromEmailAddress:'Cloverleaf Server<tq@erdc.k12.mn.us.com>'
+    fromEmailAddress:'Cloverleaf Server<tq@erdc.k12.mn.us.com>',
+    suppressNotification:true
 	});
 
 
@@ -69,6 +67,10 @@ this.notifier=new this.notifier({
   //INITIALIZATION ====================================
 
 
+	this.authParms={
+		userName: 'jmcPlans1',
+		password: 'PASSWORD'
+	}
 
   return this;
 };
