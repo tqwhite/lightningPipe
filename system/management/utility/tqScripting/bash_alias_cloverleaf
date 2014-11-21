@@ -28,7 +28,7 @@ alias clTestDestDir="cd $clTestDestDir"
 
 alias cltest="$clTestScriptsDir/clCommandLine.bash"
 alias cljsontest="$clTestScriptsDir/clExecJson.bash"
-
+alias curltest="curl -i -H "username:jmcPlans1" -H "password:123" http://127.0.0.1:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base"
 
 
 alias tqUtility="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/utility/tqScripting/tqUtility"

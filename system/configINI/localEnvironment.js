@@ -24,10 +24,6 @@ var moduleFunction = function(args) {
 
 
 	this.sendMetaData = false;
-	this.testServer = false;
-
-
-	//global.localEnvironment.testServer
 
 	this.authParms={
 		userName: 'SFTP',
