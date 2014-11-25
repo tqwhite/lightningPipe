@@ -21,8 +21,8 @@ districtNames[12]='Ulen-Hitterdahl';
 shopt -s extglob
 
 cloverProd="node /home/lightningpipe/lpDemo/services/system/cloverleaf/cloverleaf.js"
-TARGETDIR="/home/lightningpipe/mountPoint/destDirProd"
-scriptDir=~/lpDemo/services/system/management/cloverleaf/prod/jsAccess/districtAccessFiles;
+TARGETDIR="/home/lightningpipe/mountPoint/destDirDemo"
+scriptDir=~/lpDemo/services/system/management/cloverleaf/demo/jsAccess/districtAccessFiles;
 
 echo -e "\n\n"`date` " Starting Run ============================";
 
@@ -37,7 +37,7 @@ for DISTRICTNAME in ${districtNames[*]}; do
 
 	[ -d $targetPath ] && cd $targetPath && rm !(Staff.txt)
 	echo -e `date` " Executing $DISTRICTNAME ($targetPath)";
-	$cloverProd -fq $scriptDir/$DISTRICTNAME.js
+	$cloverDemo -fq $scriptDir/$DISTRICTNAME.js
 
 done
 
