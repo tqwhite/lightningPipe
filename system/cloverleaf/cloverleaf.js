@@ -254,7 +254,7 @@ var moduleFunction = function(args) {
 
 		var input = new inputGenerator({
 			url: args.source,
-			authParms:config.authParms
+			authParms:config.authParms //from config/cloverleaf.js
 		});
 
 
