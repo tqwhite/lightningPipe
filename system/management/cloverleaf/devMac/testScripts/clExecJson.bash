@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "clearing HawleyMinus/StudentBase.txt";
-rm $clTestDestDir/HawleyMinus/StudentBase.txt;
+echo "clearing HawleyMinus/StudentEnrolled.txt";
+rm $clTestDestDir/HawleyMinus/StudentEnrolled.txt;
 
 echo "execute json";
 $cloverleaf -f /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/cloverleaf/devMac/testScripts/testJson.js

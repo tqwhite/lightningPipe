@@ -68,6 +68,7 @@ var moduleFunction = function(args) {
 
 	var config = require('../config/cloverleaf.js');
 	config = new config();
+	global.localEnvironment.log.info({accessingAsUser:config.authParms.userName});
 
 
 	var runtimeParameters = config.runtimeParameters;
@@ -215,7 +216,7 @@ var moduleFunction = function(args) {
 					global.localEnvironment.log.fatal({FATAL:{args:args, err:err}}, 'a request failed');
 			
 					if (!program.quiet) {
-						qtools.message('FAILED for file: ' + args.destination + ' from (' + args.source + ') ' + args.retryCount + '(reason : '+err.message+')');
+						qtools.message('FAILED for file:    ' + args.destination + '    from    ' + args.source + '    ' + args.retryCount + '    as user    '+config.authParms.userName + '   (reason : '+err.message+')');
 						
 						config.notifier && config.notifier.addInfo("ERROR NOT UPDATED: "+args.destination);
 						
@@ -233,9 +234,9 @@ var moduleFunction = function(args) {
 				global.localEnvironment.log.info({UPDATEDFILE:{file:args.destination, url:args.source}});
 				config.notifier && config.notifier.addInfo("Updated: "+args.destination);
 
-					
+
 				if (!program.quiet) {
-					qtools.message('updated file: ' + args.destination + ' from (' + args.source + ')');
+					qtools.message('updated file:    ' + args.destination + '    from ' + args.source + '    as user    '+config.authParms.userName);
 				}
 			}
 
@@ -256,6 +257,7 @@ var moduleFunction = function(args) {
 			url: args.source,
 			authParms:config.authParms //from config/cloverleaf.js
 		});
+
 
 
 		var conversion = new conversionGenerator({

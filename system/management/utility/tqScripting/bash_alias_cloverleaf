@@ -4,15 +4,15 @@ echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC (editlpscripts)"
 alias noodle="cd /Users/tqwhite/Documents/webdev/nodeProjects/node.local/noodleSpot; pwd;"
 alias lightning="cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe; pwd;"
 alias lpserve="clear; nodemon -w /Volumes/qubuntuFileServer/cmerdc/lightningPipe /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/responder/server.js";
-alias lpping="clear; echo -e 'curl http://localhost:8081/ping\n';  curl http://localhost:8081/ping";
+alias lpping="clear; echo -e 'curl http://127.0.0.1:8081/ping\n';  curl http://127.0.0.1:8081/ping";
 
 
-alias lpdistrict="clear; echo -e 'curl http://localhost:8081/uff/1.0/districts\n';  curl http://localhost:8081/uff/1.0/districts";
+alias lpdistrict="clear; echo -e 'curl http://127.0.0.1:8081/uff/1.0/districts\n';  curl http://127.0.0.1:8081/uff/1.0/districts";
 
 
 alias lptest="\
 echo -e '\n\n\n\n=============================================================\n'; \
-echo -e '\n\n\ncurl http://localhost:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base\n'; curl http://localhost:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base; \
+echo -e '\n\n\ncurl -i -H "username:jmcPlans1" -H "password:123"  http://127.0.0.1:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base\n'; curl http://127.0.0.1:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base; \
 ";
 
 
@@ -29,7 +29,8 @@ alias clTestDestDir="cd $clTestDestDir"
 alias cltest="$clTestScriptsDir/clCommandLine.bash"
 alias cljsontest="$clTestScriptsDir/clExecJson.bash"
 alias curltest="curl -i -H "username:jmcPlans1" -H "password:123" http://127.0.0.1:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base"
-
+alias curlj="curl -i -H "username:jmcPlans1" -H "password:123" ";
+alias curlm="curl -i -H "username:mssql" -H "password:123" "
 
 alias tqUtility="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/utility/tqScripting/tqUtility"
 

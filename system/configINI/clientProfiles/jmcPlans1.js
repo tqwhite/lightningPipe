@@ -9,7 +9,7 @@ module.exports = {
 					type: 'file',
 					location: global.localEnvironment.get('dataFileDirectory') + '/jmcProdSandbox/',
 					fileExtension: 'txt',
-					definitionName: 'passThroughDefinition', //refers to a file in dataDefinitions
+					definitionName: 'studentPlansInitial', //refers to a file in dataDefinitions
 					schemaSourceNameMapping: {
 						Course: '',
 						User_Base: 'JMC_User_File',

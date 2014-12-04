@@ -53,6 +53,9 @@ router.use(function(req, res, next) {
 		//		res.json(client.errorResult());
 	});
 
+qtools.dump({'===== req.headers =====':req.headers});
+
+
 	client.auth(req.headers);
 
 });
@@ -71,6 +74,7 @@ router.get(new RegExp('/' + apiName + '/' + apiVersion + '/(.*)'), function(req,
 		name: apiName,
 		version: apiVersion
 	});
+	global.localEnvironment.updateBaseUri(apiDefinition, req);
 
 	var outputObj = new outputGenerator();
 	var sender = outputObj.generateSender(res, req); //returns a function with res, req closed into it

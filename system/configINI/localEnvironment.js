@@ -39,20 +39,15 @@ var moduleFunction = function(args) {
 		type:'file',
 		filePath:'/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/config/clientProfiles/'
 		};
-
-
-	this.scheme = 'http';
-	this.domain = 'localhost';
 	
-	this.credentials={};
-	
-
-
-	this.updateBaseUri = function(apiName, apiVersion, port) {
-		if (port) {
-			port = ':' + port;
+	this.updateBaseUri = function(apiDefinition, req) {
+		if (typeof(req.socket.localPort)!='undefined') {
+			var port = ':' + port;
 		}
-		this.baseUri = this.scheme + '://' + this.domain + port + '/' + apiName + '/' + apiVersion + '/';
+		else{
+			var port='';
+		}
+		this.baseUri = req.protocol + '://' + req.host + port + '/' + apiDefinition.name + '/' + apiDefinition.version + '/';
 	}
 
 
