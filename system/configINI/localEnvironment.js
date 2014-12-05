@@ -16,59 +16,44 @@ var moduleFunction = function(args) {
 			});
 		}
 
-		//INITIALIZE OBJECT ====================================
+	qtools.validateProperties({
+		subject: args || {},
+		targetScope: this, //will add listed items to targetScope
+		propList: [
+			{
+				name: 'appName',
+				optional: false
+			}
+		]
+	});
 
-	this.args = args;
-
-
-
+	//SETTINGS ====================================
 
 	this.sendMetaData = false;
 
-	this.authParms={
-		userName: 'SFTP',
-		password: 'hello'
-	}
-
-	
 	this.dataFileDirectory = '/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/';
-
 	this.logFileDirectory = '/Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/';
 
 	this.clientProfileSource = {
-		type:'file',
-		filePath:'/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/config/clientProfiles/'
-		};
-	
-	this.updateBaseUri = function(apiDefinition, req) {
-		if (typeof(req.socket.localPort)!='undefined') {
-			var port = ':' + port;
-		}
-		else{
-			var port='';
-		}
-		this.baseUri = req.protocol + '://' + req.host + port + '/' + apiDefinition.name + '/' + apiDefinition.version + '/';
-	}
-
-
-
-
-//logging ==============
-
-
+		type: 'file',
+		filePath: '/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/config/clientProfiles/'
+	};
 
 	var mailOptions = {
 		from: 'TQ White II <tq@tqwhite.com>',
 		to: 'tq@justkidding.com',
 	}
-	
-	var EmailStream = require('bunyan-emailstream').EmailStream
+
+	//logging setup ==============
+
+	var EmailStream = require('bunyan-emailstream').EmailStream;  //mails directly from node
 	var emailStream = new EmailStream(mailOptions, {});
-	
+
 	var logger = require('bunyan');
-	
+
+
 	this.log = new logger({
-		name: args.appName,
+		name: this.appName,
 		streams: [
 			// 		{
 			// 			stream: process.stdout,
@@ -78,27 +63,36 @@ var moduleFunction = function(args) {
 				path: this.logFileDirectory + 'lightningClover.log',
 				level: 'trace'
 			}
-// 			,
-// 			{
-// 				type: 'raw', // You should use EmailStream with 'raw' type!
-// 				stream: emailStream,
-// 				level: 'fatal',
-// 			}
+			// 			,
+			// 			{
+			// 				type: 'raw', // You should use EmailStream with 'raw' type!
+			// 				stream: emailStream,
+			// 				level: 'fatal',
+			// 			}
 		],
 		src: false
 	});
 
 
-//this.log.fatal({FATALTEST:'goodbye'}, args.appName+' Test Email from Bunyan logging');
+	//this.log.fatal({FATALTEST:'goodbye'}, args.appName+' Test Email from Bunyan logging');
 
 	//==================================================	
+
+	//BUILD RETURN OBJECT ====================================
+
+	this.updateBaseUri = function(apiDefinition, req) {
+		if (typeof (req.socket.localPort) != 'undefined') {
+			var port = ':' + port;
+		} else {
+			var port = '';
+		}
+		this.baseUri = req.protocol + '://' + req.host + port + '/' + apiDefinition.name + '/' + apiDefinition.version + '/';
+	}
 
 
 	this.get = function(name) {
 		return this[name];
 	}
-
-	//BUILD RETURN OBJECT ====================================
 
 	this.forceEvent = forceEvent;
 	return this;
@@ -108,5 +102,6 @@ var moduleFunction = function(args) {
 
 util.inherits(moduleFunction, events.EventEmitter);
 module.exports = moduleFunction;
+
 
 

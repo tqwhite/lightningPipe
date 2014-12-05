@@ -22,7 +22,7 @@ var moduleFunction=function(args){
 		
 
 		
-		this.port='8081';
+		this.port='8000';
 		
 		this.clientProfileSource=global.localEnvironment.clientProfileSource;
 		

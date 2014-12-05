@@ -42,14 +42,11 @@ router.use(function(req, res, next) {
 	});
 
 	client.on('validAuth', function() {
-qtools.dump({'=-=== req.headers =====':req.headers});
-
-
 		var tmp = qtools.clone(req.headers);
 		delete tmp.password;
 		global.localEnvironment.log.debug({
-			message: 'successful login',
-			evidence: tmp
+			message: 'SUCCESSFUL LOGIN',
+			evidence: tmp.userName
 		})
 		next();
 	});
@@ -58,8 +55,12 @@ qtools.dump({'=-=== req.headers =====':req.headers});
 
 		var tmp = qtools.clone(req.headers);
 		delete tmp.password;
+		global.localEnvironment.log.info({
+			message: 'FAILED LOGIN ATTEMPT, see debug log for details',
+			evidence: tmp.userName
+		})
 		global.localEnvironment.log.debug({
-			message: 'failed login attempt',
+			message: 'FAILED LOGIN ATTEMPT',
 			evidence: tmp
 		})
 

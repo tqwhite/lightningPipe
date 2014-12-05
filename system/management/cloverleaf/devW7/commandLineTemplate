@@ -1,5 +1,5 @@
 $cloverleaf 
-http://localhost:8081/uff/1.0/districts/0487/schools/0487_010/segments/Guardian#Data?sendFlatSpecs=true
+http://localhost:8000/uff/1.0/districts/0487/schools/0487_010/segments/Guardian#Data?sendFlatSpecs=true
 /Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/jmcRealData/tmp/0487/GuardianTest.txt 
 -h
 
@@ -7,7 +7,7 @@ http://localhost:8081/uff/1.0/districts/0487/schools/0487_010/segments/Guardian#
 
 
 $cloverleaf 
-http://localhost:8081/uff/1.0/districts/2769/schools/2769_010/segments/Schedule#Data?sendFlatSpecs=true
+http://localhost:8000/uff/1.0/districts/2769/schools/2769_010/segments/Schedule#Data?sendFlatSpecs=true
 /Volumes/qubuntuFileServer/cmerdc/lightningPipe/testDataFiles/jmcRealData/single/2769/ScheduleTest.txt 
 -h
 

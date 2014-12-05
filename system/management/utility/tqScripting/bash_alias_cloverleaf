@@ -4,15 +4,15 @@ echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC (editlpscripts)"
 alias noodle="cd /Users/tqwhite/Documents/webdev/nodeProjects/node.local/noodleSpot; pwd;"
 alias lightning="cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe; pwd;"
 alias lpserve="clear; nodemon -w /Volumes/qubuntuFileServer/cmerdc/lightningPipe /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/responder/server.js";
-alias lpping="clear; echo -e 'curl http://127.0.0.1:8081/ping\n';  curl http://127.0.0.1:8081/ping";
+alias lpping="clear; echo -e 'curl http://127.0.0.1:8000/ping\n';  curl http://127.0.0.1:8000/ping";
 
 
-alias lpdistrict="clear; echo -e 'curl http://127.0.0.1:8081/uff/1.0/districts\n';  curl http://127.0.0.1:8081/uff/1.0/districts";
+alias lpdistrict="clear; echo -e 'curl http://127.0.0.1:8000/uff/1.0/districts\n';  curl http://127.0.0.1:8000/uff/1.0/districts";
 
 
 alias lptest="\
 echo -e '\n\n\n\n=============================================================\n'; \
-echo -e '\n\n\ncurl -i -H "username:jmcPlans1" -H "password:123"  http://127.0.0.1:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base\n'; curl http://127.0.0.1:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base; \
+echo -e '\n\n\ncurl -i -H "username:jmcPlans1" -H "password:123"  http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base\n'; curl http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base; \
 ";
 
 
@@ -28,7 +28,7 @@ alias clTestDestDir="cd $clTestDestDir"
 
 alias cltest="$clTestScriptsDir/clCommandLine.bash"
 alias cljsontest="$clTestScriptsDir/clExecJson.bash"
-alias curltest="curl -i -H "username:jmcPlans1" -H "password:123" http://127.0.0.1:8081/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base"
+alias curltest="curl -i -H "username:jmcPlans1" -H "password:123" http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base"
 alias curlj="curl -i -H "username:jmcPlans1" -H "password:123" ";
 alias curlm="curl -i -H "username:mssql" -H "password:123" "
 
@@ -36,7 +36,7 @@ alias tqUtility="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/manageme
 
 
 
-alias clear8081='lsof -i tcp:8081; echo -e "\n\nnow do: kill -9 PID;\n";'
+alias clear8000='lsof -i tcp:8000; echo -e "\n\nnow do: kill -9 PID;\n";'
 
 alias viewTestLog="cat /Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/lightningClover.log | bunyan -l info"
 alias clearTestLog="rm /Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/lightningClover.log | bunyan"
