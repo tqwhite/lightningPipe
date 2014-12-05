@@ -2,7 +2,6 @@ echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC (editlpscripts)"
 
 
 alias lpdistrict="clear; echo -e 'curl http://127.0.0.1:8000/uff/1.0/districts\n';  curl http://127.0.0.1:8000/uff/1.0/districts";
-sftp://64.8.188.52//home/lightningpipe/lpDemo/testData
 
 alias lptest="\
 echo -e '\n\n\n\n=============================================================\n'; \
