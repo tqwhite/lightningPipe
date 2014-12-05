@@ -9,19 +9,24 @@ echo -e '\n\n\ncurl -i -H "username:jmcPlans1" -H "password:123"  http://127.0.0
 ";
 
 
-export cloverleaf="node /home/lightningpipe/lpDemo/system/cloverleaf/cloverleaf.js"
+export cloverleaf="node /home/lightningpipe/lpDemo/services/system/cloverleaf/cloverleaf.js"
+export clTestSourceDir="/home/lightningpipe/lpDemo/testData"
 export clTestDestDir="/home/lightningpipe/lpDemo/testResults"
-export clTestScriptsDir="/home/lightningpipe/lpDemo/system/management/cloverleaf/devMac/testScripts"
+export clTestScriptsDir="/home/lightningpipe/lpDemo/services/system/management/cloverleaf/devDemoUnix/testScripts/"
 
 alias cltest="\
 ";
 
 alias clTestDestDir="cd $clTestDestDir"
 
+#$cloverleaf -f $clTestScriptsDir/testJsonDemo.js
 
 alias cltest="$clTestScriptsDir/clCommandLine.bash"
-alias cljsontest="$clTestScriptsDir/clExecJson.bash"
-alias curltest="curl -i -H "username:jmcPlans1" -H "password:123" http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base"
+alias cljsontest="$cloverleaf -f $clTestScriptsDir/testJsonDemo.js"
+
+alias curltestjmc="curl -i -H "username:jmcPlans1" -H "password:123" http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/030/segments/Student_Enrolled"
+alias curltestmssql="curl -i -H "username:mssql" -H "password:123" http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/030/segments/Student_Enrolled"
+
 alias curlj="curl -i -H "username:jmcPlans1" -H "password:123" ";
 alias curlm="curl -i -H "username:mssql" -H "password:123" "
 

@@ -18,7 +18,7 @@ echo -e '\n\n\ncurl -i -H "username:jmcPlans1" -H "password:123"  http://127.0.0
 
 export cloverleaf="node /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/cloverleaf/cloverleaf.js"
 export clTestDestDir="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/testResults"
-export clTestScriptsDir="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/cloverleaf/devMac/testScripts"
+export clTestScriptsDir="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/cloverleaf/devDemoUnix/testScripts"
 
 alias cltest="\
 ";
