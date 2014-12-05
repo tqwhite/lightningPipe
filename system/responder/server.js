@@ -34,16 +34,35 @@ app.use('/', router);
 
 router.use(function(req, res, next) {
 
+
 	client = require('client');
 	client = new client({
 		clientProfileSource: config.clientProfileSource,
 		req: req
 	});
 
-	client.on('validAuth', next);
+	client.on('validAuth', function() {
+qtools.dump({'=-=== req.headers =====':req.headers});
+
+
+		var tmp = qtools.clone(req.headers);
+		delete tmp.password;
+		global.localEnvironment.log.debug({
+			message: 'successful login',
+			evidence: tmp
+		})
+		next();
+	});
 
 	client.on('badAuth', function(info) {
-	
+
+		var tmp = qtools.clone(req.headers);
+		delete tmp.password;
+		global.localEnvironment.log.debug({
+			message: 'failed login attempt',
+			evidence: tmp
+		})
+
 		var outputObj = new outputGenerator();
 		var sender = outputObj.generateSender(res, req);
 		sender({
@@ -53,7 +72,6 @@ router.use(function(req, res, next) {
 		//		res.json(client.errorResult());
 	});
 
-qtools.dump({'===== req.headers =====':req.headers});
 
 
 	client.auth(req.headers);

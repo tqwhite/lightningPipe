@@ -38,7 +38,7 @@ alias tqUtility="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/manageme
 
 alias clear8081='lsof -i tcp:8081; echo -e "\n\nnow do: kill -9 PID;\n";'
 
-alias viewTestLog="tail /Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/lightningClover.log | bunyan"
+alias viewTestLog="cat /Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/lightningClover.log | bunyan -l info"
 alias clearTestLog="rm /Volumes/qubuntuFileServer/cmerdc/lightningPipe/logFiles/lightningClover.log | bunyan"
 
 alias editlpscripts="edit /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/utility/tqScripting/bash_alias_cloverleaf"
