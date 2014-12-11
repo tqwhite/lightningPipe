@@ -10,12 +10,18 @@
 # $destDirProd/HawleyMinus/Schedules.txt -ah
 
 pushd ~ > /dev/null
-echo "clearing HawleyMinus/Students.txt";
-rm $clTestDestDir/HawleyMinus/Students.txt;
-echo "execute cloverleaf";
+
+if [ $segment=="" ]; then
+segment="Student_Base"
+fi
+
+echo -e "\nclearing HawleyMinus/$segment.txt\n";
+rm $clTestDestDir/HawleyMinus/$segment.txt;
+
+echo -e "\nexecute cloverleaf";
 $cloverleaf \
-http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/011/segments/Student_Enrolled#Data?sendFlatSpecs=true \
-$clTestDestDir/HawleyMinus/Students.txt -ah
+http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/030/segments/$segment#Data?sendFlatSpecs=true \
+$clTestDestDir/HawleyMinus/$segment.txt -ah
 echo '---';
 
 popd  > /dev/null

@@ -11,14 +11,20 @@
 
 echo -e "\nStart CURL  ==============";
 
-echo -e "\nclearing HawleyMinus/";
-rm $testDestDir/HawleyMinus/*;
-ls -la $testDestDir/HawleyMinus;
+if [[ -z "$1" ]]; then
+segment="Student_Enrolled"
+else
+segment=$1
+fi
 
-echo -e "\nxeecute cloverleaf";
+echo -e "\nclearing HawleyMinus/$segment";
+rm $testDestDir/HawleyMinus/$segment.txt;
+#ls -la $testDestDir/HawleyMinus;
+
+echo -e "\nExecute cloverleaf";
 $cloverleaf \
-http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/011/segments/Student_Enrolled#Data?sendFlatSpecs=true \
-$testDestDir/HawleyMinus/Students.txt -ah
+http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/030/segments/$segment#Data?sendFlatSpecs=true \
+$testDestDir/HawleyMinus/$segment.txt -ah
 
 
 echo -e "\n"

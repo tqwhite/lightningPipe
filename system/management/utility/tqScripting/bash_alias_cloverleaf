@@ -6,7 +6,7 @@ echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC (editlpscripts)"
 
 # export homeDir="/home/lightningpipe"
 # export linkDir="/home/lightningpipe/testLinkpoint"
-# export lightningPipeBase="/home/lightningpipe/lpDemo/"
+# export lightningPipeBase="/home/lightningpipe/lpDemo/services/"
 
 
 rm -r $linkDir

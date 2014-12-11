@@ -1,6 +1,6 @@
 export homeDir="/home/lightningpipe"
 export linkDir="/home/lightningpipe/testLinkpoint"
-export lightningPipeBase="/home/lightningpipe/lpDemo/"
+export lightningPipeBase="/home/lightningpipe/lpDemo/services/"
 
 echo "Locations initialized: $homeDir"
 
