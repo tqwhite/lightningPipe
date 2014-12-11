@@ -23,13 +23,23 @@ else
 district=$2
 fi
 
-echo -e "\nclearing HawleyMinus/$segment";
-rm $testDestDir/HawleyMinus/$segment.txt;
+if [[ -z "$3" ]]; then
+school="030"
+else
+school=$3
+fi
+
+echo -e "\nclearing $district/$segment (for school $school)";
+rm $testDestDir/$district/$segment.txt;
 #ls -la $testDestDir/HawleyMinus;
 
 echo -e "\nExecute cloverleaf";
+echo "$cloverleaf \
+http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
+$testDestDir/$district/$segment.txt -ah\n"
+
 $cloverleaf \
-http://127.0.0.1:8000/uff/1.0/districts/$district/schools/030/segments/$segment#Data?sendFlatSpecs=true \
+http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
 $testDestDir/HawleyMinus/$segment.txt -ah
 
 
