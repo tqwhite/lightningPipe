@@ -1,4 +1,4 @@
-echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC (editlpscripts)"
+echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC (editlpscripts)";
 
 # export homeDir="/Users/tqwhite"
 # export linkDir="/Users/tqwhite/testLinkpoint"
@@ -21,6 +21,7 @@ ln -s $homeDir/testLinkpoint/lightningPipeHome/testResults/ $homeDir/testLinkpoi
 alias lpserve="clear; nodemon -w $homeDir/testLinkpoint/lightningPipeHome $homeDir/testLinkpoint/lightningPipeHome/system/responder/server.js";
 
 
+export lightningPipeDir="$homeDir/testLinkpoint/lightningPipeHome"
 export cloverleafDir="$homeDir/testLinkpoint/lightningPipeHome/system/cloverleaf"
 export clTestScriptsDir="$homeDir/testLinkpoint/lightningPipeHome/system/management/cloverleaf/test/"
 
@@ -31,3 +32,10 @@ export cloverleaf="node $cloverleafDir/cloverleaf.js"
 
 alias cljsontest="$clTestScriptsDir/commandLine/clExecJson.bash"
 alias clcmdtest="$clTestScriptsDir/commandLine/clCommandLine.bash"
+
+
+alias clsetjmc="cp $lightningPipeDir/system/config/cloverleafJmc.js $lightningPipeDir/system/config/cloverleaf.js; echo 'SET JMC';"
+alias clsetmssql="cp $lightningPipeDir/system/config/cloverleafMssql.js $lightningPipeDir/system/config/cloverleaf.js; echo 'SET MSSQL';"
+
+
+export PATH=$PATH:"$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )":

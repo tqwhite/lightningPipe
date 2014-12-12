@@ -30,21 +30,55 @@ school=$3
 fi
 
 echo -e "\nclearing $district/$segment (for school $school)";
-rm $testDestDir/$district/$segment.txt;
+rm $testDestDir/"$district"CmdLine/$segment.txt;
 #ls -la $testDestDir/HawleyMinus;
 
 echo -e "\nExecute cloverleaf";
-echo "$cloverleaf \
-http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
-$testDestDir/$district/$segment.txt -ah\n"
+
+
+
+if [[ -z "$1" ]]; then
+
+
+
+segment="Student_Enrolled"
+echo "$district/schools/$school/segments/$segment\n"
 
 $cloverleaf \
 http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
-$testDestDir/HawleyMinus/$segment.txt -ah
+$testDestDir/"$district"CmdLine/$segment.txt -ah
+
+segment="Schedule"
+echo "$district/schools/$school/segments/$segment\n"
+
+$cloverleaf \
+http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
+$testDestDir/"$district"CmdLine/$segment.txt -ah
+
+segment="Guardian"
+echo "$district/schools/$school/segments/$segment\n"
+
+$cloverleaf \
+http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
+$testDestDir/"$district"CmdLine/$segment.txt -ah
+
+else
 
 
-echo -e "\n"
-ls -la $testDestDir/HawleyMinus;
+echo "$cloverleaf \
+http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
+$testDestDir/"$district"CmdLine/$segment.txt -ah\n"
+
+$cloverleaf \
+http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
+$testDestDir/"$district"CmdLine/$segment.txt -ah
+
+
+fi
+
+
+echo -e "ls -la $testDestDir/AlbanyCmdLine;\n"
+ls -la $testDestDir/AlbanyCmdLine;
 
 
 
