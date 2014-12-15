@@ -53,9 +53,9 @@ var moduleFunction = function(args) {
 
 	//INITIALIZATION ====================================
 
-
+	var emailAddressList='TQ Justkidding <tq@justkidding.com>';
 	this.notifier = new notifierGenerator({
-		emailAddressList: 'TQ Justkidding <tq@justkidding.com>',
+		emailAddressList: emailAddressList,
 		smtpSpecs: {
 			host: 'smtp.mandrillapp.com',
 			port: '587',
@@ -77,6 +77,11 @@ var moduleFunction = function(args) {
 	// 		userName: 'mssql',
 	// 		password: 'PASSWORD'
 	// 	}
+	
+	this.display=function(){
+		console.log('userName='+this.authParms.userName);
+		console.log('notification='+emailAddressList);
+	}
 
 	return this;
 };

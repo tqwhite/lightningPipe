@@ -52,6 +52,7 @@ var moduleFunction = function(args) {
 		.option('-a, --append', 'append data to file if file is present')
 		.option('-h, --header', 'add header row with field names')
 		.option('-v, --verbose', '(lowercase) -v, show messages instead of putting into file')
+		.option('-p, --params', 'Display configuration and environment parameters')
 		.option('-q, --quiet', 'no messages')
 		.option('-f, --file', 'get specs from file')
 		.parse(process.argv);
@@ -72,6 +73,12 @@ var moduleFunction = function(args) {
 
 
 	var runtimeParameters = config.runtimeParameters;
+	
+	if (program.params){
+		global.localEnvironment.display();
+		config.display();
+		qtools.die('parameters done');
+	}
 
 	switch ('api') {
 		case 'api':

@@ -90,6 +90,18 @@ var moduleFunction = function(args) {
 	}
 
 
+	this.display=function(){
+		
+		console.log('logFile='+this.logFile+'\n');
+		qtools.dump({'clientProfileSource':this.clientProfileSource});
+
+
+		console.log('dataFileDirectory='+this.dataFileDirectory+'\n');
+		console.log('logFileDirectory='+this.logFileDirectory+'\n');
+
+
+	}
+
 	this.get = function(name) {
 		return this[name];
 	}

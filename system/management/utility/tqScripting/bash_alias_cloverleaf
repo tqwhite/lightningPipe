@@ -31,7 +31,8 @@ export testDestDir="$homeDir/testLinkpoint/testDataDest"; #for use in bash files
 export cloverleaf="node $cloverleafDir/cloverleaf.js"
 
 alias cljsontest="$clTestScriptsDir/commandLine/clExecJson.bash"
-alias clcmdtest="$clTestScriptsDir/commandLine/clCommandLine.bash"
+alias clcmdtest="$clTestScriptsDir/commandLine/clCommandLine.bash  StudentEnrolled 030 Albany"
+alias clparms="$clTestScriptsDir/commandLine/clCommandLine.bash"
 
 
 alias clsetjmc="cp $lightningPipeDir/system/config/cloverleafJmc.js $lightningPipeDir/system/config/cloverleaf.js; echo 'SET JMC';"
