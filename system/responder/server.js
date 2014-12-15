@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 
 //SET UP APPLICATION =======================================================
-console.log(qtools.realPath('~'));
+
 var localEnvironment = require('../config/localEnvironment.js');
 global.localEnvironment = new localEnvironment({
 	appName: 'lightningpipe'
@@ -151,5 +151,6 @@ router.post('/ping', function(req, res, next) {
 //START SERVER =======================================================
 
 app.listen(config.port);
+
 qtools.message('Magic happens on port ' + config.port);
 

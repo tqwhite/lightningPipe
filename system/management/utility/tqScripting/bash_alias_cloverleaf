@@ -31,7 +31,6 @@ export testDestDir="$homeDir/testLinkpoint/testDataDest"; #for use in bash files
 export cloverleaf="node $cloverleafDir/cloverleaf.js"
 
 alias cljsontest="$clTestScriptsDir/commandLine/clExecJson.bash"
-alias clcmdtest="$clTestScriptsDir/commandLine/clCommandLine.bash  StudentEnrolled 030 Albany"
 alias clparms="$clTestScriptsDir/commandLine/clCommandLine.bash"
 
 
@@ -40,3 +39,7 @@ alias clsetmssql="cp $lightningPipeDir/system/config/cloverleafMssql.js $lightni
 
 
 export PATH=$PATH:"$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )":
+
+
+alias clcmdtest="$clTestScriptsDir/commandLine/clCommandLine.bash  StudentEnrolled 030 Albany"
+alias lp1test="clcurl.bash j Albany/schools/030/segments/Student_Base"
