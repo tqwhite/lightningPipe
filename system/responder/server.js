@@ -52,6 +52,8 @@ router.use(function(req, res, next) {
 	});
 
 	client.on('badAuth', function(info) {
+	
+		if (req.originalUrl=='/ping'){ next(); return; }
 
 		var tmp = qtools.clone(req.headers);
 		delete tmp.password;
