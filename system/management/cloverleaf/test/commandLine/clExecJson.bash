@@ -5,14 +5,14 @@ pushd ~ > /dev/null #cloverleaf JSON parameters are relative to the runtime dire
 
 echo -e "\nStart JSON ==============";
 echo -e "\nclearing Albany/";
-rm $testDestDir/AlbanyJson/*
-#ls -la $testDestDir/Albany;
+rm $clTestDestDir/AlbanyJson/*
+#ls -la $clTestDestDir/Albany;
 
 echo -e "\nexecuting clJson.js";
 $cloverleaf -f $clTestScriptsDir/commandLine/clJson.js
 
 echo -e "\n";
-ls -la $testDestDir/AlbanyJson;
+ls -la $clTestDestDir/AlbanyJson;
 echo -e "\nDone  ==============\n";
 
 

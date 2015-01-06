@@ -41,32 +41,32 @@ echo -e "\nStart Cloverleaf run  ==============";
 
 
 echo -e "\nclearing $district/$segment (for school $school)";
-rm $testDestDir/"$district"CmdLine/$segment.txt;
-#ls -la $testDestDir/HawleyMinus;
+rm $clTestDestDir/"$district"CmdLine/$segment.txt;
+#ls -la $clTestDestDir/HawleyMinus;
 
 segment="Student_Enrolled"
 echo -e "\ncloverleaf $district/schools/$school/segments/$segment\n"
 
 $cloverleaf \
 http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
-$testDestDir/"$district"CmdLine/$segment.txt -ah
+$clTestDestDir/"$district"CmdLine/$segment.txt -ah
 
 segment="Schedule"
 echo -e "\ncloverleaf $district/schools/$school/segments/$segment\n"
 
 $cloverleaf \
 http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
-$testDestDir/"$district"CmdLine/$segment.txt -ah
+$clTestDestDir/"$district"CmdLine/$segment.txt -ah
 
 segment="Guardian"
 echo -e "\ncloverleaf $district/schools/$school/segments/$segment\n"
 
 $cloverleaf \
 http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
-$testDestDir/"$district"CmdLine/$segment.txt -ah
+$clTestDestDir/"$district"CmdLine/$segment.txt -ah
 
-echo -e "\nls -la $testDestDir/AlbanyCmdLine;\n"
-ls -la $testDestDir/AlbanyCmdLine;
+echo -e "\nls -la $clTestDestDir/AlbanyCmdLine;\n"
+ls -la $clTestDestDir/AlbanyCmdLine;
 
 echo -e "\nDone  ==============\n";
 
