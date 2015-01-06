@@ -45,7 +45,7 @@ alias clNameToNumbers="/home/lightningpipe/lpDemo/system/management/utility/tqSc
 
 alias clNumbersToName="/home/lightningpipe/lpDemo/system/management/utility/tqScripting/clNumbersToName"
 
-echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC\n\
+echo -e "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC\n\
 editlpscripts runTestDemo"
 
 
