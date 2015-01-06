@@ -1,3 +1,6 @@
+
+export PATH=$PATH:"$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )":
+
 alias lpdistrict="clear; echo -e 'curl http://127.0.0.1:8000/uff/1.0/districts\n';  curl http://127.0.0.1:8000/uff/1.0/districts";
 
 alias lptest="\

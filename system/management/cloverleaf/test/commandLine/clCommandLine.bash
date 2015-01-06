@@ -32,7 +32,7 @@ if [[ -z "$1" ]]; then
 
 echo -e "\nUsage:\n\
 clcmdtest segmentName schoolName districtName\n\
-default: clcmdtest StudentEnrolled 030 Albany\n\
+default: cltest StudentEnrolled 030 Albany\n\
 "
 
 else
