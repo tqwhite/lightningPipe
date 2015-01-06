@@ -1,4 +1,4 @@
-echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC (editlpscripts)";
+echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC (mac editlpscripts)";
 
 # export homeDir="/Users/tqwhite"
 # export linkDir="/Users/tqwhite/testLinkpoint"
@@ -29,6 +29,8 @@ export testSourceDir="$homeDir/testLinkpoint/testDataSource"; #for use in bash f
 export testDestDir="$homeDir/testLinkpoint/testDataDest"; #for use in bash files
 
 export cloverleaf="node $cloverleafDir/cloverleaf.js"
+
+alias editlpscripts="edit /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/utility/tqScripting/bash_alias_cloverleaf"
 
 alias cljsontest="$clTestScriptsDir/commandLine/clExecJson.bash"
 alias clparms="$clTestScriptsDir/commandLine/clCommandLine.bash"

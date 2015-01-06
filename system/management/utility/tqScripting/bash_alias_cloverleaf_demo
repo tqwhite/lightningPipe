@@ -1,6 +1,3 @@
-echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC (editlpscripts)"
-
-
 alias lpdistrict="clear; echo -e 'curl http://127.0.0.1:8000/uff/1.0/districts\n';  curl http://127.0.0.1:8000/uff/1.0/districts";
 
 alias lptest="\
@@ -32,8 +29,11 @@ alias curlm="curl -i -H "username:mssql" -H "password:123" "
 
 alias tqUtility="/home/lightningpipe/lpDemo/system/management/utility/tqScripting/tqUtility"
 
+echo '---'
+alias | grep tqUtility
+echo '---'
 
-
+alias checkPorts='netstat -lp --inet'
 alias clear8000='lsof -i tcp:8000; echo -e "\n\nnow do: kill -9 PID;\n";'
 
 alias viewTestLog="cat /home/lightningpipe/lpDemo/logFiles/lightningClover.log | bunyan -l info"
@@ -44,3 +44,8 @@ alias editlpscripts="edit /home/lightningpipe/lpDemo/system/management/utility/t
 alias clNameToNumbers="/home/lightningpipe/lpDemo/system/management/utility/tqScripting/clNameToNumbers"
 
 alias clNumbersToName="/home/lightningpipe/lpDemo/system/management/utility/tqScripting/clNumbersToName"
+
+echo "CLOVERLEAF AND LIGHTNINGPIPE ALIASES ETC\n\
+editlpscripts runTestDemo"
+
+

@@ -80,7 +80,8 @@ var moduleFunction = function(args) {
 	
 	this.display=function(){
 		console.log('userName='+this.authParms.userName);
-		console.log('notification='+emailAddressList);
+		console.log('notification='+self.notifier.emailAddressList);
+		console.log('notificationServer='+self.notifier.smtpSpecs.host);
 	}
 
 	return this;
