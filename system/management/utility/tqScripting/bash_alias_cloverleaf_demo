@@ -8,6 +8,8 @@ echo -e '\n\n\n\n=============================================================\n
 echo -e '\n\n\ncurl -i -H "username:jmcPlans1" -H "password:123"  http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base\n'; curl http://127.0.0.1:8000/uff/1.0/districts/HawleyMinus/schools/010/segments/Student_Base; \
 ";
 
+export lightningPipeDir="/home/lightningpipe/lpDemo/services/system/responder/"
+export cloverleafDir="/home/lightningpipe/lpDemo/services/system/cloverleaf"
 
 export cloverleaf="node /home/lightningpipe/lpDemo/services/system/cloverleaf/cloverleaf.js"
 export clTestSourceDir="/home/lightningpipe/lpDemo/testData"
