@@ -20,6 +20,7 @@ ln -s $homeDir/testLinkpoint/lightningPipeHome/testResults/ $homeDir/testLinkpoi
 
 alias lpserve="clear; nodemon -w $homeDir/testLinkpoint/lightningPipeHome $homeDir/testLinkpoint/lightningPipeHome/system/responder/server.js";
 
+alias lprepo="cd $lightningPipeBase; pwd; git status;";
 
 export lightningPipeDir="$homeDir/testLinkpoint/lightningPipeHome"
 export cloverleafDir="$homeDir/testLinkpoint/lightningPipeHome/system/cloverleaf"

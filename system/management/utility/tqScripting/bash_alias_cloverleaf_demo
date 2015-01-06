@@ -9,7 +9,7 @@ echo -e '\n\n\ncurl -i -H "username:jmcPlans1" -H "password:123"  http://127.0.0
 export cloverleaf="node /home/lightningpipe/lpDemo/services/system/cloverleaf/cloverleaf.js"
 export clTestSourceDir="/home/lightningpipe/lpDemo/testData"
 export clTestDestDir="/home/lightningpipe/lpDemo/testResults"
-export clTestScriptsDir="/home/lightningpipe/lpDemo/services/system/management/cloverleaf/devDemoUnix/testScripts/"
+export clTestScriptsDir="/home/lightningpipe/lpDemo/services/system/management/cloverleaf/test/commandLine/"
 
 alias cltest="\
 ";
