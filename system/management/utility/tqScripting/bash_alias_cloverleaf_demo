@@ -23,7 +23,7 @@ alias clTestDestDir="cd $clTestDestDir"
 
 #$cloverleaf -f $clTestScriptsDir/testJsonDemo.js
 
-
+#USE THESE FOR TESTING 
 alias cltest="$clTestScriptsDir/clCommandLine.bash"
 alias cljsontest="$cloverleaf -f $clTestScriptsDir/testJsonDemo.js"
 
