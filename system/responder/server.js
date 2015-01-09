@@ -75,8 +75,6 @@ router.use(function(req, res, next) {
 		//		res.json(client.errorResult());
 	});
 
-
-
 	client.auth(req.headers);
 
 });

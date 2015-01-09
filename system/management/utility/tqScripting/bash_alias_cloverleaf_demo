@@ -19,6 +19,9 @@ export clTestScriptsDir="/home/lightningpipe/lpDemo/services/system/management/c
 alias cltest="\
 ";
 
+
+
+
 alias clTestDestDir="cd $clTestDestDir"
 
 #$cloverleaf -f $clTestScriptsDir/testJsonDemo.js

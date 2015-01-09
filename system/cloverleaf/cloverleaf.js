@@ -332,7 +332,7 @@ var moduleFunction = function(args) {
 
 		if (next) {
 			
-			global.localEnvironment.log.debug({executionHandler:next})
+			global.localEnvironment.log.debug({cloverleafAction:next})
 	
 			addToOutstandingList(next);
 			executeAccess(next);
