@@ -85,7 +85,6 @@ router.use(function(req, res, next) {
 var apiName="uff",
 	apiVersion='1.0';
 
-if (typeof(counter)=='undefined'){var counter=0;}
 router.get(new RegExp('/' + apiName + '/' + apiVersion + '/(.*)'), function(req, res, next) {
 	//closure: client
 	
@@ -111,17 +110,13 @@ router.get(new RegExp('/' + apiName + '/' + apiVersion + '/(.*)'), function(req,
 	})
 
 	client.setApi(apiDefinition);
-var ccc=counter++;
-executionPackage.counter=ccc;
 	var sessionModel = new model(executionPackage);
 	sessionModel.on('gotData', function(result) {
-	console.log('gotData '+ccc);
 		result.meta = qtools.mergeMetaData(result.meta);
 		sender('', result);
 	});
 
 	sessionModel.on('badData', function(result) {
-	console.log('badData '+ccc);
 		result.meta = qtools.mergeMetaData(result.meta);
 		sender(result, '');
 	});
