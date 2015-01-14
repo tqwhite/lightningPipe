@@ -25,9 +25,9 @@ fi
 if [[ -z "$1" ]]; then
 
 echo -e "\nUsage:\n\
-clCommand segmentName schoolName districtName\n\
+clSingle segmentName schoolName districtName\n\
 eg\n\
-clCommand Student_Enrolled 030 Albany\n\
+clSingle Student_Enrolled 030 Albany\n\
 "
 exit 1; #error status
 
