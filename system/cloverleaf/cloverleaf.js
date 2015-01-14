@@ -157,7 +157,7 @@ var moduleFunction = function(args) {
 	var finishProcess=function(){
 		if (typeof(self.failureList)!='undefined'){
 		
-			global.localEnvironment.log.error({errorExit:getFailureInfo()});
+			global.localEnvironment.log.error({cloverleaf:{source:'cloverleaf.errorExit', data:getFailureInfo()}});
 			
 			config.notifier && config.notifier.addInfo("Cloverleaf DID NOT FINISH SUCCESSFULLY. THERE WERE ERRORS.");
 			config.notifier && config.notifier.addInfo(getFailureInfo());
@@ -249,6 +249,7 @@ var moduleFunction = function(args) {
 
 			if (qtools.count(self.outstandingList)===0){
 				finishProcess();
+				return;
 			}
 
 			self.emit('executeNext');
