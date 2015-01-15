@@ -14,7 +14,8 @@ clCommands - Run Cloverleaf from shell script file\n\
 clJson - Run Cloverleaf against parameter file\n\
    (\$clTestParametersDir/testJsonDemo.js)\n\\n\
 clsetjmc - set Cloverleaf user to jmc\n\
-clsetmssql - set Cloverleaf usr to mssql
+clsetmssql - set Cloverleaf usr to mssql\n\n\
+'cloverleaf -p' - gives you info about it's current setup\n\
 
 lpdir - cd to LP server code\n\
 cldir - cd to Cloverleaf code\n\n\
