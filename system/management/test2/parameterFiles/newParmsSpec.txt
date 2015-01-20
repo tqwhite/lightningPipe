@@ -1,0 +1,54 @@
+{
+input:[
+{"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Guardian?sendFlatSpecs=true","destination":"Guardians.txt", "path":"Data", "switches":{"header":false, "append":true}},
+{"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Schedule?sendFlatSpecs=true","destination":"Schedules.txt", "path":"Data", "switches":{"header":false, "append":true}},
+{"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Student_Enrolled?sendFlatSpecs=true","destination":"Students.txt", "path":"Data", "switches":{"header":false, "append":true}}
+],
+
+process:{
+type:'passThrough'
+
+// type:'sqlizer',
+// receive:[
+// 	{name:'inputStreamDestName'},
+// 	{name:'inputStreamDestName', as:'someOtherNameForSomeReason'}
+// ],
+// operations:[
+// 	{query:'create table someExportName as select * from inputStreamDestName left join asfsfds on...'},
+// 	{query:'create table someOtherExportName as select * from someOtherNameForSomeReason left join asfsfds on...'}
+// ]
+// export:[
+// 	{name:'someExportName'},
+// 	{name:'someOtherExportName', as:'yetAnotherExportName'}
+// ]
+},
+
+output:{
+	type: 'file',
+	context:{
+		parentPath:"/Users/tqwhite/testLinkpoint/testDataDest/AlbanyJsonTest/"
+		},
+	control:{
+		append:true,
+		header:false
+	}
+
+
+// 		type:'mysql',
+// 		context:{
+// 			authParms:{
+// 				host:'asdfasdf',
+// 				user:'asfsafdfda',
+// 				password:'asfsafd',
+// 				database:'asfsdafs'
+// 			}
+// 		 control:{
+// 			overwrite:'all'
+// 	
+// // 			overwrite:[{name:'someExportName', as:'destTableName'}],
+// // 			update:[{name:'yetAnotherExportName'}]
+// 		 }
+// 		}
+
+}
+}
