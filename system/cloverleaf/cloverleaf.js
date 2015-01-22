@@ -65,12 +65,13 @@ var moduleFunction = function() {
 
 	//instance/closure variables -------------------------------------------------------
 
-	var dataSegmentList = {},
+	var dataBufferList = {},
 		controlSpecifications,
 		inputGenerator = require('apiAccessor'),
 		dataBufferGenerator=require('dataBuffer'),
 		destinationGenerator = require('destination'),
-		flattenerGenerator = require('objectFlattener');
+		flattenerGenerator = require('objectFlattener'),
+		transformationGenerator=require('transformation');
 
 	//worker functions -------------------------------------------------------
 
@@ -253,6 +254,7 @@ var moduleFunction = function() {
 	}
 
 	var executionController = function() {
+
 		var next = self.requestQueue.pop();
 
 		if (next) {
@@ -271,7 +273,6 @@ var moduleFunction = function() {
 		var notificationCallback = function(err, result) {
 			delete self.outstandingList[args.key];
 			if (err) {
-
 				args.retryCount = (typeof (args.retryCount) == 'undefined') ? 3 : args.retryCount - 1;
 				if (args.retryCount > 0) {
 					self.requestQueue.push(args);
@@ -291,12 +292,10 @@ var moduleFunction = function() {
 						config.notifier && config.notifier.addInfo("ERROR NOT UPDATED: " + args.destination);
 
 						pushToFailureList(args);
-		//			displayProcessMessages(err, args.source, args.destination);
 
 				}
 
 			} else {
-		//		displayProcessMessages(err, args.source, args.destination);
 
 				global.localEnvironment.log.debug({
 					UPDATEDINPUTSEGMENT: args
@@ -313,7 +312,7 @@ var moduleFunction = function() {
 
 			}
 
-			if (qtools.count(self.outstandingList) === 0) {
+			if (qtools.count(self.outstandingList) === 0 && qtools.count(self.requestQueue) === 0) {
 				finishProcessing();
 				return;
 			}
@@ -321,16 +320,16 @@ var moduleFunction = function() {
 			executionController();
 		}
 
-		if (!dataSegmentList[args.destination]) {
+		if (!dataBufferList[args.destination]) {
 			var dataBuffer = new dataBufferGenerator({
 				fileName: args.destination,
 				outputSpec: controlSpecifications.output,
 				config: config
 			});
-			dataSegmentList[args.destination] = dataBuffer;
+			dataBufferList[args.destination] = dataBuffer;
 
 		} else {
-			dataBuffer = dataSegmentList[args.destination];
+			dataBuffer = dataBufferList[args.destination];
 		}
 
 		var input = new inputGenerator({
@@ -351,23 +350,29 @@ var moduleFunction = function() {
 		flattener.doIt();
 
 	}
-	
+
+
 	var finishProcessing=function(){
-	
-		dataSegmentList=dataSegmentList; //processor.process(dataSegmentList)
+
+		var transformer=new transformationGenerator({
+			transformSpecs: controlSpecifications.transform,
+			config: config,
+			dataBufferList:dataBufferList
+		});
+		dataBufferList=transformer.getBufferList();
 	
 		var destinationSource = new destinationGenerator({
 			outputSpec: controlSpecifications.output,
 			config: config
 		});
 		
-		var writeCount=qtools.count(dataSegmentList);
+		var writeCount=qtools.count(dataBufferList);
 
-		for (var fileName in dataSegmentList){
-			var element=dataSegmentList[fileName];
+		for (var fileName in dataBufferList){
+			var element=dataBufferList[fileName];
 			var destination=destinationSource.writer(fileName);
 			
-			destination.takeItAway(element.dataBuffer, function(err, result){
+			destination.takeItAway(element.getData(), function(err, result){
 				writeCount=writeCount-1;
 				
 				if (writeCount){

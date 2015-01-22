@@ -9,6 +9,7 @@ process:{
 type:'passThrough'
 
 // type:'sqlizer',
+// parameters:{
 // receive:[
 // 	{name:'inputStreamDestName'},
 // 	{name:'inputStreamDestName', as:'someOtherNameForSomeReason'}
@@ -21,6 +22,7 @@ type:'passThrough'
 // 	{name:'someExportName'},
 // 	{name:'someOtherExportName', as:'yetAnotherExportName'}
 // ]
+//	}
 },
 
 output:{
