@@ -8,21 +8,26 @@ input:[
 process:{
 type:'passThrough'
 
-// type:'sqlizer',
-// parameters:{
-// receive:[
-// 	{name:'inputStreamDestName'},
-// 	{name:'inputStreamDestName', as:'someOtherNameForSomeReason'}
-// ],
-// operations:[
-// 	{query:'create table someExportName as select * from inputStreamDestName left join asfsfds on...'},
-// 	{query:'create table someOtherExportName as select * from someOtherNameForSomeReason left join asfsfds on...'}
-// ]
-// export:[
-// 	{name:'someExportName'},
-// 	{name:'someOtherExportName', as:'yetAnotherExportName'}
-// ]
-//	}
+
+        
+//         "type":"sqlizer2",
+// 		"parameters":{
+// 		"receive":[
+// 			{"name":"inputStreamDestName"},
+// 			{"name":"inputStreamDestName", "as":"someOtherNameForSomeReason"}
+// 		],
+// 		"operations":[
+// 			{"query":"create table someExportName as select * from inputStreamDestName left join asfsfds on..."},
+// 			{"query":"create table someOtherExportName as select * from someOtherNameForSomeReason left join asfsfds on..."}
+// 		],
+// 		"export":[
+// 			{"tableName":"someExportName"},
+// 			{"tableName":"someOtherExportName", "as":"yetAnotherExportName"}
+// 		]
+// 		}
+
+    
+    
 },
 
 output:{
