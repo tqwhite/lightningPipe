@@ -27,12 +27,15 @@
 {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/099/segments/Student_Enrolled?sendFlatSpecs=true","destination":"Students.txt", "path":"Data", "switches":{"header":false, "append":true}}
 ],
 
-    "process": {
+    "transform": [
+    {
         "type": "passThrough"
-    },
+    }
+    ],
 
     "output": {
         "type": "file",
+        "fileFormat":"tabDelimitted",
         "context": {
             "parentPath": "/Users/tqwhite/testLinkpoint/testDataDest/AlbanyJsonTest/"
         },
