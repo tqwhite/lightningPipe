@@ -70,7 +70,7 @@ var moduleFunction = function() {
 		inputGenerator = require('apiAccessor'),
 		dataBufferGenerator=require('dataBuffer'),
 		destinationGenerator = require('destination'),
-		flattenerGenerator = require('objectFlattener'),
+		collectorGenerator = require('collector'),
 		transformationGenerator=require('transformation');
 
 	//worker functions -------------------------------------------------------
@@ -337,17 +337,14 @@ var moduleFunction = function() {
 			authParms: config.authParms //from config/cloverleaf.js
 		});
 
-		var flattener = new flattenerGenerator({
+		var collector = new collectorGenerator({
 			source: input,
 			dataBuffer: dataBuffer,
 			usablePayloadDottedPath: args.path,
-			callback: notificationCallback,
-			config: {
-				lineEnding: runtimeParameters.lineEnding
-			}
+			callback: notificationCallback
 		});
 
-		flattener.doIt();
+		collector.doIt();
 
 	}
 
@@ -359,20 +356,21 @@ var moduleFunction = function() {
 			config: config,
 			dataBufferList:dataBufferList
 		});
-		dataBufferList=transformer.getBufferList();
+		var outputDataBufferList=transformer.getBufferList();
 	
+		controlSpecifications.output.fileFormat=controlSpecifications.output.fileFormat?controlSpecifications.output.fileFormat:'tabDelimitted'; //someday it could be 'JSON'
 		var destinationSource = new destinationGenerator({
 			outputSpec: controlSpecifications.output,
 			config: config
 		});
 		
-		var writeCount=qtools.count(dataBufferList);
+		var writeCount=qtools.count(outputDataBufferList);
 
-		for (var fileName in dataBufferList){
-			var element=dataBufferList[fileName];
+		for (var fileName in outputDataBufferList){
+			var outputBuffer=outputDataBufferList[fileName];
 			var destination=destinationSource.writer(fileName);
 			
-			destination.takeItAway(element.getData(), function(err, result){
+			destination.takeItAway(outputBuffer, function(err, result){
 				writeCount=writeCount-1;
 				
 				if (writeCount){
