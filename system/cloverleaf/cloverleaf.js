@@ -148,11 +148,12 @@ var moduleFunction = function() {
 			config.notifier && config.notifier.addInfo("Cloverleaf finished successfully");
 
 
-			var messageSuccessExit = function() {
+			var messageSuccessExit = function() {return;
 				if (!program.quiet) {
-					qtools.successExit('Cloverleaf finished successfully');
+				//	qtools.successExit('Cloverleaf finished successfully');
+					qtools.message('Cloverleaf finished successfully');
 				} else {
-					qtools.successExit();
+				//	qtools.successExit();
 				}
 			}
 
@@ -349,42 +350,44 @@ var moduleFunction = function() {
 	}
 
 
-	var finishProcessing=function(){
+	var finishProcessing = function() {
 
-		var transformer=new transformationGenerator({
-			transformSpecs: controlSpecifications.transform,
-			config: config,
-			dataBufferList:dataBufferList
-		});
-		var outputDataBufferList=transformer.getBufferList();
-	
-		controlSpecifications.output.fileFormat=controlSpecifications.output.fileFormat?controlSpecifications.output.fileFormat:'tabDelimitted'; //someday it could be 'JSON'
+
+		controlSpecifications.output.fileFormat = controlSpecifications.output.fileFormat ? controlSpecifications.output.fileFormat : 'tabDelimitted'; //someday it could be 'JSON'
 		var destinationSource = new destinationGenerator({
 			outputSpec: controlSpecifications.output,
 			config: config
 		});
-		
-		var writeCount=qtools.count(outputDataBufferList);
 
-		for (var fileName in outputDataBufferList){
-			var outputBuffer=outputDataBufferList[fileName];
-			var destination=destinationSource.writer(fileName);
-			
-			destination.takeItAway(outputBuffer, function(err, result){
-				writeCount=writeCount-1;
-				
-				if (writeCount){
-				displayMessage(err, 'file save status: '+result.targetDataId+'\n');
-				}
-				else{
-				displayMessage(err, 'file save status:  '+result.targetDataId + ' (exiting)\n');
-					wrapUp();
-				}
-			});
-			
+		var transformationCallback = function(outputDataBufferList) {
+			var writeCount = qtools.count(outputDataBufferList);
+			for (var fileName in outputDataBufferList) {
+				var outputBuffer = outputDataBufferList[fileName];
+				var destination = destinationSource.writer(fileName);
+
+				var charCount=destination.takeItAway(outputBuffer, function(err, result) {
+					writeCount = writeCount - 1;
+
+					if (writeCount) {
+						displayMessage(err, 'file save status: ' + result.targetDataId + ' ('+charCount+ ' characters)\n');
+					} else {
+						displayMessage(err, 'file save status:  ' + result.targetDataId + ' ('+charCount+ ' characters) (exiting)\n');
+						wrapUp();
+					}
+				});
+			}
 		}
-	
+
+		var transformer = new transformationGenerator({
+			transformSpecs: controlSpecifications.transform,
+			config: config,
+			dataBufferList: dataBufferList,
+			callback: transformationCallback
+		});
+
 	}
+
+
 
 	//make it go -------------------------------------------------------
 
