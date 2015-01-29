@@ -19,6 +19,7 @@
     {
         
         "type":"sqlizer2",
+        "name":"mainTest",
 		"parameters":{
 		"input":[
 			{"name":"Address_Contact"},
@@ -30,19 +31,41 @@
 			{"name":"Student_Enrollment"}
 		],
 		"process":[
-			{"query":"create table NewCourses as select  c.courseAbbreviation || '_' || ss.lastName as fullName, c.courseAbbreviation as shortName, c.courseNumber || '_' || ss.staffUniqueIdentifier as idNumber, c.courseDesc as summary, '' as template, c.schoolCode as categoryPath, c.schoolCode as categoryId, c.schoolCode as categoryName, c.schoolCode as categoryDescription    from Course as c left join Section as s on s.courseNumber=c.courseNumber left join Section_Staff as ss on ss.sectionNumber=s.sectionNumber"},
-			{"query":"create table Enrollments as select  c.courseNumber || '_' || ss.staffUniqueIdentifier as idNumber, ss.staffUniqueIdentifier as userId, 'editingTeacher' as role, s.sectionNumber || '_' || s.beginningPeriodNumber as 'group'   from Course as c left join Section_Staff as ss on ss.courseNumber=c.courseNumber left join Section as s on s.sectionNumber=ss.sectionNumber"},
-			{"query":"create table Guardian as select 'Guardian' as tableName, * from Address_Contact"}
+			{"query":"create table Student_Enrolled as select 'a' as 'marker', * from Student_Base left join Address_Contact on Student_Base.studentuniqueidentifier=Address_Contact.studentuniqueidentifier"},
+			{"query":"create table Schedule as select 'b' as 'marker', * from Section_Student inner join Section_Staff on ((Section_Student.courseNumber=Section_Staff.courseNumber) and (Section_Student.sectionNumber=Section_Staff.sectionNumber))"},
+			{"query":"create table Guardian as select 'c' as 'marker', * from Address_Contact"}
 		],
 		"export":[
-			{"tableName":"NewCourses", "as":"NewCourses.txt"},
-			{"tableName":"Enrollments", "as":"Enrollments.txt"},
-			{"tableName":"Guardian", "as":"Guardian.txt"}
+			{"tableName":"Student_Enrolled", "as":"A"},
+			{"tableName":"Schedule", "as":"B"},
+			{"tableName":"Guardian", "as":"C"}
+		]
+		}
+
+    
+    },
+    
+    {
+        
+        "type":"sqlizer2",
+        "name":"second step",
+		"parameters":{
+		"input":[
+			{"name":"Student_Enrolled"},
+			{"name":"Schedule"},
+			{"name":"Guardian"}
+		],
+		"process":[
+			{"query":"create table test1 as select districtCode from A"}
+		],
+		"export":[
+			{"tableName":"test1", "as":"test1.txt"}
 		]
 		}
 
     
     }
+    
     ],
 
     "output": {

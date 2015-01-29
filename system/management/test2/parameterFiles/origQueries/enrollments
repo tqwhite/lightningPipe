@@ -1,0 +1,11 @@
+select
+
+c.courseNumber || '_' || ss.staffUniqueIdentifier as idNumber,
+ss.staffUniqueIdentifier as userId,
+'editingTeacher' as role,
+s.sectionNumber || '_' || s.beginningPeriodNumber as 'group'
+
+
+from Course as c
+left join Section_Staff as ss on ss.courseNumber=c.courseNumber
+left join Section as s on s.sectionNumber=ss.sectionNumber
