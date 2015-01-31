@@ -369,15 +369,15 @@ var moduleFunction = function() {
 					writeCount = writeCount - 1;
 
 					if (writeCount) {
-						displayMessage(err, 'file save status: ' + result.targetDataId + ' ('+charCount+ ' characters)\n');
+						displayMessage(err, 'completion status: ' + result.targetDataId + ' ('+result.summaryString+')\n');
 					} else {
-						displayMessage(err, 'file save status:  ' + result.targetDataId + ' ('+charCount+ ' characters) (exiting)\n');
+						displayMessage(err, 'completion status:  ' + result.targetDataId + ' ('+result.summaryString+') (exiting)\n');
 						wrapUp();
 					}
 				});
 			}
 		}
-
+		
 		var transformer = new transformationGenerator({
 			transformSpecs: controlSpecifications.transform,
 			config: config,
