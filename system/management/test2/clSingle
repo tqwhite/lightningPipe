@@ -39,7 +39,8 @@ echo -e "\nStart Cloverleaf run  ==============";
 echo -e "\nclearing $district/$segment (for school $school)";
 rm $testDestDir/"$district"CmdLine/$segment.txt;
 
-echo -e "\ncloverleaf $district/schools/$school/segments/$segment\n"
+echo -e "\ncloverleaf http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
+$testDestDir/$directoryName/$segment.txt -ah\n"
 
 $cloverleaf \
 http://127.0.0.1:8000/uff/1.0/districts/$district/schools/$school/segments/$segment#Data?sendFlatSpecs=true \
