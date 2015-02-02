@@ -24,4 +24,5 @@ exit 1;
 fi
 
 
-$cloverleaf -f $filePath
+//$cloverleaf --file=$filePath --overrideParentPath=/Users/tqwhite/testLinkpoint/testDataDest/AlbanyJsonTest2
+$cloverleaf  --file=$filePath
