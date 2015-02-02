@@ -14,7 +14,8 @@ ac.contactPhone2 as phone2,
 sb.gradeLevelLevel as grade,
 sb.graduationYear as gradYear,
 sb.schoolCode as schoolCode,
-'STUDENT' as department
+'STUDENT' as department,
+'US' as country
 
 
 from Student_Base as sb

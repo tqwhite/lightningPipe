@@ -16,7 +16,8 @@ j.lastName || '_' || j.firstName || '@emailaddress.edu' as email,
 '' as gradYear,
 
 j.schoolCode as schoolCode,
-'STAFF' as department
+'STAFF' as department,
+'US' as country
 
 from JMC_User as j
 
