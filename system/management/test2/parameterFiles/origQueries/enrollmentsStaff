@@ -3,7 +3,7 @@ select
 
 c.courseNumber || '_' || ss.staffUniqueIdentifier as personId,
 ss.staffUniqueIdentifier as userId,
-'editingTeacher' as role,
+'editingteacher' as role,
 s.termAbbreviation || '_' || s.beginningPeriodNumber as 'classGroup'
 
 from Course as c
