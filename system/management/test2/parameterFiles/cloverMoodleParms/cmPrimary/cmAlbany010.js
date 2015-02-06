@@ -1,55 +1,24 @@
 {
     "input": [  
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Address_Contact?sendFlatSpecs=true","destination":"Address_Contact", "path":"Data.Address_Contact", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Address_Contact?sendFlatSpecs=true","destination":"Address_Contact", "path":"Data.Address_Contact", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Course?sendFlatSpecs=true","destination":"Course", "path":"Data.Course", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Course?sendFlatSpecs=true","destination":"Course", "path":"Data.Course", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Section_Staff?sendFlatSpecs=true","destination":"Section_Staff", "path":"Data.Section_Staff", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Section_Staff?sendFlatSpecs=true","destination":"Section_Staff", "path":"Data.Section_Staff", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Section_Student?sendFlatSpecs=true","destination":"Section_Student", "path":"Data.Section_Student", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Section_Student?sendFlatSpecs=true","destination":"Section_Student", "path":"Data.Section_Student", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Section?sendFlatSpecs=true","destination":"Section", "path":"Data.Section", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Section?sendFlatSpecs=true","destination":"Section", "path":"Data.Section", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Student_Base?sendFlatSpecs=true","destination":"Student_Base", "path":"Data.Student_Base", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Student_Base?sendFlatSpecs=true","destination":"Student_Base", "path":"Data.Student_Base", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Student_Enrollment?sendFlatSpecs=true","destination":"Student_Enrollment", "path":"Data.Student_Enrollment", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Student_Enrollment?sendFlatSpecs=true","destination":"Student_Enrollment", "path":"Data.Student_Enrollment", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/JMC_User?sendFlatSpecs=true","destination":"JMC_User", "path":"Data.JMC_User", "switches":{"header":false, "append":true}}
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/JMC_User?sendFlatSpecs=true","destination":"JMC_User", "path":"Data.JMC_User", "switches":{"header":false, "append":true}}
 
 ],
 
-    "transform": [ {
-        
-        "type":"applyFunction",
-		"parameters":{
-		"input":[
-			{"name":"Address_Contact"},
-			{"name":"Course"},
-			{"name":"Section_Staff"},
-			{"name":"Section_Student"},
-			{"name":"Section"},
-			{"name":"Student_Base"},
-			{"name":"Student_Enrollment"},
-			{"name":"JMC_User"}
-		],
-		"process":[
-			{"source":"Section_Staff.staffUniqueIdentifier", "functionName":"hash", "target":"Section_Staff.publicId"},
-			{"source":"Section_Staff.staffUniqueIdentifier", "functionString":"function(inData){qtools.md5(inData);}", "target":"Section_Staff.publicId"}
-		],
-		"export":[
-			{"tableName":"Address_Contact", "as":"Address_Contact"},
-			{"tableName":"Course", "as":"Course"},
-			{"tableName":"Section_Staff", "as":"Section_Staff"},
-			{"tableName":"Section_Student", "as":"Section_Student"},
-			{"tableName":"Section", "as":"Section"},
-			{"tableName":"Student_Base", "as":"Student_Base"},
-			{"tableName":"Student_Enrollment", "as":"Student_Enrollment"},
-			{"tableName":"JMC_User", "as":"JMC_User"}
-		]
-		}
-
-    
-    },
+    "transform": [
     {
         
         "type":"sqlizer2",
@@ -84,16 +53,20 @@
     ],
 
     "output": {
+    
+    
         "type": "mysql",
         "context": {
-            "parentPath": "/Users/tqwhite/testLinkpoint/testDataDest/PACTJsonTest/010/",
+            "parentPath": "/Users/tqwhite/testLinkpoint/testDataDest/AlbanyJsonTest/",
             "authParms":{
 				"host":"qubuntu.local",
 				"port":"3306",
 				"user":"cloverleafTest",
 				"password":"123123",
-				"database":"cloverleafPact010"
+				"database":"cloverleafAlbany010"
 			}
+
+
         },
         
 		 "control":{
