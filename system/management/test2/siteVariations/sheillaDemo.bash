@@ -1,3 +1,4 @@
+#use: source /blah/../siteVariations/this.bash
 
 export serverContext="lpdemo"
 

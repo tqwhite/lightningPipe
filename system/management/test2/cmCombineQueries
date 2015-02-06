@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/test2/parameterFiles/cloverMoodleQueries
+combineFiles.js --source=./primary --dest=./queryAssembliesTmp/primary.js -f
+combineFiles.js --source=./secondary --dest=./queryAssembliesTmp/secondary.js -f
+
+bbedit ./queryAssembliesTmp/primary.js
+bbedit ./queryAssembliesTmp/secondary.js

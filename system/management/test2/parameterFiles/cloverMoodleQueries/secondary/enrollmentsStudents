@@ -1,8 +1,10 @@
 insert into Enrollments
-select
+select distinct
+'v2.2 enrollment students secondary' as version,
 
-c.courseNumber || '_' || ss.staffUniqueIdentifier as personId,
-sst.studentUniqueIdentifier as userId,
+
+c.courseNumber || '_' || ss.staffUniqueIdentifier as courseId,
+sst.studentUniqueIdentifier as personId,
 'student' as role,
 s.termAbbreviation || '_' || s.beginningPeriodNumber as 'classGroup'
 
@@ -12,6 +14,6 @@ left join Section_Staff as ss on ss.courseNumber=c.courseNumber
 left join Section as s on s.sectionNumber=ss.sectionNumber
 left join Section_Student as sst on sst.sectionNumber=s.sectionNumber
 
-where trim(personId) <> ''
-and trim(userId) <> ''
+where trim(courseId) <> ''
+and trim(personId) <> ''
 and trim(classGroup) <> ''

@@ -2,8 +2,10 @@ create table Users as
 select
 
 j.staffUniqueIdentifier as personId,
+
 j.staffUniqueIdentifier as userName,
 'Te$tUs3r' as password,
+
 j.firstName as firstName,
 j.lastName as lastName,
 j.lastName || '_' || j.firstName || '@emailaddress.edu' as email,
@@ -12,6 +14,7 @@ j.lastName || '_' || j.firstName || '@emailaddress.edu' as email,
 '' as street,
 '' as phone1,
 '' as phone2,
+'' as description,
 '' as grade,
 '' as gradYear,
 
@@ -27,3 +30,5 @@ and trim(password) <> ''
 and trim(firstName) <> ''
 and trim(lastName) <> ''
 and trim(email) <> ''
+
+
