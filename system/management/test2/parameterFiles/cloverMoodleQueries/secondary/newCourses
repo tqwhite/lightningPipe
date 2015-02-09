@@ -1,10 +1,10 @@
 create table NewCourses as
 select distinct
-'v2.2 new courses secondary' as version,
+'v2.4 new courses secondary' as version,
 
 c.courseAbbreviation || '_' || ss.lastName || '_' || ss.firstName as courseName,
-c.courseAbbreviation || '_' || c.courseNumber || '_' || ss.staffUniqueIdentifier as shortName,
-c.courseNumber || '_' || ss.staffUniqueIdentifier as courseId,
+c.courseAbbreviation || '_' || c.courseNumber || '_' || ss.publicId as shortName,
+c.courseNumber || '_' || ss.publicId as courseId,
 c.courseDesc as summary,
 '' as template,
 c.schoolCode as categoryPath,
