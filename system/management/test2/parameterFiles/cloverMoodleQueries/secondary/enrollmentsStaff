@@ -1,8 +1,8 @@
 create table Enrollments as
 select distinct
-'v2.2 enrollment staff secondary' as version,
+'v2.4 enrollment staff secondary' as version,
 
-c.courseNumber || '_' || ss.staffUniqueIdentifier as courseId,
+c.courseNumber || '_' || ss.publicId as courseId,
 ss.staffUniqueIdentifier as personId,
 
 case

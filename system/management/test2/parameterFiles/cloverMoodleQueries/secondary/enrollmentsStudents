@@ -1,9 +1,9 @@
 insert into Enrollments
 select distinct
-'v2.2 enrollment students secondary' as version,
+'v2.4 enrollment students secondary' as version,
 
 
-c.courseNumber || '_' || ss.staffUniqueIdentifier as courseId,
+c.courseNumber || '_' || ss.publicId as courseId,
 sst.studentUniqueIdentifier as personId,
 'student' as role,
 s.termAbbreviation || '_' || s.beginningPeriodNumber as 'classGroup'
