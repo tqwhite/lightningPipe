@@ -1,8 +1,11 @@
 #!/bin/bash
 
-cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/test2/parameterFiles/cloverMoodleQueries
-combineFiles.js --source=./primary --dest=./queryAssembliesTmp/primary.js -f
-combineFiles.js --source=./secondary --dest=./queryAssembliesTmp/secondary.js -f
+cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/test2/parameterFiles/cloverMoodleSource/current
 
-bbedit ./queryAssembliesTmp/primary.js
-bbedit ./queryAssembliesTmp/secondary.js
+combineFiles.js --source=./querySets/primary --dest=../assembledSetsTmp/primary.js -f --template="{\"query\":\"<!itemString!>\"}"
+combineFiles.js --source=./querySets/secondary --dest=../assembledSetsTmp/secondary.js -f --template="{\"query\":\"<!itemString!>\"}"
+combineFiles.js --source=./transformFunctions --dest=../assembledSetsTmp/transformFunctions.js -f --template="\"indexFunction\":\"<!itemString!>\""
+
+bbedit ../assembledSetsTmp/primary.js
+bbedit ../assembledSetsTmp/secondary.js
+bbedit ../assembledSetsTmp/transformFunctions.js
