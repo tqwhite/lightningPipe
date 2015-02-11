@@ -1,20 +1,18 @@
-create table Enrollments as
+insert into Enrollments
 select distinct
-'v2.4 enrollment staff secondary' as version,
+'v2.5 enrollment students secondary' as version,
+
 
 c.courseNumber || '_' || ss.publicId as courseId,
-ss.staffUniqueIdentifier as personId,
-
-case
-when ss.PrimaryInstructorFlag='Y' then 'editingteacher' 
-else 'teacher' end
-as role,
-
+sst.studentUniqueIdentifier as personId,
+'student' as role,
 s.termAbbreviation || '_' || s.beginningPeriodNumber as 'classGroup'
+
 
 from Course as c
 left join Section_Staff as ss on ss.courseNumber=c.courseNumber
 left join Section as s on s.sectionNumber=ss.sectionNumber
+left join Section_Student as sst on sst.sectionNumber=s.sectionNumber
 
 where trim(courseId) <> ''
 and trim(personId) <> ''
