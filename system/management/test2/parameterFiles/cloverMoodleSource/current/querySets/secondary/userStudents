@@ -1,6 +1,6 @@
 insert into Users
 select  distinct
-'v2.4 user students secondary' as version,
+'v2.5 user students secondary' as version,
 
 sb.studentUniqueIdentifier as personId,
 sb.lastName || '_' || sb.firstName || '_' || substr(sb.studentUniqueIdentifier, 0, 4) as userName,
