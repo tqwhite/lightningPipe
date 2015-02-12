@@ -1,20 +1,20 @@
 {
     "input": [  
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Address_Contact?sendFlatSpecs=true","destination":"Address_Contact", "path":"Data.Address_Contact", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Barnesville/schools/010/segments/Address_Contact?sendFlatSpecs=true","destination":"Address_Contact", "path":"Data.Address_Contact", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Course?sendFlatSpecs=true","destination":"Course", "path":"Data.Course", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Barnesville/schools/010/segments/Course?sendFlatSpecs=true","destination":"Course", "path":"Data.Course", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Section_Staff?sendFlatSpecs=true","destination":"Section_Staff", "path":"Data.Section_Staff", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Barnesville/schools/010/segments/Section_Staff?sendFlatSpecs=true","destination":"Section_Staff", "path":"Data.Section_Staff", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Section_Student?sendFlatSpecs=true","destination":"Section_Student", "path":"Data.Section_Student", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Barnesville/schools/010/segments/Section_Student?sendFlatSpecs=true","destination":"Section_Student", "path":"Data.Section_Student", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Section?sendFlatSpecs=true","destination":"Section", "path":"Data.Section", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Barnesville/schools/010/segments/Section?sendFlatSpecs=true","destination":"Section", "path":"Data.Section", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Student_Base?sendFlatSpecs=true","destination":"Student_Base", "path":"Data.Student_Base", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Barnesville/schools/010/segments/Student_Base?sendFlatSpecs=true","destination":"Student_Base", "path":"Data.Student_Base", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/Student_Enrollment?sendFlatSpecs=true","destination":"Student_Enrollment", "path":"Data.Student_Enrollment", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Barnesville/schools/010/segments/Student_Enrollment?sendFlatSpecs=true","destination":"Student_Enrollment", "path":"Data.Student_Enrollment", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Albany/schools/010/segments/JMC_User?sendFlatSpecs=true","destination":"JMC_User", "path":"Data.JMC_User", "switches":{"header":false, "append":true}}
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/Barnesville/schools/010/segments/JMC_User?sendFlatSpecs=true","destination":"JMC_User", "path":"Data.JMC_User", "switches":{"header":false, "append":true}}
 
 ],
 
@@ -155,13 +155,13 @@
     "output": {
         "type": "mysql",
         "context": {
-            "parentPath": "/Users/tqwhite/testLinkpoint/testDataDest/AlbanyJsonTest/010/",
+            "parentPath": "/Users/tqwhite/testLinkpoint/testDataDest/BarnesvilleJsonTest/010/",
             "authParms":{
 				"host":"qubuntu.local",
 				"port":"3306",
 				"user":"cloverleafTest",
 				"password":"123123",
-				"database":"cloverleafAlbany010"
+				"database":"cloverleafBarnesville010"
 			}
         },
         
