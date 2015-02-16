@@ -50,7 +50,7 @@
 			{
 				"sourceTableName":"Address_Contact",
 				"destTableName":"Address_Contact",  
-				"functionString":"function(item, inx, entire){item.personId=qtools.newId(); item.userName=item.contactFullName.replace(/\\W+/g, '_'); return item;}"
+				"functionString":"function(item, inx, entire){item.userName=item.contactFullName.replace(/\\W+/g, '_'); item.personId=qtools.hash(item.userName); return item;}"
 			}
 			}
 		],
