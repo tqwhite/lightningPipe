@@ -1,6 +1,6 @@
-create table Users as
+insert into Users
 select distinct
-'v2.8 user staff primary and secondary' as version,
+'v2.10 user staff primary and secondary' as version,
 
 j.staffUniqueIdentifier as personId,
 j.staffUniqueIdentifier as userName,
