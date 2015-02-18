@@ -1,24 +1,25 @@
 {
     "input": [  
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Address_Contact?sendFlatSpecs=true","destination":"Address_Contact", "path":"Data.Address_Contact", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PequotLakes/schools/010/segments/Address_Contact?sendFlatSpecs=true","destination":"Address_Contact", "path":"Data.Address_Contact", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Course?sendFlatSpecs=true","destination":"Course", "path":"Data.Course", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PequotLakes/schools/010/segments/Course?sendFlatSpecs=true","destination":"Course", "path":"Data.Course", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Section_Staff?sendFlatSpecs=true","destination":"Section_Staff", "path":"Data.Section_Staff", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PequotLakes/schools/010/segments/Section_Staff?sendFlatSpecs=true","destination":"Section_Staff", "path":"Data.Section_Staff", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Section_Student?sendFlatSpecs=true","destination":"Section_Student", "path":"Data.Section_Student", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PequotLakes/schools/010/segments/Section_Student?sendFlatSpecs=true","destination":"Section_Student", "path":"Data.Section_Student", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Section?sendFlatSpecs=true","destination":"Section", "path":"Data.Section", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PequotLakes/schools/010/segments/Section?sendFlatSpecs=true","destination":"Section", "path":"Data.Section", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Student_Base?sendFlatSpecs=true","destination":"Student_Base", "path":"Data.Student_Base", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PequotLakes/schools/010/segments/Student_Base?sendFlatSpecs=true","destination":"Student_Base", "path":"Data.Student_Base", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/Student_Enrollment?sendFlatSpecs=true","destination":"Student_Enrollment", "path":"Data.Student_Enrollment", "switches":{"header":false, "append":true}},
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PequotLakes/schools/010/segments/Student_Enrollment?sendFlatSpecs=true","destination":"Student_Enrollment", "path":"Data.Student_Enrollment", "switches":{"header":false, "append":true}},
 
-    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PACT/schools/010/segments/JMC_User?sendFlatSpecs=true","destination":"JMC_User", "path":"Data.JMC_User", "switches":{"header":false, "append":true}}
+    {"source":"http://127.0.0.1:8000/uff/1.0/districts/PequotLakes/schools/010/segments/JMC_User?sendFlatSpecs=true","destination":"JMC_User", "path":"Data.JMC_User", "switches":{"header":false, "append":true}}
 
 ],
 
-    "transform": [ {
+    "transform": [ 
+    {
         
         "type":"applyFunction",
 		"parameters":{
@@ -91,7 +92,7 @@
 {"query":"create table Parents as select distinct 'v2.10 parent primary' as version,  j.personId as personId, j.studentUniqueIdentifier as studentUniqueIdentifier, 'parent' as role  from Address_Contact as j  where trim(personId) <> '' and trim(studentUniqueIdentifier) <> ''"},
 {"query":"create table Users as select distinct 'v2.10 user parents primary and secondary' as version,  j.personId as personId, j.userName as userName, 'Te$tUs3r' as password, j.contactFirstName as firstName, j.contactLastName as lastName, j.contactEmail as email,  '' as city, '' as street, '' as phone1, '' as phone2, '' as grade, '' as gradYear,  j.schoolCode as schoolCode, 'PARENT' as department, 'US' as country, '' as description  from Address_Contact as j  where trim(personId) <> '' and trim(userName) <> '' and trim(password) <> '' and trim(firstName) <> '' and trim(lastName) <> '' and trim(email) <> '' "},
 {"query":"insert into Users select distinct 'v2.10 user staff primary and secondary' as version,  j.staffUniqueIdentifier as personId, j.staffUniqueIdentifier as userName, 'Te$tUs3r' as password, j.firstName as firstName, j.lastName as lastName, j.lastName || '_' || j.firstName || '@emailaddress.edu' as email,  '' as city, '' as street, '' as phone1, '' as phone2, '' as grade, '' as gradYear,  j.schoolCode as schoolCode, 'STAFF' as department, 'US' as country, '' as description  from JMC_User as j  where trim(personId) <> '' and trim(userName) <> '' and trim(password) <> '' and trim(firstName) <> '' and trim(lastName) <> '' and trim(email) <> '' "},
-{"query":"insert into Users select distinct 'v2.10 user students primary' as version,   sb.studentUniqueIdentifier as personId, sb.lastName || '_' || sb.firstName || '_' || substr(sb.studentUniqueIdentifier, 0, 4) as userName, sb.lastName as password, sb.firstName as firstName, sb.lastName as lastName, sb.lastName || '_' || sb.firstName || '@emailadr.edu' as email, ac.city as city, ac.address1 as street, ac.contactPhone1 as phone1, ac.contactPhone2 as phone2, sb.gradeLevelLevel as grade, sb.graduationYear as gradYear, sb.schoolCode as schoolCode, 'STUDENT' as department, 'US' as country, '' as description   from Student_Base as sb left join Address_Contact as ac on  (ac.studentUniqueIdentifier=sb.studentUniqueIdentifier and LOWER(ac.addressTypeCode)=LOWER('primary1'))  where trim(personId) <> '' and trim(userName) <> '' and trim(password) <> '' and trim(firstName) <> '' and trim(lastName) <> '' and trim(email) <> ''  "}
+{"query":"insert into Users select distinct 'v2.10 user students primary' as version,   sb.studentUniqueIdentifier as personId, sb.lastName || '_' || sb.firstName || '_' || substr(sb.studentUniqueIdentifier, 0, 4) as userName, sb.lastName as password, sb.firstName as firstName, sb.lastName as lastName, sb.lastName || '_' || sb.firstName || '@emailadr.edu' as email, ac.city as city, ac.address1 as street, ac.contactPhone1 as phone1, ac.contactPhone2 as phone2, sb.gradeLevel as grade, sb.graduationYear as gradYear, sb.schoolCode as schoolCode, 'STUDENT' as department, 'US' as country, '' as description   from Student_Base as sb left join Address_Contact as ac on  (ac.studentUniqueIdentifier=sb.studentUniqueIdentifier and LOWER(ac.addressTypeCode)=LOWER('primary1'))  where trim(personId) <> '' and trim(userName) <> '' and trim(password) <> '' and trim(firstName) <> '' and trim(lastName) <> '' and trim(email) <> ''  "}
 
 		],
 		"export":[
@@ -101,7 +102,8 @@
 			{"tableName":"Parents", "as":"Parents"}
 		]
 		}
-    },{
+    },
+    {
         
         "type":"applyFunction",
 		"parameters":{
@@ -145,7 +147,8 @@
 		}
 
     
-    },   {
+    },   
+    {
         
         "type":"sqlizer2",
 		"parameters":{
@@ -174,15 +177,15 @@
     ],
 
     "output": {
-        "type": "mysql",
+        "type": "file",
         "context": {
-            "parentPath": "/Users/tqwhite/testLinkpoint/testDataDest/PACTJsonTest/010/",
+            "parentPath": "/Users/tqwhite/testLinkpoint/testDataDest/PequotLakesJsonTest/010/",
             "authParms":{
 				"host":"qubuntu.local",
 				"port":"3306",
 				"user":"cloverleafTest",
 				"password":"123123",
-				"database":"cloverleafPact010"
+				"database":"zzTqFromMac_PequotLakes010"
 			}
         },
         
