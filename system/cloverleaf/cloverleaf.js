@@ -300,14 +300,12 @@ var moduleFunction = function() {
 				}
 
 			} else {
-
-				global.localEnvironment.log.debug({
-					UPDATEDINPUTSEGMENT: args
-				});
 				global.localEnvironment.log.info({
+				source:'cloverleaf.js',
 					UPDATEDINPUTSEGMENT: {
 						file: args.destination,
-						url: args.source
+						url: args.source,
+						path: args.path
 					}
 				});
 				config.notifier && config.notifier.addInfo("Updated: " + args.destination);

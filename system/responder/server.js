@@ -105,8 +105,14 @@ router.get(new RegExp('/' + apiName + '/' + apiVersion + '/(.*)'), function(req,
 		parameters: req.query
 	};
 
-	global.localEnvironment.log.debug({
-		executionPackage: executionPackage
+	global.localEnvironment.log.info({
+		source:'responder.server.js',
+		evidence:{
+			uriPath:executionPackage.uriPath,
+			clientName:executionPackage.clientProfile.identity.name,
+			dataSource:executionPackage.clientProfile.dataSourceAvailable.uff.serverProfile,
+			definitionName:executionPackage.clientProfile.dataSourceAvailable.uff.definitionName
+		}
 	})
 
 	client.setApi(apiDefinition);
