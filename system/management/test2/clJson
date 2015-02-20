@@ -25,6 +25,6 @@ fi
 
 
 #$cloverleaf --file=$filePath --overrideParentPath=/Users/tqwhite/testLinkpoint/testDataDest/AlbanyJsonTest2
-#$cloverleaf  --file=$filePath --saveDB
-$cloverleaf  --file=$filePath --verbose --saveDB
+$cloverleaf  --file=$filePath --saveDB
+#$cloverleaf  --file=$filePath --verbose
 #$cloverleaf  --file=$filePath
