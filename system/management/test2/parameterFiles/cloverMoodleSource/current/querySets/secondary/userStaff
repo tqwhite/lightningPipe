@@ -1,6 +1,6 @@
 insert into Users
 select distinct
-'v2.10 user staff primary and secondary' as version,
+'v2.12 user staff primary and secondary' as version,
 
 j.staffUniqueIdentifier as personId,
 j.staffUniqueIdentifier as userName,
