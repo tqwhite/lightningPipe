@@ -1,6 +1,6 @@
 create table Users as
 select distinct
-'v2.10 user parents primary and secondary' as version,
+'v2.12 user parents primary and secondary' as version,
 
 j.personId as personId,
 j.userName as userName,
