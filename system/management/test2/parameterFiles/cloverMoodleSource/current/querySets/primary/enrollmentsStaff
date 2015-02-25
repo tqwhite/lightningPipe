@@ -1,4 +1,4 @@
-create table Enrollments as
+insert into Enrollments
 select distinct
 'v2.12 enrollment staff primary' as version,
 
