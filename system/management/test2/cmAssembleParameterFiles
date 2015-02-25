@@ -1,23 +1,64 @@
 #!/bin/bash
 
+
+
+: <<'UNPARSEDCOMMENT'
+
+(function(item) {
+	switch (item.type){
+		case 'primary':
+			return item.primaryMainExtractQueries;
+			break;
+		case 'secondary':
+			return item.secondaryMainExtractQueries;
+			break;
+		case 'skewedSql':
+			return '../assembledSetsTmp/skewedSqlQueries';
+			break;
+	}
+})
+
+UNPARSEDCOMMENT
+
 pushd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/test2/parameterFiles/cloverMoodleSource/current > /dev/null;
 
-combineFiles.js --source=./querySets/primary --dest=../assembledSetsTmp/primary.js -f --template="{\"query\":\"<!itemString!>\"}" -q
-combineFiles.js --source=./querySets/secondary --dest=../assembledSetsTmp/secondary.js -f --template="{\"query\":\"<!itemString!>\"}" -q
-combineFiles.js --source=./querySets/secondRound --dest=../assembledSetsTmp/secondRound.js -f --template="{\"query\":\"<!itemString!>\"}" -q
+combineFiles.js --source=./querySets/primary --dest=../assembledSetsTmp/primary.json -f --template="{\"query\":\"<!itemString!>\"}" -q
+combineFiles.js --source=./querySets/secondary --dest=../assembledSetsTmp/secondary.json -f --template="{\"query\":\"<!itemString!>\"}" -q
+combineFiles.js --source=./querySets/secondRound --dest=../assembledSetsTmp/secondRound.json -f --template="{\"query\":\"<!itemString!>\"}" -q
+
+schoolNameList[0]='albany010';
+schoolNameList[1]='barnesville010';
+schoolNameList[2]='pact010';
+schoolNameList[3]='pact013';
+schoolNameList[4]='tcu030';
+
+
+shopt -s extglob
 
 sqlAuth="qubuntuMysqlAuth.json";
-schoolFileName="pact010";
 destFileDirPath="/Users/tqwhite/testLinkpoint/testDataDest";
+schoolSpecsDir="buildSchoolSpecs";
 
-templateReplace.js buildTemplates/cloverMoodle.txt parameterSets/test.json -f  \
- --mainExtractQueries="(function(item){if (item.type=='secondary') {return item.secondaryMainExtractQueries;} else { return item.primaryMainExtractQueries;}})" \
+echo -e "\n\n"`date` " Starting Run ============================";
+
+
+for schoolName in ${schoolNameList[*]}; do
+
+
+templateReplace.js buildTemplates/cloverMoodle.txt parameterSets/$schoolName.json -f  \
+ --mainExtractQueries="(function(item) { switch (item.type){ case 'primary': return item.primaryMainExtractQueries; break; case 'secondary': return item.secondaryMainExtractQueries; break; case 'skewedSql': return '../assembledSetsTmp/skewedSqlQueries'; break; } })" \
  --primaryMainExtractQueries="../assembledSetsTmp/primary.js" \
  --secondaryMainExtractQueries="../assembledSetsTmp/secondary.js" \
- --secondRoundQueries="../assembledSetsTmp/secondRound.js" \
- --schoolInfo="buildSchoolSpecs/$schoolFileName.js" \
+ --secondRoundQueries="../assembledSetsTmp/secondRound.json" \
+ --schoolInfo="$schoolSpecsDir/$schoolName.json" \
  --destType="file" \
  --destFileDirPath="$destFileDirPath" \
  --sqlAuth=$sqlAuth
+
+done
+
+
+
+echo -e `date` " Ending Run ============================\n\n";
 
 popd > /dev/null;
