@@ -4,7 +4,7 @@ select  distinct
 
 sb.studentUniqueIdentifier as personId,
 sb.lastName || '_' || sb.firstName || '_' || substr(sb.studentUniqueIdentifier, 0, 4) as userName,
-sb.lastName as password,
+'Te$tUs3r' as password,
 sb.firstName as firstName,
 sb.lastName as lastName,
 sb.lastName || '_' || sb.firstName || '@emailadr.edu' as email,
