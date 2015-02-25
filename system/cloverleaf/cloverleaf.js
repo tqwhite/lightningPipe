@@ -21,21 +21,22 @@ var moduleFunction = function() {
 
 	//get startup switches -------------------------------------------------------
 
-	var program = require('commander');
-	program.version('tqTest')
+	var cmdLineSwitches = require('commander');
+	cmdLineSwitches.version('tqTest')
 		//	.option('-y, --background', 'spawn to background')
 		.option('-a, --append', 'append data to file if file is present')
 		.option('-h, --header', 'add header row with field names')
 		.option('-v, --verbose', '(lowercase) -v, show messages instead of putting into file')
 		.option('-p, --params', 'Display configuration and environment parameters')
+		.option('-s, --saveDB', 'Put a copy of the sqlite database in the log directory')
 		.option('-q, --quiet', 'no messages')
 		.option(', --file', 'get specs from file')
 		.option('-o, --overrideParentPath', 'Use this path instead of the one in the spec file (only valid with -f)')
 		.parse(process.argv);
-		program.argumentData=qtools.extractParameters('', program);
+		cmdLineSwitches.argumentData=qtools.extractParameters('', cmdLineSwitches); //get argument from --switch=argData type switches
 
 
-	if (program.background) {
+	if (cmdLineSwitches.background) {
 		qtools.die('background not yet implemented');
 	}
 
@@ -51,13 +52,15 @@ var moduleFunction = function() {
 
 	var config = require('../config/cloverleaf.js');
 	config = new config();
+	config.cmdLineSwitches=cmdLineSwitches; //I hereby declare command line switches are always configuration parameters
+
 	global.localEnvironment.log.info({
 		accessingAsUser: config.authParms.userName
 	});
-
+	
 	var runtimeParameters = config.runtimeParameters;
 
-	if (program.params) {
+	if (cmdLineSwitches.params) {
 		global.localEnvironment.display();
 		config.display();
 		qtools.die('parameters done');
@@ -77,7 +80,7 @@ var moduleFunction = function() {
 
 	var displayMessage=function(err, displayMessage, logMessage){
 
-		if (!program.quiet) {
+		if (!cmdLineSwitches.quiet) {
 			if (err) {
 				qtools.message(displayMessage+qtools.dump(err, true), 'black');
 // 				var errorFileName = global.localEnvironment.logFileDirectory + 'error.txt';
@@ -149,7 +152,7 @@ var moduleFunction = function() {
 
 
 			var messageSuccessExit = function() {return;
-				if (!program.quiet) {
+				if (!cmdLineSwitches.quiet) {
 				//	qtools.successExit('Cloverleaf finished successfully');
 					qtools.message('Cloverleaf finished successfully');
 				} else {
@@ -159,12 +162,12 @@ var moduleFunction = function() {
 
 			if (config.notifier) {
 				config.notifier.transmit(function(notificationError) {
-					if (!program.quiet) {
+					if (!cmdLineSwitches.quiet) {
 						console.log(notificationError);
 					}
 					messageSuccessExit();
 				}, function(notificationInfo) {
-					if (!program.quiet) {
+					if (!cmdLineSwitches.quiet) {
 						console.log(notificationInfo.response);
 					}
 					messageSuccessExit();
@@ -193,7 +196,7 @@ var moduleFunction = function() {
 
 	var getSpecsFromFile = function() {
 		var fs = require('fs'),
-			fileName = program.argumentData.file,
+			fileName = cmdLineSwitches.argumentData.file,
 			specs = fs.readFileSync(fileName, 'utf8');
 
 		specs = validateAndCleanSpecs(JSON.parse(specs));
@@ -203,8 +206,8 @@ var moduleFunction = function() {
 
 	var getSpecsFromCommandLine = function() {
 
-		var tmp = program.args[0].split(/\?|#/g),
-			query = program.args[0].match(/\?(.*)/),
+		var tmp = cmdLineSwitches.args[0].split(/\?|#/g),
+			query = cmdLineSwitches.args[0].match(/\?(.*)/),
 			query = query ? query : [],
 			source = tmp[0] + (query[1] ? '?' + query[1] : ''),
 			path = tmp[1];
@@ -214,7 +217,7 @@ var moduleFunction = function() {
 			input: [
 				{
 					source: source,
-					destination: program.args[1],
+					destination: cmdLineSwitches.args[1],
 					path: path
 				}
 			],
@@ -227,8 +230,8 @@ var moduleFunction = function() {
 					parentPath: '' //expect a fully expressed path in command line
 				},
 				control: {
-					append: program.append,
-					header: program.header
+					append: cmdLineSwitches.append,
+					header: cmdLineSwitches.header
 				}
 			}
 		}
@@ -297,14 +300,12 @@ var moduleFunction = function() {
 				}
 
 			} else {
-
-				global.localEnvironment.log.debug({
-					UPDATEDINPUTSEGMENT: args
-				});
 				global.localEnvironment.log.info({
+				source:'cloverleaf.js',
 					UPDATEDINPUTSEGMENT: {
 						file: args.destination,
-						url: args.source
+						url: args.source,
+						path: args.path
 					}
 				});
 				config.notifier && config.notifier.addInfo("Updated: " + args.destination);
@@ -391,11 +392,11 @@ var moduleFunction = function() {
 
 	//make it go -------------------------------------------------------
 
-	if (program.file) {
+	if (cmdLineSwitches.file) {
 		controlSpecifications = getSpecsFromFile();
 		
-		if (program.overrideParentPath && program.argumentData.overrideParentPath){
-			controlSpecifications=qtools.putSurePath(controlSpecifications, 'output.context.parentPath', program.argumentData.overrideParentPath+'/');
+		if (cmdLineSwitches.overrideParentPath && cmdLineSwitches.argumentData.overrideParentPath){
+			controlSpecifications=qtools.putSurePath(controlSpecifications, 'output.context.parentPath', cmdLineSwitches.argumentData.overrideParentPath+'/');
 		}
 		
 		this.requestQueue = controlSpecifications.input;

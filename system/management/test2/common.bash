@@ -20,6 +20,8 @@ clsetmssql - set Cloverleaf usr to mssql\n\n\
 lpdir - cd to LP server code\n\
 cldir - cd to Cloverleaf code\n\n\
 lpInfo - repeat this information\n\n\
+viewLog - look at all log info\n\n\
+tailLog - look at recent log info\n\n\
 editlpscripts - edit this file\n\
 ----------------------------------\n\
 ";
@@ -85,14 +87,14 @@ alias clsetjmc="cp $lpClSystemDir/config/cloverleafJmc.js $lpClSystemDir/config/
 alias clsetmssql="cp $lpClSystemDir/config/cloverleafMssql.js $lpClSystemDir/config/cloverleaf.js; echo 'SET MSSQL';"
 
 if [ "$serverContext" == "qbook" ]; then
-alias viewDemoLog="cat $lpClLogginDir/lightningClover.log | bunyan | tail -c -10000; echo 'ANY FATAL?'; cat $lpClLogginDir/lightningClover.log | bunyan -l fatal; echo 'done';"
+alias viewLog="cat $lpClLogginDir/lightningClover.log | bunyan | tail -c -10000; echo 'ANY FATAL?'; cat $lpClLogginDir/lightningClover.log | bunyan -l fatal; echo 'done';"
 else
-alias viewDemoLog="cat $lpClLogginDir/lightningClover.log | bunyan | tail --lines=133; echo 'ANY FATAL?'; cat $lpClLogginDir/lightningClover.log | bunyan -l fatal; echo 'done';"
+alias viewLog="cat $lpClLogginDir/lightningClover.log | bunyan | tail --lines=133; echo 'ANY FATAL?'; cat $lpClLogginDir/lightningClover.log | bunyan -l fatal; echo 'done';"
 
 fi
 
-alias tailDemoLog="tail -f $lpClLogginDir/lightningClover.log | bunyan"
-alias killDemoLog="rm $lpClLogginDir/lightningClover.log"
+alias tailLog="tail -f $lpClLogginDir/lightningClover.log | bunyan"
+alias killLog="rm $lpClLogginDir/lightningClover.log"
 
 
 # === NOT SURE ===========================================

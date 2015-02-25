@@ -1,0 +1,4 @@
+#!/bin/bash
+$cloverleaf  --file=/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/test2/parameterFiles/cloverMoodleSource/current/parameterSets/cmPrimary/cmBarnesville010.js
+$cloverleaf  --file=/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/test2/parameterFiles/cloverMoodleSource/current/parameterSets/cmPrimary/cmPact010.js
+$cloverleaf  --file=/Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/test2/parameterFiles/cloverMoodleSource/current/parameterSets/cmSecondary/cmPact013.js
