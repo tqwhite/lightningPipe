@@ -1,0 +1,10 @@
+(function(){
+
+return {
+	district:'TriCityUnited',
+	school:'030',
+	type:'skewedSql',
+	databaseName:'zzTq_TriCityUnited_030'
+}
+
+})()
