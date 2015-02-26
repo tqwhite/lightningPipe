@@ -1,15 +1,17 @@
 #!/bin/bash
 
-cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/test2/parameterFiles/cloverMoodleSource/current
+pushd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/test2/parameterFiles/cloverMoodleSource/current > /dev/null
 
-combineFiles.js --source=./querySets/skewedSqlQueries --dest=../assembledSetsTmp/skewedSqlQueries.js -f --template="{\"query\":\"<!itemString!>\"}"
+combineFiles.js --source=./querySets/skewedSqlQueries --dest=zCombinedComponentsTmp/skewedSqlQueries.js -f --template="{\"query\":\"<!itemString!>\"}"
 
-combineFiles.js --source=./querySets/primary --dest=../assembledSetsTmp/primary.js -f --template="{\"query\":\"<!itemString!>\"}"
-combineFiles.js --source=./querySets/secondary --dest=../assembledSetsTmp/secondary.js -f --template="{\"query\":\"<!itemString!>\"}"
-combineFiles.js --source=./querySets/secondRound --dest=../assembledSetsTmp/secondRound.js -f --template="{\"query\":\"<!itemString!>\"}"
-combineFiles.js --source=./transformFunctions --dest=../assembledSetsTmp/transformFunctions.js -f --template="\"indexFunction\":\"<!itemString!>\""
+combineFiles.js --source=./querySets/primary --dest=zCombinedComponentsTmp/primary.json -f --template="{\"query\":\"<!itemString!>\"}"
+combineFiles.js --source=./querySets/secondary --dest=zCombinedComponentsTmp/secondary.json -f --template="{\"query\":\"<!itemString!>\"}"
+combineFiles.js --source=./querySets/secondRound --dest=zCombinedComponentsTmp/secondRound.json -f --template="{\"query\":\"<!itemString!>\"}"
+combineFiles.js --source=./transformFunctions --dest=zCombinedComponentsTmp/transformFunctions.json -f --template="\"indexFunction\":\"<!itemString!>\""
 
-bbedit ../assembledSetsTmp/primary.js
-bbedit ../assembledSetsTmp/secondary.js
-bbedit ../assembledSetsTmp/secondRound.js
-bbedit ../assembledSetsTmp/transformFunctions.js
+bbedit zCombinedComponentsTmp/primary.json
+bbedit zCombinedComponentsTmp/secondary.json
+bbedit zCombinedComponentsTmp/secondRound.json
+bbedit zCombinedComponentsTmp/transformFunctions.json
+
+popd > /dev/null
