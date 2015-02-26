@@ -2,6 +2,8 @@
 
 cd /Volumes/qubuntuFileServer/cmerdc/lightningPipe/system/management/test2/parameterFiles/cloverMoodleSource/current
 
+combineFiles.js --source=./querySets/skewedSqlQueries --dest=../assembledSetsTmp/skewedSqlQueries.js -f --template="{\"query\":\"<!itemString!>\"}"
+
 combineFiles.js --source=./querySets/primary --dest=../assembledSetsTmp/primary.js -f --template="{\"query\":\"<!itemString!>\"}"
 combineFiles.js --source=./querySets/secondary --dest=../assembledSetsTmp/secondary.js -f --template="{\"query\":\"<!itemString!>\"}"
 combineFiles.js --source=./querySets/secondRound --dest=../assembledSetsTmp/secondRound.js -f --template="{\"query\":\"<!itemString!>\"}"
