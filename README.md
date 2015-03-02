@@ -11,3 +11,8 @@ Cloverleaf is a general purpose API to flat file converter. It will make an http
 (javascript array) component into a flat file. If the API source provides a 'flatFileSpec' (ie, is LightningPipe), it will 
 generate a file that matches the spec. If not, it will generate a flat file with column names that are a Javascript dotted pathes
 (eg, Person.Home.City).
+
+In Version 2, support for simple mysql output was added.
+
+In Version 3, the ability to transform data received from an API was added. Transformations can be expressed as Javascript functions
+or SQL queries (made against an embedded Sqlite instance).
