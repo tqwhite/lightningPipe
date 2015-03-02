@@ -1,0 +1,29 @@
+#!/bin/bash
+
+shopt -s extglob
+
+schoolNameList=(\
+'Albany' \
+'Barnesville' \
+'Browns-Valley' \
+'Clinton-Graceville' \
+'Hancock' \
+'Hawley' \
+'Morris' \
+'Paynesville' \
+'Ulen-Hitterdahl' \
+'Upsala' \
+'WCE' \
+'Wheaton' \
+)
+
+echo -e "\n\n"`date` " Starting Run ============================";
+
+
+for schoolName in ${schoolNameList[*]}; do
+
+$cloverleaf  --file=$clTestParametersDir/studentPlansSource/current/assembledParameterSets/$schoolName.json
+
+done
+
+echo -e `date` " Ending Run ============================\n\n";

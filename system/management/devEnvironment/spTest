@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+$cloverleaf  --file=$clTestParametersDir/studentPlansSource/current/assembledParameterSets/Albany.json
