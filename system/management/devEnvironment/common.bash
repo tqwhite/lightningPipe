@@ -25,6 +25,25 @@ tailLog - look at recent log info\n\n\
 editlpscripts - edit this file\n\
 ----------------------------------\n\
 ";
+
+if [ ! -e "$lpClProjectBase/logFiles" ]
+then
+  echo -e "\ncreating $lpClProjectBase/logFiles\n"
+  mkdir "$lpClProjectBase/logFilesx"
+fi
+
+if [ ! -e "$lpClProjectBase/testResults" ]
+then
+  echo -e "\ncreating $lpClProjectBase/testResults\n"
+  mkdir "$lpClProjectBase/testResults"
+fi
+
+if [ ! -e "$lpClProjectBase/system/config" ]
+then
+  echo -e "\nWARNING: $lpClProjectBase/config IS MISSING\n"
+fi
+
+
 echo -e "$lpClTestInfo";
 alias lpInfo=' echo -e "$lpClTestInfo"'
 
