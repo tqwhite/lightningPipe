@@ -29,7 +29,7 @@ editlpscripts - edit this file\n\
 if [ ! -e "$lpClProjectBase/logFiles" ]
 then
   echo -e "\ncreating $lpClProjectBase/logFiles\n"
-  mkdir "$lpClProjectBase/logFilesx"
+  mkdir "$lpClProjectBase/logFiles"
 fi
 
 if [ ! -e "$lpClProjectBase/testResults" ]
