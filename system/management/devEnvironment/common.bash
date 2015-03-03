@@ -38,6 +38,11 @@ then
   mkdir "$lpClProjectBase/testResults"
 fi
 
+if [ ! -e "$lpClProjectBase/testData" ]
+then
+  echo -e "\nWARNING: $lpClProjectBase/testData IS MISSING\n"
+fi
+
 if [ ! -e "$lpClProjectBase/system/config" ]
 then
   echo -e "\nWARNING: $lpClProjectBase/config IS MISSING\n"
