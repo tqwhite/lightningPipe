@@ -1,4 +1,5 @@
 #!/bin/bash
 
+cloverleaf="node /home/lightningpipe/lpProd/services/system/cloverleaf/cloverleaf.js"
 
-$cloverleaf  --file=$clTestParametersDir/studentPlansSource/current/assembledParameterSets/Albany.json
+$cloverleaf  --file="testProd.json"
