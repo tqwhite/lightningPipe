@@ -19,6 +19,8 @@ schoolNameList=(\
 
 echo -e "\n\n"`date` " Starting Run ============================";
 
+echo "rm /Users/tqwhite/testLinkpoint/testDataDest/zzStudentPlans/*";
+rm -r /Users/tqwhite/testLinkpoint/testDataDest/zzStudentPlans/*;
 
 for schoolName in ${schoolNameList[*]}; do
 

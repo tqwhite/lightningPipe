@@ -80,7 +80,8 @@ templateReplace.js buildTemplates/cloverMoodle.txt assembledParameterSets/$schoo
  --courseGroupFunctions="$componentsDir/courseGroupFunctions" \
  --destType="$destType" \
  --destFileDirPath="$destFileDirPath" \
- --sqlAuth=$sqlAuth
+ --sqlAuth=$sqlAuth \
+ --port="8000"
 
 done
 

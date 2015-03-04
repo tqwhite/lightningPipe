@@ -57,7 +57,8 @@ templateReplace.js buildTemplates/plansBase.txt assembledParameterSets/$schoolNa
  --overwrite="(function(item) { if (item.overwriteFlag) { return '\"overwrite\":\"all\"'; } else { return '\"overwrite\":[]' } })" \
  --sqlAuth=$sqlAuth \
  --urlList="urlLists/$schoolName.js" \
- --schoolName="$schoolName"
+ --schoolName="$schoolName" \
+ --port="8000"
 
 done
 

@@ -183,7 +183,7 @@
         "context": {
             "parentPath": "/Users/tqwhite/testLinkpoint/testDataDest/zzTq_PACT_013/",
             "databaseName":"zzTq_PACT_013",
-			"authParmsFile":"elearningMsyqlAuth.json"
+			"authParmsFile":"qubuntuMysqlAuth.json"
         },
         
 		 "control":{
