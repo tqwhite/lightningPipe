@@ -4,7 +4,7 @@ export serverContext="lpdemo"
 
 export homeDir="/home/lightningpipe/lpDemo"
 export testLinkDir="$homeDir/testLinkpoint"
-export lpClProjectBase="/home/lightningpipe/lpDemo/services/"
+export lpProjectBase="/home/lightningpipe/lpDemo/services/"
 
 
 export testScriptsDir=$(dirname ${BASH_SOURCE[0]})/../

@@ -5,7 +5,7 @@ export serverContext="qbook"
 
 export homeDir="/Users/tqwhite"
 export testLinkDir="/Users/tqwhite/testLinkpoint"
-export lpClProjectBase="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/"
+export lpProjectBase="/Volumes/qubuntuFileServer/cmerdc/lightningPipe/"
 
 
 export testScriptsDir=$(dirname ${BASH_SOURCE[0]})/../
