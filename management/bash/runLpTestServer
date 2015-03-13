@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$serverContext" == "lpdemo" ]; then
+
+echo -e "\n\n===== Stopping lpDemo ==================== \n";
+forever stop $lightningPipeDir/server.js
+
+fi
+
+
+echo -e "\n\n===== Starting lpDemo ==================== \n";
+
+nodemon -w $lpProjectBase $lightningPipeDir/server.js
+
+echo -e "\n\n========================================== \n";
